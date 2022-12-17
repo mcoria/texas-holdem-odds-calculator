@@ -14,7 +14,6 @@ public abstract class Simulator {
 
     protected abstract List<EventListener> setupEventListeners();
 
-
     public void simulate() {
         List<EventListener> listeners = setupEventListeners();
 
