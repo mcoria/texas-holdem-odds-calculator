@@ -78,7 +78,7 @@ public class Simulation01 extends Simulator {
             public void printStatics() {
                 System.out.println("Player1 = \t\t\t" + String.format("%3.2f%%", 100f * (float) player1Counter / (float) SIMULATIONS));
                 System.out.println("Player2 = \t\t\t" + String.format("%3.2f%%", 100f * (float) player2Counter / (float) SIMULATIONS));
-                System.out.println("Tie = \t\t\t" + String.format("%3.2f%%", 100f * (float) tie / (float) SIMULATIONS));
+                System.out.println("Tie = \t\t\t\t" + String.format("%3.2f%%", 100f * (float) tie / (float) SIMULATIONS));
             }
         });
     }

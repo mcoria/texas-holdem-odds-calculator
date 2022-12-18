@@ -13,7 +13,7 @@ public class Aleatorio extends Simulator {
 
     private static final int SIMULATIONS = 100000;
 
-    private static final int PLAYERS = 2; //23 Max con un mazo
+    private static final int PLAYERS = 5; //23 Max con un mazo
 
     public static void main(String[] args) {
         new Aleatorio().simulate();

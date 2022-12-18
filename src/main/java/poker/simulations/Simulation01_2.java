@@ -12,7 +12,7 @@ import java.util.List;
  *
  * Aca no hay probabilidades dado que todas las cartas son conocidas
  * Observar las estadisticas desde la perspective de Player1 o Player2 sin conocer las cartas del rival.
- * 
+ *
  */
 
 public class Simulation01_2 extends Simulator {
