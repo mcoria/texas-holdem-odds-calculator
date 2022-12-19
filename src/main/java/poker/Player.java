@@ -6,16 +6,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
-
-    private final CommonCards commonCards;
-
     private Juego juego = null;
 
     private Set<Card> cards = new HashSet<>();
-
-    public Player(CommonCards commonCards) {
-        this.commonCards = commonCards;
-    }
 
     public void receiveCards(Mazo mazo) {
         cards.add(mazo.getRandomCard());
@@ -38,11 +31,33 @@ public class Player {
 
     public Juego getJuego() {
         if (juego == null) {
-            Set<Card> theCards = new HashSet<>();
-            theCards.addAll(commonCards.getCards());
-            theCards.addAll(cards);
-            juego = Juego.cargarJuego(theCards);
+            throw new RuntimeException("Juego no fue calculado");
         }
         return juego;
     }
+
+    public Juego calcularJuego(CommonCards commonCards){
+        Set<Card> theCards = new HashSet<>();
+        theCards.addAll(commonCards.getCards());
+        theCards.addAll(cards);
+        juego = Juego.cargarJuego(theCards);
+        return juego;
+    }
+
+    public boolean call_CARTAS_REPARETIDAS() {
+        return true;
+    }
+
+    public boolean call_FLOP() {
+        return true;
+    }
+
+    public boolean call_TURN() {
+        return true;
+    }
+
+    public boolean call_RIVER() {
+        return true;
+    }
+
 }

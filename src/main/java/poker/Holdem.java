@@ -3,10 +3,9 @@ package poker;
 import poker.juegos.Juego;
 import poker.repartirstrategies.RepartirStrategy;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static poker.EventListener.HoldemEvents.*;
 
 public class Holdem {
     private final List<EventListener> listeners = new ArrayList<>();
@@ -18,7 +17,7 @@ public class Holdem {
 
     public Holdem(int playersCount, RepartirStrategy repartirStrategy) {
         for (int i = 0; i < playersCount; i++) {
-            playerCards.add(new Player(commonCards));
+            playerCards.add(new Player());
         }
         this.repartirStrategy = repartirStrategy;
     }
@@ -36,12 +35,16 @@ public class Holdem {
     }
 
     public Set<Player> play() {
+        // Reset
         ganadores = null;
         mazo.reset();
         commonCards.reset();
         playerCards.forEach(player -> player.reset());
         triggerEvent(EventListener.HoldemEvents.NEW_GAME);
 
+        List<Player> playersInGame = new ArrayList<>(playerCards);
+
+        // Repartir las cartas
         repartirStrategy.apply(mazo, commonCards, playerCards);
         if(commonCards.getCards().size() != 5){
             throw new RuntimeException("Common cards have not been set");
@@ -51,28 +54,66 @@ public class Holdem {
                 throw new RuntimeException("Player cards have not been set");
             }
         }
+        triggerEvent(CARTAS_REPARETIDAS);
 
-        triggerEvent(EventListener.HoldemEvents.CARTAS_REPARETIDAS);
+        bet(CARTAS_REPARETIDAS, playersInGame);
 
+        // Mostrar FLOW
         commonCards.showFlop();
-        triggerEvent(EventListener.HoldemEvents.FLOP);
+        triggerEvent(FLOP);
 
+        bet(FLOP, playersInGame);
+
+        // Mostrar TURN
         commonCards.showTurn();
-        triggerEvent(EventListener.HoldemEvents.CUARTA_CARTA);
+        triggerEvent(TURN);
 
+        bet(TURN, playersInGame);
+
+        // Mostrar RIVER
         commonCards.showRiver();
-        triggerEvent(EventListener.HoldemEvents.QUINTA_CARTA);
+        triggerEvent(RIVER);
 
-        ganadores = calcularGanadores(playerCards);
-        triggerEvent(EventListener.HoldemEvents.FINISHED);
+        bet(RIVER, playersInGame);
+
+        // Mostrar las cartas para calcular ganadores
+        ganadores = calcularGanadores(playersInGame);
+        triggerEvent(FINISHED);
+
+        //collect();
         return ganadores;
+    }
+
+    private void bet(EventListener.HoldemEvents stage, List<Player> playersInGame) {
+        ListIterator<Player> iterator = playersInGame.listIterator();
+        while (iterator.hasNext()){
+            Player player = iterator.next();
+            boolean call = false;
+            switch (stage){
+                case CARTAS_REPARETIDAS:
+                    call = player.call_CARTAS_REPARETIDAS();
+                    break;
+                case FLOP:
+                    call = player.call_FLOP();
+                    break;
+                case TURN:
+                    call = player.call_TURN();
+                    break;
+                case RIVER:
+                    call = player.call_RIVER();
+                    break;
+            }
+            if( !call ) {
+                iterator.remove();
+            }
+        }
     }
 
     protected Set<Player> calcularGanadores(List<Player> playerCards) {
         Set<Player> ganadores = new HashSet<>();
         Juego maxJuego = null;
         for (Player player : playerCards) {
-            Juego juego = player.getJuego();
+            Juego juego = player.calcularJuego(commonCards);
             if (maxJuego == null) {
                 ganadores.add(player);
                 maxJuego = juego;
