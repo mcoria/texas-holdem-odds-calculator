@@ -6,6 +6,7 @@ import poker.*;
 import java.util.List;
 
 /*
+ * Punto de vista de Player 1
  */
 
 public class Simulation01_2_Player1 extends Simulator {
@@ -20,8 +21,23 @@ public class Simulation01_2_Player1 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player player1;
-    private Player player2;
+    private Player player1 = new Player() {
+        @Override
+        public void setCards() {
+            setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
+        }
+    };
+
+    private Player player2 = new Player();
+
+    private CommonCards commonCards = new CommonCards() {
+        @Override
+        public void setCards() {
+            commonCards.setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
+            commonCards.setTurn(Card.of(Suit.Spades, Rank.NINE));
+            commonCards.setRiver(Card.of(Suit.Spades, Rank.KING));
+        }
+    };
 
     @Override
     protected List<Player> createPlayers() {
@@ -30,29 +46,8 @@ public class Simulation01_2_Player1 extends Simulator {
 
     @Override
     protected CommonCards createCommonCards() {
-        return null;
+        return commonCards;
     }
-
-    /*
-
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            player1 = playerCards.get(0);
-            player2 = playerCards.get(1);
-
-            player1.setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
-            mazo.removeCards(player1.getCards());
-
-            commonCards.setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-            commonCards.setTurn(Card.of(Suit.Spades, Rank.NINE));
-            commonCards.setRiver(Card.of(Suit.Spades, Rank.KING));
-            mazo.removeCards(commonCards.getCards());
-
-            player2.receiveCards(mazo);
-
-        };
-    }
-     */
 
     @Override
     protected List<EventListener> setupEventListeners() {

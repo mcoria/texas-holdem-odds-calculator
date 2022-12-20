@@ -24,8 +24,21 @@ public class Simulation01 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player player1;
-    private Player player2;
+    private Player player1 = new Player() {
+        @Override
+        public void setCards() {
+            setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
+        }
+    };
+
+    private Player player2 = new Player() {
+        @Override
+        public void setCards() {
+            setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
+        }
+    };
+
+    private CommonCards commonCards = new CommonCards();
 
     @Override
     protected List<Player> createPlayers() {
@@ -34,32 +47,14 @@ public class Simulation01 extends Simulator {
 
     @Override
     protected CommonCards createCommonCards() {
-        return null;
+        return commonCards;
     }
-
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            player1 = playerCards.get(0);
-            player2 = playerCards.get(1);
-
-            player1.setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
-            mazo.removeCards(player1.getCards());
-
-            player2.setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
-            mazo.removeCards(player2.getCards());
-
-            commonCards.receiveCards(mazo);
-        };
-    }
-     */
 
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
             private int player1Counter = 0;
             private int player2Counter = 0;
-
             private int tie = 0;
 
             @Override

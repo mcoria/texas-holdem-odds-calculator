@@ -10,7 +10,7 @@ import poker.listeners.PairListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class Aleatorio extends Simulator {
+public class Aleatorio extends Simulator {
     private static final int SIMULATIONS = 1000000;
 
     private static final int PLAYERS = 3; //23 Max con un mazo

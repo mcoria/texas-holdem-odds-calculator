@@ -24,8 +24,26 @@ public class Simulation01_0 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player player1;
-    private Player player2;
+    private Player player1 = new Player() {
+        @Override
+        public void setCards() {
+            setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
+        }
+    };
+
+    private Player player2 = new Player() {
+        @Override
+        public void setCards() {
+            setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
+        }
+    };
+
+    private CommonCards commonCards = new CommonCards() {
+        @Override
+        public void setCards() {
+            commonCards.setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
+        }
+    };
 
     @Override
     protected List<Player> createPlayers() {
@@ -34,28 +52,8 @@ public class Simulation01_0 extends Simulator {
 
     @Override
     protected CommonCards createCommonCards() {
-        return null;
+        return commonCards;
     }
-
-/*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            player1 = playerCards.get(0);
-            player2 = playerCards.get(1);
-
-            player1.setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
-            mazo.removeCards(player1.getCards());
-
-            player2.setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
-            mazo.removeCards(player2.getCards());
-
-            commonCards.setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-            mazo.removeCards(commonCards.getCards());
-
-            commonCards.setTurn(mazo.getRandomCard());
-            commonCards.setRiver(mazo.getRandomCard());
-        };
-    }*/
 
     @Override
     protected List<EventListener> setupEventListeners() {

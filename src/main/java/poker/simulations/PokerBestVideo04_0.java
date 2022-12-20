@@ -15,6 +15,7 @@ import java.util.Set;
 
 public class PokerBestVideo04_0 extends Simulator {
     private static final int SIMULATIONS = 100000;
+
     public static void main(String[] args) {
         new PokerBestVideo04_0().simulate();
     }
@@ -32,7 +33,7 @@ public class PokerBestVideo04_0 extends Simulator {
         }
     };
 
-    private Player scotty = new Player(false){
+    private Player scotty = new Player(false) {
         @Override
         public void setCards() {
             // Scotty =   10(diamonds)   9(spades)              - out
@@ -40,7 +41,7 @@ public class PokerBestVideo04_0 extends Simulator {
         }
     };
 
-    private Player faraz = new Player(){
+    private Player faraz = new Player() {
         @Override
         public void setCards() {
             // Faraz  =    9(clubs)      7(hearts)              -  16%
@@ -48,7 +49,7 @@ public class PokerBestVideo04_0 extends Simulator {
         }
     };
 
-    private Player josh = new Player(){
+    private Player josh = new Player() {
         @Override
         public void setCards() {
             // Josh   =    Q(spades)     5(hearts)              - 47%
@@ -56,7 +57,7 @@ public class PokerBestVideo04_0 extends Simulator {
         }
     };
 
-    private Player shawn = new Player(false){
+    private Player shawn = new Player(false) {
         @Override
         public void setCards() {
             // Shawn  =   10(hearts)     4(clubs)               - out

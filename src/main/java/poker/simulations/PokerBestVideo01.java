@@ -34,7 +34,7 @@ public class PokerBestVideo01 extends Simulator {
         }
     };
 
-    private Player scotty = new Player(){
+    private Player scotty = new Player() {
         @Override
         public void setCards() {
             // Scotty =    K(Spades)       Q(Clubs)             - 47%
@@ -42,7 +42,7 @@ public class PokerBestVideo01 extends Simulator {
         }
     };
 
-    private Player faraz = new Player(false){
+    private Player faraz = new Player(false) {
         @Override
         public void setCards() {
             // Faraz  =    Q(Diamonds)      6(Clubs)            -  out
@@ -50,7 +50,7 @@ public class PokerBestVideo01 extends Simulator {
         }
     };
 
-    private Player josh = new Player(false){
+    private Player josh = new Player(false) {
         @Override
         public void setCards() {
             // Josh  =    7(Clubs)          4(Diamonds)         -  out
@@ -58,7 +58,7 @@ public class PokerBestVideo01 extends Simulator {
         }
     };
 
-    private Player shawn = new Player(false){
+    private Player shawn = new Player(false) {
         @Override
         public void setCards() {
             // Shawn  =    8(Spades)        4(Clubs)            -  out

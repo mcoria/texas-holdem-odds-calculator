@@ -20,7 +20,7 @@ public class ParDeAces extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player observer = new Player(){
+    private Player observer = new Player() {
 
         @Override
         public void setCards() {
