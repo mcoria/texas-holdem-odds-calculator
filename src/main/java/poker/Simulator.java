@@ -1,23 +1,23 @@
 package poker;
 
-import poker.repartirstrategies.Default;
-import poker.repartirstrategies.RepartirStrategy;
-
 import java.util.List;
 
 public abstract class Simulator {
-    protected abstract int getNumberOfPlayers();
 
     protected abstract int getNumberOfSimulations();
 
-    protected abstract RepartirStrategy getRepartirStrategy();
-
     protected abstract List<EventListener> setupEventListeners();
 
+    protected abstract List<Player> createPlayers();
+
+    protected abstract CommonCards createCommonCards();
+
     public void simulate() {
+        List<Player> players = createPlayers();
+
         List<EventListener> listeners = setupEventListeners();
 
-        Holdem holdem = new Holdem(getNumberOfPlayers(), getRepartirStrategy());
+        Holdem holdem = new Holdem( players, createCommonCards()  );
 
         for (EventListener listener : listeners) {
             holdem.addListener(listener);
@@ -28,12 +28,12 @@ public abstract class Simulator {
             holdem.play();
         }
 
-        printStatics(listeners);
+        printStatics(listeners, players.size(), simulations);
     }
 
-    private void printStatics(List<EventListener> listeners) {
-        System.out.println("Total games = " + getNumberOfSimulations());
-        System.out.println("Players = " + getNumberOfPlayers());
+    private void printStatics(List<EventListener> listeners, int numberOfPlayers, int simulations) {
+        System.out.println("Total games = " + simulations);
+        System.out.println("Players = " + numberOfPlayers);
         for (EventListener listener : listeners) {
             System.out.println("===========================" + listener.getClass().getName() + "===========================");
             listener.printStatics();

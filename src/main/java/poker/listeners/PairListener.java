@@ -1,6 +1,9 @@
 package poker.listeners;
 
-import poker.*;
+import poker.EventListener;
+import poker.Holdem;
+import poker.Player;
+import poker.Rank;
 
 public class PairListener implements EventListener {
     private int games = 0;
@@ -9,13 +12,10 @@ public class PairListener implements EventListener {
     private int pair = 0;
     private int pairGanador = 0;
 
-    @Override
-    public void printStatics() {
-        System.out.println("Probabilidad de recibir par en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) pair / (float) games));
-        System.out.println("\tProbabilidad de recibir par de aces = \t\t" + String.format("%3.2f%%", 100f * (float) pairOfACEs / (float) games));
+    private final Player observer;
 
-        System.out.println("Probabilidad de ganar con par en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) pairGanador / (float) pair));
-        System.out.println("\tProbabilidad de ganar con par de aces = \t\t" + String.format("%3.2f%%", 100f * (float) pairOfACEsGanador / (float) pairOfACEs));
+    public PairListener(Player observer) {
+        this.observer = observer;
     }
 
     @Override
@@ -24,19 +24,19 @@ public class PairListener implements EventListener {
             games++;
         } else if (event.equals(HoldemEvents.CARTAS_REPARETIDAS)) {
 
-            if (isPair(holdem.getPlayer(0))) {
+            if (isPair(observer)) {
                 pair++;
 
-                if (isPairOfValue(holdem.getPlayer(0), Rank.ACE)) {
+                if (isPairOfValue(observer, Rank.ACE)) {
                     pairOfACEs++;
                 }
             }
         } else if (event.equals(HoldemEvents.FINISHED)) {
-            if (holdem.getGanadores().contains(holdem.getPlayer(0))) {
-                if (isPair(holdem.getPlayer(0))) {
+            if (holdem.getGanadores().contains(observer)) {
+                if (isPair(observer)) {
                     pairGanador++;
 
-                    if (isPairOfValue(holdem.getPlayer(0), Rank.ACE)) {
+                    if (isPairOfValue(observer, Rank.ACE)) {
                         pairOfACEsGanador++;
                     }
                 }
@@ -56,6 +56,15 @@ public class PairListener implements EventListener {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void printStatics() {
+        System.out.println("Probabilidad de recibir par en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) pair / (float) games));
+        System.out.println("\tProbabilidad de recibir par de aces = \t\t" + String.format("%3.2f%%", 100f * (float) pairOfACEs / (float) games));
+
+        System.out.println("Probabilidad de ganar con par en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) pairGanador / (float) pair));
+        System.out.println("\tProbabilidad de ganar con par de aces = \t\t" + String.format("%3.2f%%", 100f * (float) pairOfACEsGanador / (float) pairOfACEs));
     }
 }
 

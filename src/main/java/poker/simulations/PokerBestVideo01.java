@@ -1,7 +1,7 @@
 package poker.simulations;
 
 import poker.*;
-import poker.repartirstrategies.RepartirStrategy;
+
 
 import java.util.List;
 import java.util.Set;
@@ -15,26 +15,36 @@ import java.util.Set;
 
 public class PokerBestVideo01 extends Simulator {
     private static final int SIMULATIONS = 100000;
-    private static final int PLAYERS = 2;
 
     public static void main(String[] args) {
         new PokerBestVideo01().simulate();
     }
 
-    @Override
-    protected int getNumberOfPlayers() {
-        return PLAYERS;
-    }
 
     @Override
     protected int getNumberOfSimulations() {
         return SIMULATIONS;
     }
 
-    private Player daniel;
-    private Player scotty;
+    private Player daniel = new Player();
+
+    private Player scotty = new Player();
+    private Player faraz = new Player();
+    private Player josh = new Player();
+    private Player shawn = new Player();
+    private CommonCards commonCards = new CommonCards();
 
     @Override
+    protected List<Player> createPlayers() {
+        return List.of(daniel, scotty, faraz, josh, shawn);
+    }
+
+    @Override
+    protected CommonCards createCommonCards() {
+        return commonCards;
+    }
+
+    /*
     protected RepartirStrategy getRepartirStrategy() {
         return (mazo, commonCards, playerCards) -> {
             daniel = playerCards.get(0);
@@ -60,7 +70,7 @@ public class PokerBestVideo01 extends Simulator {
             commonCards.receiveCards(mazo);
         };
     }
-
+*/
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
@@ -88,4 +98,5 @@ public class PokerBestVideo01 extends Simulator {
             }
         });
     }
+
 }

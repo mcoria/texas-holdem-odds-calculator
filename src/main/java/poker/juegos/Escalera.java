@@ -2,7 +2,6 @@ package poker.juegos;
 
 import poker.Card;
 
-
 import java.util.Collection;
 
 import static poker.juegos.Juego.Tipo.ESCALERA;

@@ -1,7 +1,6 @@
 package poker.simulations;
 
 import poker.*;
-import poker.repartirstrategies.RepartirStrategy;
 
 import java.util.List;
 
@@ -15,15 +14,9 @@ import java.util.List;
 
 public class Simulation01_0 extends Simulator {
     private static final int SIMULATIONS = 100000;
-    private static final int PLAYERS = 2;
 
     public static void main(String[] args) {
         new Simulation01_0().simulate();
-    }
-
-    @Override
-    protected int getNumberOfPlayers() {
-        return PLAYERS;
     }
 
     @Override
@@ -35,6 +28,16 @@ public class Simulation01_0 extends Simulator {
     private Player player2;
 
     @Override
+    protected List<Player> createPlayers() {
+        return List.of(player1, player2);
+    }
+
+    @Override
+    protected CommonCards createCommonCards() {
+        return null;
+    }
+
+/*
     protected RepartirStrategy getRepartirStrategy() {
         return (mazo, commonCards, playerCards) -> {
             player1 = playerCards.get(0);
@@ -52,7 +55,7 @@ public class Simulation01_0 extends Simulator {
             commonCards.setTurn(mazo.getRandomCard());
             commonCards.setRiver(mazo.getRandomCard());
         };
-    }
+    }*/
 
     @Override
     protected List<EventListener> setupEventListeners() {

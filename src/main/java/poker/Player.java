@@ -10,12 +10,14 @@ public class Player {
 
     private Set<Card> cards = new HashSet<>();
 
-    public void receiveCards(Mazo mazo) {
-        cards.add(mazo.getRandomCard());
-        cards.add(mazo.getRandomCard());
+    public void receiveCards() {
     }
 
-    public void setCards(Card card1, Card card2) {
+    public void receiveRandomCards(Mazo mazo) {
+        setCards(mazo.getRandomCard(), mazo.getRandomCard());
+    }
+
+    protected void setCards(Card card1, Card card2) {
         cards.add(card1);
         cards.add(card2);
     }

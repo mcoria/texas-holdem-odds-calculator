@@ -23,21 +23,19 @@ public class HoldemTest {
                 Card.of(Spades, NINE)
         );
 
-        Player player1 = new Player(commonCards);
+        Player player1 = new Player();
         player1.setCards(
                 Card.of(Hearts, ACE),
                 Card.of(Spades, ACE)
         );
 
-        Player player2 = new Player(commonCards);
+        Player player2 = new Player();
         player2.setCards(
                 Card.of(Hearts, KING),
                 Card.of(Spades, KING)
         );
 
-        Holdem holdem = new Holdem(2, null);
-
-        Set<Player> ganadores = holdem.calcularGanadores(List.of(player1, player2));
+        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), commonCards);
 
         assertEquals(1, ganadores.size());
         assertTrue(ganadores.contains(player1));
@@ -54,21 +52,19 @@ public class HoldemTest {
                 Card.of(Spades, NINE)
         );
 
-        Player player1 = new Player(commonCards);
+        Player player1 = new Player();
         player1.setCards(
                 Card.of(Hearts, ACE),
                 Card.of(Spades, ACE)
         );
 
-        Player player2 = new Player(commonCards);
+        Player player2 = new Player();
         player2.setCards(
                 Card.of(Diamonds, ACE),
                 Card.of(Spades, ACE)
         );
 
-        Holdem holdem = new Holdem(2, null);
-
-        Set<Player> ganadores = holdem.calcularGanadores(List.of(player1, player2));
+        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), commonCards);
 
         assertEquals(2, ganadores.size());
         assertTrue(ganadores.contains(player1));

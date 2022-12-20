@@ -1,8 +1,8 @@
 package poker.juegos;
 
 import poker.Card;
-import poker.Suit;
 import poker.Rank;
+import poker.Suit;
 
 import java.util.*;
 import java.util.stream.Collectors;

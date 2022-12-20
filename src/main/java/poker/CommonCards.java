@@ -6,7 +6,7 @@ import java.util.Set;
 public class CommonCards {
     private final Set<Card> cards = new HashSet<>();
 
-    public void receiveCards(Mazo mazo) {
+    public void receiveRandomCards(Mazo mazo) {
         if (cards.size() != 0) {
             throw new RuntimeException("reset operation has not been invoked.");
         }
@@ -15,6 +15,9 @@ public class CommonCards {
         cards.add(mazo.getRandomCard());
         cards.add(mazo.getRandomCard());
         cards.add(mazo.getRandomCard());
+    }
+
+    public void receiveCards(Mazo mazo) {
     }
 
     public void setCards(Card card1, Card card2, Card card3, Card card4, Card card5) {

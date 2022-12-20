@@ -1,7 +1,6 @@
 package poker;
 
 import poker.juegos.Juego;
-import poker.repartirstrategies.RepartirStrategy;
 
 import java.util.*;
 
@@ -9,21 +8,14 @@ import static poker.EventListener.HoldemEvents.*;
 
 public class Holdem {
     private final List<EventListener> listeners = new ArrayList<>();
-    private final CommonCards commonCards = new CommonCards();
-    private final List<Player> playerCards = new ArrayList<>();
     private final Mazo mazo = new Mazo();
-    private final RepartirStrategy repartirStrategy;
-    private Set<Player> ganadores;
+    private final Set<Player> ganadores = new HashSet<>();
+    private final List<Player> players;
+    private final CommonCards commonCards;
 
-    public Holdem(int playersCount, RepartirStrategy repartirStrategy) {
-        for (int i = 0; i < playersCount; i++) {
-            playerCards.add(new Player());
-        }
-        this.repartirStrategy = repartirStrategy;
-    }
-
-    public Player getPlayer(int playerNumber) {
-        return playerCards.get(playerNumber);
+    public Holdem(List<Player> players, CommonCards commonCards) {
+        this.players = players;
+        this.commonCards = commonCards;
     }
 
     public void addListener(EventListener listener) {
@@ -36,21 +28,29 @@ public class Holdem {
 
     public Set<Player> play() {
         // Reset
-        ganadores = null;
+        ganadores.clear();
         mazo.reset();
         commonCards.reset();
-        playerCards.forEach(player -> player.reset());
+        players.forEach(player -> player.reset());
         triggerEvent(EventListener.HoldemEvents.NEW_GAME);
 
-        List<Player> playersInGame = new ArrayList<>(playerCards);
+        List<Player> playersInGame = new ArrayList<>(players);
 
         // Repartir las cartas
-        repartirStrategy.apply(mazo, commonCards, playerCards);
-        if(commonCards.getCards().size() != 5){
+        commonCards.receiveCards(mazo);
+        mazo.removeCards(commonCards.getCards());
+        playersInGame.forEach(player -> player.receiveCards());
+        playersInGame.forEach(player-> mazo.removeCards(player.getCards()));
+
+        commonCards.receiveRandomCards(mazo);
+        playersInGame.forEach(player -> player.receiveRandomCards(mazo));
+
+
+        if (commonCards.getCards().size() != 5) {
             throw new RuntimeException("Common cards have not been set");
         }
-        for (Player playerCard: playerCards) {
-            if(playerCard.getCards().size() != 2){
+        for (Player playerCard : players) {
+            if (playerCard.getCards().size() != 2) {
                 throw new RuntimeException("Player cards have not been set");
             }
         }
@@ -77,7 +77,7 @@ public class Holdem {
         bet(RIVER, playersInGame);
 
         // Mostrar las cartas para calcular ganadores
-        ganadores = calcularGanadores(playersInGame);
+        ganadores.addAll(calcularGanadores(playersInGame, commonCards));
         triggerEvent(FINISHED);
 
         //collect();
@@ -86,10 +86,10 @@ public class Holdem {
 
     private void bet(EventListener.HoldemEvents stage, List<Player> playersInGame) {
         ListIterator<Player> iterator = playersInGame.listIterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Player player = iterator.next();
             boolean call = false;
-            switch (stage){
+            switch (stage) {
                 case CARTAS_REPARETIDAS:
                     call = player.call_CARTAS_REPARETIDAS();
                     break;
@@ -103,13 +103,13 @@ public class Holdem {
                     call = player.call_RIVER();
                     break;
             }
-            if( !call ) {
+            if (!call) {
                 iterator.remove();
             }
         }
     }
 
-    protected Set<Player> calcularGanadores(List<Player> playerCards) {
+    public static Set<Player> calcularGanadores(List<Player> playerCards, CommonCards commonCards) {
         Set<Player> ganadores = new HashSet<>();
         Juego maxJuego = null;
         for (Player player : playerCards) {
