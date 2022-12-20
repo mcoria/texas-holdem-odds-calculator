@@ -18,15 +18,52 @@ public class PokerBestVideo04_0 extends Simulator {
     public static void main(String[] args) {
         new PokerBestVideo04_0().simulate();
     }
+
     @Override
     protected int getNumberOfSimulations() {
         return SIMULATIONS;
     }
-    private Player daniel = new Player();
-    private Player scotty = new Player();
-    private Player faraz = new Player();
-    private Player josh = new Player();
-    private Player shawn = new Player();
+
+    private Player daniel = new Player() {
+        @Override
+        public void setCards() {
+            // Daniel =    J(clubs)      7(clubs)               - 33%
+            setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
+        }
+    };
+
+    private Player scotty = new Player(false){
+        @Override
+        public void setCards() {
+            // Scotty =   10(diamonds)   9(spades)              - out
+            setCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
+        }
+    };
+
+    private Player faraz = new Player(){
+        @Override
+        public void setCards() {
+            // Faraz  =    9(clubs)      7(hearts)              -  16%
+            setCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
+        }
+    };
+
+    private Player josh = new Player(){
+        @Override
+        public void setCards() {
+            // Josh   =    Q(spades)     5(hearts)              - 47%
+            setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
+        }
+    };
+
+    private Player shawn = new Player(false){
+        @Override
+        public void setCards() {
+            // Shawn  =   10(hearts)     4(clubs)               - out
+            setCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
+        }
+    };
+
     private CommonCards commonCards = new CommonCards();
 
     @Override
@@ -39,36 +76,6 @@ public class PokerBestVideo04_0 extends Simulator {
         return commonCards;
     }
 
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            faraz = playerCards.get(0);
-            josh = playerCards.get(1);
-            daniel = playerCards.get(2);
-
-
-            // Faraz  =    9(clubs)      7(hearts)              -  16%
-            faraz.setCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
-            mazo.removeCards(faraz.getCards());
-
-            // Josh   =    Q(spades)     5(hearts)              - 16%
-            josh.setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
-            mazo.removeCards(josh.getCards());
-
-            // Scotty =   10(diamonds)   9(spades)              - out
-            mazo.removeCards(Set.of(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE)));
-
-            // Shawn  =   10(hearts)     4(clubs)               - out
-            mazo.removeCards(Set.of(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR)));
-
-            // Daniel =    J(clubs)      7(clubs)               - 33%
-            daniel.setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
-            mazo.removeCards(daniel.getCards());
-
-            commonCards.receiveCards(mazo);
-        };
-    }
-*/
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {

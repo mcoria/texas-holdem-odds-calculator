@@ -21,7 +21,6 @@ public class PokerBestVideo03 extends Simulator {
         new PokerBestVideo03().simulate();
     }
 
-
     @Override
     protected int getNumberOfSimulations() {
         return SIMULATIONS;
