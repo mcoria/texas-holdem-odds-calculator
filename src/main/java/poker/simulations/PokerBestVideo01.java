@@ -32,10 +32,6 @@ public class PokerBestVideo01 extends Simulator {
             // Daniel =    2(Hearts)        2(Diamonds)         - 52%
             setCards(Card.of(Suit.Hearts, Rank.TWO), Card.of(Suit.Diamonds, Rank.TWO)); //Daniel
         }
-
-        @Override
-        public void receiveRandomCards(Mazo mazo) {
-        }
     };
 
     private Player scotty = new Player(){
@@ -44,10 +40,6 @@ public class PokerBestVideo01 extends Simulator {
             // Scotty =    K(Spades)       Q(Clubs)             - 47%
             setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
         }
-
-        @Override
-        public void receiveRandomCards(Mazo mazo) {
-        }
     };
 
     private Player faraz = new Player(){
@@ -55,10 +47,6 @@ public class PokerBestVideo01 extends Simulator {
         public void setCards() {
             // Faraz  =    Q(Diamonds)      6(Clubs)            -  out
             setCards(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX));
-        }
-
-        @Override
-        public void receiveRandomCards(Mazo mazo) {
         }
 
         @Override
@@ -75,10 +63,6 @@ public class PokerBestVideo01 extends Simulator {
         }
 
         @Override
-        public void receiveRandomCards(Mazo mazo) {
-        }
-
-        @Override
         public boolean call(EventListener.HoldemEvents stage) {
             return false;
         }
@@ -89,10 +73,6 @@ public class PokerBestVideo01 extends Simulator {
         public void setCards() {
             // Shawn  =    8(Spades)        4(Clubs)            -  out
             setCards(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR));
-        }
-
-        @Override
-        public void receiveRandomCards(Mazo mazo) {
         }
 
         @Override

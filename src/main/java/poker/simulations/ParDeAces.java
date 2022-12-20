@@ -41,10 +41,6 @@ public class ParDeAces extends Simulator {
             //setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
         }
-
-        @Override
-        public void receiveRandomCards(Mazo mazo) {
-        }
     };
 
 
@@ -54,7 +50,18 @@ public class ParDeAces extends Simulator {
         players.add(observer);
 
         for (int i = 0; i < PLAYERS - 1; i++) {
-            players.add(new Player());
+            players.add(new Player(){
+
+                @Override
+                public void setCards() {
+
+                }
+
+                @Override
+                public void receiveRandomCards(Mazo mazo) {
+                    setCards(mazo.getRandomCard(), mazo.getRandomCard());
+                }
+            });
         }
         return players;
     }

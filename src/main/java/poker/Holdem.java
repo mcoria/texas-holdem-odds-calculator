@@ -39,6 +39,7 @@ public class Holdem {
         // Repartir las cartas
         commonCards.setCards();
         mazo.removeCards(commonCards.getCards());
+
         playersInGame.forEach(player -> {
             player.setCards();
             mazo.removeCards(player.getCards());

@@ -8,13 +8,16 @@ import java.util.Set;
 public class Player {
     private Juego juego = null;
 
-    private Set<Card> cards = new HashSet<>();
+    private final Set<Card> cards = new HashSet<>();
 
-    public void setCards() {
-    }
+    public void setCards(){}
 
     public void receiveRandomCards(Mazo mazo) {
-        setCards(mazo.getRandomCard(), mazo.getRandomCard());
+        if(cards.size() == 0){
+            setCards(mazo.getRandomCard(), mazo.getRandomCard());
+        } else if(cards.size() == 1){
+            cards.add(mazo.getRandomCard());
+        }
     }
 
     protected void setCards(Card card1, Card card2) {
