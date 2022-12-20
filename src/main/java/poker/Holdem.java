@@ -37,10 +37,12 @@ public class Holdem {
         List<Player> playersInGame = new ArrayList<>(players);
 
         // Repartir las cartas
-        commonCards.receiveCards(mazo);
+        commonCards.setCards();
         mazo.removeCards(commonCards.getCards());
-        playersInGame.forEach(player -> player.receiveCards());
-        playersInGame.forEach(player-> mazo.removeCards(player.getCards()));
+        playersInGame.forEach(player -> {
+            player.setCards();
+            mazo.removeCards(player.getCards());
+        });
 
         commonCards.receiveRandomCards(mazo);
         playersInGame.forEach(player -> player.receiveRandomCards(mazo));
@@ -91,16 +93,10 @@ public class Holdem {
             boolean call = false;
             switch (stage) {
                 case CARTAS_REPARETIDAS:
-                    call = player.call_CARTAS_REPARETIDAS();
-                    break;
                 case FLOP:
-                    call = player.call_FLOP();
-                    break;
                 case TURN:
-                    call = player.call_TURN();
-                    break;
                 case RIVER:
-                    call = player.call_RIVER();
+                    call = player.call(stage);
                     break;
             }
             if (!call) {

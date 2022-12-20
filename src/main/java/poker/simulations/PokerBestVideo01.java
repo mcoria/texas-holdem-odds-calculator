@@ -26,12 +26,81 @@ public class PokerBestVideo01 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player daniel = new Player();
+    private Player daniel = new Player() {
+        @Override
+        public void setCards() {
+            // Daniel =    2(Hearts)        2(Diamonds)         - 52%
+            setCards(Card.of(Suit.Hearts, Rank.TWO), Card.of(Suit.Diamonds, Rank.TWO)); //Daniel
+        }
 
-    private Player scotty = new Player();
-    private Player faraz = new Player();
-    private Player josh = new Player();
-    private Player shawn = new Player();
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+    };
+
+    private Player scotty = new Player(){
+        @Override
+        public void setCards() {
+            // Scotty =    K(Spades)       Q(Clubs)             - 47%
+            setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
+        }
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+    };
+
+    private Player faraz = new Player(){
+        @Override
+        public void setCards() {
+            // Faraz  =    Q(Diamonds)      6(Clubs)            -  out
+            setCards(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX));
+        }
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+
+        @Override
+        public boolean call(EventListener.HoldemEvents stage) {
+            return false;
+        }
+    };
+
+    private Player josh = new Player(){
+        @Override
+        public void setCards() {
+            // Josh  =    7(Clubs)          4(Diamonds)         -  out
+            setCards(Card.of(Suit.Clubs, Rank.SEVEN), Card.of(Suit.Diamonds, Rank.FOUR));
+        }
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+
+        @Override
+        public boolean call(EventListener.HoldemEvents stage) {
+            return false;
+        }
+    };
+
+    private Player shawn = new Player(){
+        @Override
+        public void setCards() {
+            // Shawn  =    8(Spades)        4(Clubs)            -  out
+            setCards(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR));
+        }
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+
+        @Override
+        public boolean call(EventListener.HoldemEvents stage) {
+            return false;
+        }
+    };
+
     private CommonCards commonCards = new CommonCards();
 
     @Override
@@ -44,33 +113,6 @@ public class PokerBestVideo01 extends Simulator {
         return commonCards;
     }
 
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            daniel = playerCards.get(0);
-            scotty = playerCards.get(1);
-
-            // Faraz  =    Q(Diamonds)      6(Clubs)            -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX)));
-
-            // Josh  =    7(Clubs)          4(Diamonds)         -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Clubs, Rank.SEVEN), Card.of(Suit.Diamonds, Rank.FOUR)));
-
-            // Scotty =    K(Spades)       Q(Clubs)             - 47%
-            scotty.setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN)); //Scotty
-            mazo.removeCards(scotty.getCards());
-
-            // Shawn  =    8(Spades)        4(Clubs)            -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR)));
-
-            // Daniel =    2(Hearts)        2(Diamonds)         - 52%
-            daniel.setCards(Card.of(Suit.Hearts, Rank.TWO), Card.of(Suit.Diamonds, Rank.TWO)); //Daniel
-            mazo.removeCards(daniel.getCards());
-
-            commonCards.receiveCards(mazo);
-        };
-    }
-*/
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
@@ -98,5 +140,4 @@ public class PokerBestVideo01 extends Simulator {
             }
         });
     }
-
 }

@@ -10,7 +10,7 @@ public class Player {
 
     private Set<Card> cards = new HashSet<>();
 
-    public void receiveCards() {
+    public void setCards() {
     }
 
     public void receiveRandomCards(Mazo mazo) {
@@ -46,20 +46,9 @@ public class Player {
         return juego;
     }
 
-    public boolean call_CARTAS_REPARETIDAS() {
+    public boolean call(EventListener.HoldemEvents stage) {
         return true;
     }
 
-    public boolean call_FLOP() {
-        return true;
-    }
-
-    public boolean call_TURN() {
-        return true;
-    }
-
-    public boolean call_RIVER() {
-        return true;
-    }
 
 }

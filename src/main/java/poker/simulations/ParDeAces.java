@@ -23,11 +23,7 @@ public class ParDeAces extends Simulator {
     private Player observer = new Player(){
 
         @Override
-        public void receiveRandomCards(Mazo mazo) {
-        }
-
-        @Override
-        public void receiveCards() {
+        public void setCards() {
             //setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
@@ -44,6 +40,10 @@ public class ParDeAces extends Simulator {
 
             //setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
+        }
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
         }
     };
 
