@@ -9,11 +9,6 @@ import java.util.Set;
  *
  * https://youtu.be/gD-FQBpT2o0?t=395
  *
- * Faraz  = -  6(clubs)      7(hearts)              - 16%
- * Josh   = -  K(diamonds)   Q(hearts)              - 51%
- * Scotty =    6(spades)     4(hearts) - se va
- * Shawn  =    A(clubs)      K(hearts) - se va
- * Daniel =    J(spades)     7(spades)              - 31%
  * SI CONVERGE !!!!
  */
 
@@ -32,11 +27,46 @@ public class PokerBestVideo03 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player daniel = new Player();
-    private Player scotty = new Player();
-    private Player faraz = new Player();
-    private Player josh = new Player();
-    private Player shawn = new Player();
+    private Player daniel = new Player() {
+        @Override
+        public void setCards() {
+            //* Daniel =    J(spades)     7(spades)              - 31%
+            setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
+        }
+    };
+
+    private Player scotty = new Player(false){
+        @Override
+        public void setCards() {
+            //* Scotty =    6(spades)     4(hearts)             - se va
+            setCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
+        }
+    };
+
+    private Player faraz = new Player(){
+        @Override
+        public void setCards() {
+            // Faraz  = -  6(clubs)      7(hearts)              - 16%
+            setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
+        }
+    };
+
+    private Player josh = new Player(){
+        @Override
+        public void setCards() {
+            // Josh =  K(diamonds)   Q(hearts)                  - 51%
+            setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
+        }
+    };
+
+    private Player shawn = new Player(false){
+        @Override
+        public void setCards() {
+            //* Shawn  =    A(clubs)      K(hearts)             - se va
+            setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
+        }
+    };
+
     private CommonCards commonCards = new CommonCards();
 
     @Override
@@ -49,39 +79,11 @@ public class PokerBestVideo03 extends Simulator {
         return commonCards;
     }
 
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            daniel = playerCards.get(0);
-            josh = playerCards.get(1);
-            faraz = playerCards.get(2);
-
-
-            daniel.setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
-            josh.setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
-            faraz.setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
-
-
-            mazo.removeCards(josh.getCards());
-            mazo.removeCards(daniel.getCards());
-            mazo.removeCards(faraz.getCards());
-
-            //* Scotty =    6(spades)     4(hearts) - se va
-            mazo.removeCards(Set.of(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR)));
-
-            //* Shawn  =    A(clubs)      K(hearts) - se va
-            mazo.removeCards(Set.of(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING)));
-
-            commonCards.receiveCards(mazo);
-        };
-    }*/
-
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
             private int farazCounter = 0;
             private int joshCounter = 0;
-
             private int danielCounter = 0;
 
             @Override
@@ -91,11 +93,9 @@ public class PokerBestVideo03 extends Simulator {
                         if (holdem.getGanadores().contains(daniel)) {
                             danielCounter++;
                         }
-
                         if (holdem.getGanadores().contains(josh)) {
                             joshCounter++;
                         }
-
                         if (holdem.getGanadores().contains(faraz)) {
                             farazCounter++;
                         }

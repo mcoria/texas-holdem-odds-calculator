@@ -4,25 +4,36 @@ import poker.juegos.Juego;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class Player {
+    private final Set<Card> cards = new HashSet<>();
     private Juego juego = null;
 
-    private final Set<Card> cards = new HashSet<>();
+    private final boolean callResponse;
 
-    public void setCards(){}
-
-    public void receiveRandomCards(Mazo mazo) {
-        if(cards.size() == 0){
-            setCards(mazo.getRandomCard(), mazo.getRandomCard());
-        } else if(cards.size() == 1){
-            cards.add(mazo.getRandomCard());
-        }
+    public Player() {
+        this(true);
     }
 
-    protected void setCards(Card card1, Card card2) {
-        cards.add(card1);
-        cards.add(card2);
+    public Player(boolean callResponse) {
+        this.callResponse = callResponse;
+    }
+
+
+    public boolean call(EventListener.HoldemEvents stage) {
+        return callResponse;
+    }
+
+    public void setCards() {
+    }
+
+    public void receiveRandomCards(Mazo mazo) {
+        if (cards.size() == 0) {
+            setCards(mazo.getRandomCard(), mazo.getRandomCard());
+        } else if (cards.size() == 1) {
+            cards.add(mazo.getRandomCard());
+        }
     }
 
     public Set<Card> getCards() {
@@ -41,7 +52,7 @@ public class Player {
         return juego;
     }
 
-    public Juego calcularJuego(CommonCards commonCards){
+    public Juego calcularJuego(CommonCards commonCards) {
         Set<Card> theCards = new HashSet<>();
         theCards.addAll(commonCards.getCards());
         theCards.addAll(cards);
@@ -49,9 +60,11 @@ public class Player {
         return juego;
     }
 
-    public boolean call(EventListener.HoldemEvents stage) {
-        return true;
+    protected void setCards(Card card1, Card card2) {
+        if(cards.size() != 0){
+            throw new RuntimeException("Las cartas ya fueron recibidas.");
+        }
+        cards.add(card1);
+        cards.add(card2);
     }
-
-
 }

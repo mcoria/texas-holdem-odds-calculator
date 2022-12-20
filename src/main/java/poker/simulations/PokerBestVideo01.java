@@ -42,42 +42,27 @@ public class PokerBestVideo01 extends Simulator {
         }
     };
 
-    private Player faraz = new Player(){
+    private Player faraz = new Player(false){
         @Override
         public void setCards() {
             // Faraz  =    Q(Diamonds)      6(Clubs)            -  out
             setCards(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX));
         }
-
-        @Override
-        public boolean call(EventListener.HoldemEvents stage) {
-            return false;
-        }
     };
 
-    private Player josh = new Player(){
+    private Player josh = new Player(false){
         @Override
         public void setCards() {
             // Josh  =    7(Clubs)          4(Diamonds)         -  out
             setCards(Card.of(Suit.Clubs, Rank.SEVEN), Card.of(Suit.Diamonds, Rank.FOUR));
         }
-
-        @Override
-        public boolean call(EventListener.HoldemEvents stage) {
-            return false;
-        }
     };
 
-    private Player shawn = new Player(){
+    private Player shawn = new Player(false){
         @Override
         public void setCards() {
             // Shawn  =    8(Spades)        4(Clubs)            -  out
             setCards(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR));
-        }
-
-        @Override
-        public boolean call(EventListener.HoldemEvents stage) {
-            return false;
         }
     };
 

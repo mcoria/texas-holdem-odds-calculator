@@ -50,18 +50,7 @@ public class ParDeAces extends Simulator {
         players.add(observer);
 
         for (int i = 0; i < PLAYERS - 1; i++) {
-            players.add(new Player(){
-
-                @Override
-                public void setCards() {
-
-                }
-
-                @Override
-                public void receiveRandomCards(Mazo mazo) {
-                    setCards(mazo.getRandomCard(), mazo.getRandomCard());
-                }
-            });
+            players.add(new Player());
         }
         return players;
     }
@@ -70,26 +59,6 @@ public class ParDeAces extends Simulator {
     protected CommonCards createCommonCards() {
         return new CommonCards();
     }
-
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            yo = playerCards.get(0);
-
-            yo.setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
-            //yo.setCards(Card.of(Suit.Spades, Rank.TWO), Card.of(Suit.Clubs, Rank.TWO));
-            mazo.removeCards(yo.getCards());
-
-            for (Player playerCard: playerCards) {
-                if(playerCard != yo){
-                    playerCard.receiveCards(mazo);
-                }
-            }
-
-            commonCards.receiveCards(mazo);
-        };
-    }
-     */
 
     @Override
     protected List<EventListener> setupEventListeners() {

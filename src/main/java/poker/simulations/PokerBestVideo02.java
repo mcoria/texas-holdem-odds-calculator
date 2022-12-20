@@ -14,7 +14,6 @@ import java.util.Set;
 
 public class PokerBestVideo02 extends Simulator {
     private static final int SIMULATIONS = 100000;
-    private static final int PLAYERS = 2;
 
     public static void main(String[] args) {
         new PokerBestVideo02().simulate();
@@ -25,11 +24,47 @@ public class PokerBestVideo02 extends Simulator {
         return SIMULATIONS;
     }
 
-    private Player daniel = new Player();
-    private Player scotty = new Player();
-    private Player faraz = new Player();
-    private Player josh = new Player();
-    private Player shawn = new Player();
+    private Player daniel = new Player(false) {
+        @Override
+        public void setCards() {
+            // Daniel =     K(Spades)         5(Hearts)    -  out
+            setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Hearts, Rank.FIVE));
+        }
+    };
+
+    private Player scotty = new Player(false){
+        @Override
+        public void setCards() {
+            // Scotty =    Q(Hearts)        8(Hearts)    -  out
+            setCards(Card.of(Suit.Hearts, Rank.QUEEN), Card.of(Suit.Hearts, Rank.EIGHT));
+        }
+    };
+
+    private Player faraz = new Player(){
+        @Override
+        public void setCards() {
+            // Faraz =      K(Clubs)        2(Hearts)      -  24%
+            setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Hearts, Rank.TWO));
+        }
+    };
+
+    private Player josh = new Player(){
+        @Override
+        public void setCards() {
+            // Josh =       A(Hearts)       K(Hearts)       -  75%
+            setCards(Card.of(Suit.Hearts, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
+        }
+    };
+
+    private Player shawn = new Player(false){
+        @Override
+        public void setCards() {
+            // Shawn =     8(Clubs)         4(Spades)    -  out
+            setCards(Card.of(Suit.Clubs, Rank.EIGHT), Card.of(Suit.Spades, Rank.FOUR));
+        }
+    };
+
+
     private CommonCards commonCards = new CommonCards();
 
     @Override
@@ -42,33 +77,6 @@ public class PokerBestVideo02 extends Simulator {
         return commonCards;
     }
 
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            faraz = playerCards.get(0);
-            josh = playerCards.get(1);
-
-            // Faraz =      K(Clubs)        2(Hearts)      -  24%
-            faraz.setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Hearts, Rank.TWO));
-            mazo.removeCards(faraz.getCards());
-
-            // Josh =       A(Hearts)       K(Hearts)       -  75%
-            josh.setCards(Card.of(Suit.Hearts, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
-            mazo.removeCards(josh.getCards());
-
-            // Scotty =    Q(Hearts)        8(Hearts)    -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Hearts, Rank.QUEEN), Card.of(Suit.Hearts, Rank.EIGHT)));
-
-            // Shawn =     8(Clubs)         4(Spades)    -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Clubs, Rank.EIGHT), Card.of(Suit.Spades, Rank.FOUR)));
-
-            // Daniel =     K(Spades)         5(Hearts)    -  out
-            mazo.removeCards(Set.of(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Hearts, Rank.FIVE)));
-
-            commonCards.receiveCards(mazo);
-        };
-    }
-*/
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
