@@ -85,7 +85,7 @@ public class PokerBestVideo01 extends Simulator {
             private int scottyCounter = 0;
 
             @Override
-            public void raiseEvent(HoldemEvents event, Holdem holdem) {
+            public void catchEvent(HoldemEvents event, Holdem holdem) {
                 if (event.equals(HoldemEvents.FINISHED)) {
                     if (holdem.getGanadores().size() == 1) {
                         if (holdem.getGanadores().contains(daniel)) {

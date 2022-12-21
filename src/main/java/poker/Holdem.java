@@ -127,7 +127,7 @@ public class Holdem {
 
     private void triggerEvent(EventListener.HoldemEvents event) {
         for (EventListener listener : listeners) {
-            listener.raiseEvent(event, this);
+            listener.catchEvent(event, this);
         }
     }
 }

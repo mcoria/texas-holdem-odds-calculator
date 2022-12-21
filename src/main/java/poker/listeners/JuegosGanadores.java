@@ -14,7 +14,7 @@ public class JuegosGanadores implements EventListener {
     private Map<Juego.Tipo, Integer> contadores = new HashMap<>();
 
     @Override
-    public void raiseEvent(HoldemEvents event, Holdem holdem) {
+    public void catchEvent(HoldemEvents event, Holdem holdem) {
         if (event.equals(HoldemEvents.NEW_GAME)) {
             games++;
         } else if (event.equals(HoldemEvents.FINISHED)) {

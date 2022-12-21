@@ -84,7 +84,7 @@ public class PokerBestVideo02 extends Simulator {
             private int joshCounter = 0;
 
             @Override
-            public void raiseEvent(HoldemEvents event, Holdem holdem) {
+            public void catchEvent(HoldemEvents event, Holdem holdem) {
                 if (event.equals(HoldemEvents.FINISHED)) {
                     if (holdem.getGanadores().size() == 1) {
                         if (holdem.getGanadores().contains(faraz)) {
