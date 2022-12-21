@@ -2,41 +2,36 @@ package poker;
 
 import java.util.List;
 
-public abstract class Simulator {
+public class Simulator {
 
-    protected abstract int getNumberOfSimulations();
+    private List<EventListener> listeners;
 
-    protected abstract List<EventListener> setupEventListeners();
+    private List<Player> players;
 
-    protected abstract List<Player> createPlayers();
+    private CommonCards commonCards;
 
-    protected abstract CommonCards createCommonCards();
-
-    public void simulate() {
-        List<Player> players = createPlayers();
-
-        List<EventListener> listeners = setupEventListeners();
-
-        Holdem holdem = new Holdem( players, createCommonCards()  );
+    public void simulate(int numberOfSimulations) {
+        Holdem holdem = new Holdem(players, commonCards);
 
         for (EventListener listener : listeners) {
             holdem.addListener(listener);
         }
 
-        int simulations = getNumberOfSimulations();
-        for (int i = 0; i < simulations; i++) {
+        for (int i = 0; i < numberOfSimulations; i++) {
             holdem.play();
         }
-
-        printStatics(listeners, players.size(), simulations);
     }
 
-    private void printStatics(List<EventListener> listeners, int numberOfPlayers, int simulations) {
-        System.out.println("Total games = " + simulations);
-        System.out.println("Players = " + numberOfPlayers);
-        for (EventListener listener : listeners) {
-            System.out.println("===========================" + listener.getClass().getName() + "===========================");
-            listener.printStatics();
-        }
+
+    public void setListeners(List<EventListener> listeners) {
+        this.listeners = listeners;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public void setCommonCards(CommonCards commonCards) {
+        this.commonCards = commonCards;
     }
 }

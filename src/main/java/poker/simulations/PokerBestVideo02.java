@@ -3,6 +3,7 @@ package poker.simulations;
 import poker.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -12,7 +13,7 @@ import java.util.Set;
  * SI CONVERGE
  */
 
-public class PokerBestVideo02 extends Simulator {
+public class PokerBestVideo02 extends AbstractSimulationReport {
     private static final int SIMULATIONS = 100000;
 
     public static void main(String[] args) {
@@ -102,6 +103,11 @@ public class PokerBestVideo02 extends Simulator {
             public void printStatics() {
                 System.out.println("Faraz = \t\t" + String.format("%3.2f%%", 100f * (float) farazCounter / (float) SIMULATIONS));
                 System.out.println("Josh = \t\t\t" + String.format("%3.2f%%", 100f * (float) joshCounter / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }

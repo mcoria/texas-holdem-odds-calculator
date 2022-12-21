@@ -3,6 +3,7 @@ package poker.simulations;
 import poker.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -13,7 +14,7 @@ import java.util.Set;
  */
 
 
-public class PokerBestVideo04_3 extends Simulator {
+public class PokerBestVideo04_3 extends AbstractSimulationReport {
     private static final int SIMULATIONS = 100000;
 
     public static void main(String[] args) {
@@ -85,39 +86,6 @@ public class PokerBestVideo04_3 extends Simulator {
         return commonCards;
     }
 
-    /*
-    protected RepartirStrategy getRepartirStrategy() {
-        return (mazo, commonCards, playerCards) -> {
-            josh = playerCards.get(0);
-            daniel = playerCards.get(1);
-
-
-            // Faraz  =    9(clubs)      7(hearts)              - out
-            mazo.removeCards(Set.of(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN)));
-
-            // Josh   =    Q(spades)     5(hearts)              - 100%
-            josh.setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
-            mazo.removeCards(josh.getCards());
-
-            // Scotty =   10(diamonds)   9(spades)              - out
-            mazo.removeCards(Set.of(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE)));
-
-            // Shawn  =   10(hearts)     4(clubs)               - out
-            mazo.removeCards(Set.of(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR)));
-
-            // Daniel =    J(clubs)      7(clubs)               - 0%
-            daniel.setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
-            mazo.removeCards(daniel.getCards());
-
-            // Flop =      J(spades)     3(hearts)       3(diamons)
-            commonCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
-            commonCards.setTurn(Card.of(Suit.Clubs, Rank.TEN));
-            commonCards.setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
-            mazo.removeCards(commonCards.getCards());
-        };
-    }
-*/
-
     @Override
     protected List<EventListener> setupEventListeners() {
         return List.of(new EventListener() {
@@ -143,6 +111,11 @@ public class PokerBestVideo04_3 extends Simulator {
             public void printStatics() {
                 System.out.println("Josh = \t\t\t" + String.format("%3.2f%%", 100f * (float) joshCounter / (float) SIMULATIONS));
                 System.out.println("Daniel = \t\t" + String.format("%3.2f%%", 100f * (float) danielCounter / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }

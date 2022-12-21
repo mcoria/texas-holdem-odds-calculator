@@ -10,21 +10,16 @@ import poker.listeners.PairListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aleatorio extends Simulator {
-    private static final int SIMULATIONS = 1000000;
+public class Aleatorio extends AbstractSimulationReport{
+    private static final int SIMULATIONS = 10000;
 
-    private static final int PLAYERS = 3; //23 Max con un mazo
+    private static final int PLAYERS = 5; //23 Max con un mazo
 
     public static void main(String[] args) {
         new Aleatorio().simulate();
     }
 
     private Player observer = null;
-
-    @Override
-    protected int getNumberOfSimulations() {
-        return SIMULATIONS;
-    }
 
     @Override
     protected List<Player> createPlayers() {
@@ -44,5 +39,10 @@ public class Aleatorio extends Simulator {
     @Override
     protected CommonCards createCommonCards() {
         return new CommonCards();
+    }
+
+    @Override
+    protected int getNumberOfSimulations() {
+        return SIMULATIONS;
     }
 }

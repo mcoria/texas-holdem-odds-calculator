@@ -3,6 +3,7 @@ package poker.simulations;
 import poker.*;
 
 import java.util.List;
+import java.util.Map;
 
 /*
  * Player1 = 			54.24%
@@ -12,7 +13,7 @@ import java.util.List;
  * SI CONVERGE
  */
 
-public class Simulation01 extends Simulator {
+public class Simulation01 extends AbstractSimulationReport {
     private static final int SIMULATIONS = 100000;
 
     public static void main(String[] args) {
@@ -78,6 +79,11 @@ public class Simulation01 extends Simulator {
                 System.out.println("Player1 = \t\t\t" + String.format("%3.2f%%", 100f * (float) player1Counter / (float) SIMULATIONS));
                 System.out.println("Player2 = \t\t\t" + String.format("%3.2f%%", 100f * (float) player2Counter / (float) SIMULATIONS));
                 System.out.println("Tie = \t\t\t\t" + String.format("%3.2f%%", 100f * (float) tie / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }

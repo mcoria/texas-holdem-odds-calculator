@@ -5,6 +5,8 @@ import poker.Holdem;
 import poker.Player;
 import poker.Rank;
 
+import java.util.Map;
+
 public class PairListener implements EventListener {
     private int games = 0;
     private int pairOfACEs = 0;
@@ -65,6 +67,11 @@ public class PairListener implements EventListener {
 
         System.out.println("Probabilidad de ganar con par en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) pairGanador / (float) pair));
         System.out.println("\tProbabilidad de ganar con par de aces = \t\t" + String.format("%3.2f%%", 100f * (float) pairOfACEsGanador / (float) pairOfACEs));
+    }
+
+    @Override
+    public Map<String, Object> getStatics() {
+        return null;
     }
 }
 

@@ -4,8 +4,9 @@ import poker.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class ParDeAces extends Simulator {
+public class ParDeAces extends AbstractSimulationReport {
 
     private static final int SIMULATIONS = 100000;
 
@@ -79,6 +80,11 @@ public class ParDeAces extends Simulator {
             @Override
             public void printStatics() {
                 System.out.println("% de veces que gano con par de ACEs = \t\t\t" + String.format("%3.2f%%", 100f * (float) observerCounter / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }

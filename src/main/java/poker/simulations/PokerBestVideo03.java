@@ -3,6 +3,7 @@ package poker.simulations;
 import poker.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -13,7 +14,7 @@ import java.util.Set;
  */
 
 
-public class PokerBestVideo03 extends Simulator {
+public class PokerBestVideo03 extends AbstractSimulationReport {
     private static final int SIMULATIONS = 100000;
     private static final int PLAYERS = 3;
 
@@ -107,6 +108,11 @@ public class PokerBestVideo03 extends Simulator {
                 System.out.println("Daniel = \t\t" + String.format("%3.2f%%", 100f * (float) danielCounter / (float) SIMULATIONS));
                 System.out.println("Josh = \t\t\t" + String.format("%3.2f%%", 100f * (float) joshCounter / (float) SIMULATIONS));
                 System.out.println("Faraz = \t\t" + String.format("%3.2f%%", 100f * (float) farazCounter / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }

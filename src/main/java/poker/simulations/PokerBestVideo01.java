@@ -4,6 +4,7 @@ import poker.*;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -13,7 +14,7 @@ import java.util.Set;
  * SI CONVERGE
  */
 
-public class PokerBestVideo01 extends Simulator {
+public class PokerBestVideo01 extends AbstractSimulationReport {
     private static final int SIMULATIONS = 100000;
 
     public static void main(String[] args) {
@@ -102,6 +103,11 @@ public class PokerBestVideo01 extends Simulator {
             public void printStatics() {
                 System.out.println("Daniel = \t\t\t" + String.format("%3.2f%%", 100f * (float) danielCounter / (float) SIMULATIONS));
                 System.out.println("Scotty = \t\t\t" + String.format("%3.2f%%", 100f * (float) scottyCounter / (float) SIMULATIONS));
+            }
+
+            @Override
+            public Map<String, Object> getStatics() {
+                return null;
             }
         });
     }
