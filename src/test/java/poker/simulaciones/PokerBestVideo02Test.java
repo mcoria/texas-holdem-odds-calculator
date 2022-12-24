@@ -112,7 +112,6 @@ public class PokerBestVideo02Test {
         daniel.setCallResponse(false);
         scotty.setCallResponse(false);
         shawn.setCallResponse(false);
-
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
         simulator.simulate(SIMULATIONS);
