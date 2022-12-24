@@ -10,15 +10,7 @@ public class Player {
     private final Set<Card> cards = new HashSet<>();
     private Juego juego = null;
 
-    private final boolean callResponse;
-
-    public Player() {
-        this(true);
-    }
-
-    public Player(boolean callResponse) {
-        this.callResponse = callResponse;
-    }
+    private boolean callResponse = true;
 
 
     public boolean call(EventListener.HoldemEvents stage) {
@@ -26,6 +18,11 @@ public class Player {
     }
 
     public void setCards() {
+    }
+
+    public Player setCallResponse(boolean callResponse) {
+        this.callResponse = callResponse;
+        return this;
     }
 
     public void receiveRandomCards(Mazo mazo) {

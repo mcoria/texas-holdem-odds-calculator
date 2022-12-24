@@ -34,13 +34,13 @@ public class PokerBestVideo04_1 extends AbstractSimulationReport {
         }
     };
 
-    private Player scotty = new Player(false) {
+    private Player scotty = new Player() {
         @Override
         public void setCards() {
             // Scotty =   10(diamonds)   9(spades)              - out
             setCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
         }
-    };
+    }.setCallResponse(false);
 
     private Player faraz = new Player() {
         @Override
@@ -58,13 +58,13 @@ public class PokerBestVideo04_1 extends AbstractSimulationReport {
         }
     };
 
-    private Player shawn = new Player(false) {
+    private Player shawn = new Player() {
         @Override
         public void setCards() {
             // Shawn  =   10(hearts)     4(clubs)               - out
             setCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
         }
-    };
+    }.setCallResponse(false);
 
 
     private CommonCards commonCards = new CommonCards() {

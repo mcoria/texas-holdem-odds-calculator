@@ -25,21 +25,21 @@ public class PokerBestVideo02 extends AbstractSimulationReport {
         return SIMULATIONS;
     }
 
-    private Player daniel = new Player(false) {
+    private Player daniel = new Player() {
         @Override
         public void setCards() {
             // Daniel =     K(Spades)         5(Hearts)    -  out
             setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Hearts, Rank.FIVE));
         }
-    };
+    }.setCallResponse(false);
 
-    private Player scotty = new Player(false) {
+    private Player scotty = new Player() {
         @Override
         public void setCards() {
             // Scotty =    Q(Hearts)        8(Hearts)    -  out
             setCards(Card.of(Suit.Hearts, Rank.QUEEN), Card.of(Suit.Hearts, Rank.EIGHT));
         }
-    };
+    }.setCallResponse(false);
 
     private Player faraz = new Player() {
         @Override
@@ -57,13 +57,13 @@ public class PokerBestVideo02 extends AbstractSimulationReport {
         }
     };
 
-    private Player shawn = new Player(false) {
+    private Player shawn = new Player() {
         @Override
         public void setCards() {
             // Shawn =     8(Clubs)         4(Spades)    -  out
             setCards(Card.of(Suit.Clubs, Rank.EIGHT), Card.of(Suit.Spades, Rank.FOUR));
         }
-    };
+    }.setCallResponse(false);
 
 
     private CommonCards commonCards = new CommonCards();
