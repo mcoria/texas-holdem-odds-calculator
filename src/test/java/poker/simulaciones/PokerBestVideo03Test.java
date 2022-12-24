@@ -75,10 +75,10 @@ public class PokerBestVideo03Test {
 
 
     class MyEventListener implements EventListener {
-        int farazCounter = 0;
-        int joshCounter = 0;
+        protected int farazCounter = 0;
+        protected int joshCounter = 0;
 
-        int danielCounter = 0;
+        protected int danielCounter = 0;
 
         @Override
         public void catchEvent(HoldemEvents event, Holdem holdem) {
