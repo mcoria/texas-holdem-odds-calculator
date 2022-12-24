@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class PokerBestVideo02Test {
+public class PokerBestVideo03Test {
     private static final int SIMULATIONS = 100000;
 
 
@@ -18,40 +18,40 @@ public class PokerBestVideo02Test {
         daniel = new Player() {
             @Override
             public void setCards() {
-                // Daniel =     K(Spades)         5(Hearts)    -  out
-                setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Hearts, Rank.FIVE));
+                //* Daniel =    J(spades)     7(spades)              - 31%
+                setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
             }
         };
 
         scotty = new Player() {
             @Override
             public void setCards() {
-                // Scotty =    Q(Hearts)        8(Hearts)    -  out
-                setCards(Card.of(Suit.Hearts, Rank.QUEEN), Card.of(Suit.Hearts, Rank.EIGHT));
+                //* Scotty =    6(spades)     4(hearts)             - se va
+                setCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
             }
         };
 
         faraz = new Player() {
             @Override
             public void setCards() {
-                // Faraz =      K(Clubs)        2(Hearts)      -  24%
-                setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Hearts, Rank.TWO));
+                // Faraz  = -  6(clubs)      7(hearts)              - 16%
+                setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
             }
         };
 
         josh = new Player() {
             @Override
             public void setCards() {
-                // Josh =       A(Hearts)       K(Hearts)       -  75%
-                setCards(Card.of(Suit.Hearts, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
+                // Josh =  K(diamonds)   Q(hearts)                  - 51%
+                setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
             }
         };
 
         shawn = new Player() {
             @Override
             public void setCards() {
-                // Shawn =     8(Clubs)         4(Spades)    -  out
-                setCards(Card.of(Suit.Clubs, Rank.EIGHT), Card.of(Suit.Spades, Rank.FOUR));
+                //* Shawn  =    A(clubs)      K(hearts)             - se va
+                setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
             }
         };
 
@@ -78,10 +78,16 @@ public class PokerBestVideo02Test {
         int farazCounter = 0;
         int joshCounter = 0;
 
+        int danielCounter = 0;
+
         @Override
         public void catchEvent(HoldemEvents event, Holdem holdem) {
             if (event.equals(HoldemEvents.FINISHED)) {
                 if (holdem.getGanadores().size() == 1) {
+                    if (holdem.getGanadores().contains(daniel)) {
+                        danielCounter++;
+                    }
+
                     if (holdem.getGanadores().contains(faraz)) {
                         farazCounter++;
                     }
@@ -109,7 +115,6 @@ public class PokerBestVideo02Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(commonCards);
 
-        daniel.setCallResponse(false);
         scotty.setCallResponse(false);
         shawn.setCallResponse(false);
 
@@ -117,9 +122,9 @@ public class PokerBestVideo02Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(24f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);
-        assertEquals(75f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
-
+        assertEquals(31f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
+        assertEquals(16f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);
+        assertEquals(51f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
     }
 
 }
