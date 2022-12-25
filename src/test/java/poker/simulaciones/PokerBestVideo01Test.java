@@ -55,8 +55,6 @@ public class PokerBestVideo01Test {
             }
         };
 
-        commonCards = new CommonCards();
-
         listener = new MyEventListener();
     }
 
@@ -69,7 +67,6 @@ public class PokerBestVideo01Test {
     private Player josh;
 
     private Player shawn;
-    private CommonCards commonCards;
 
     private MyEventListener listener;
 
@@ -106,7 +103,7 @@ public class PokerBestVideo01Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(commonCards);
+        simulator.setCommonCards(new CommonCards());
 
         faraz.setCallResponse(false);
         josh.setCallResponse(false);

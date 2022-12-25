@@ -12,7 +12,6 @@ public class Player {
 
     private boolean callResponse = true;
 
-
     public boolean call(EventListener.HoldemEvents stage) {
         return callResponse;
     }

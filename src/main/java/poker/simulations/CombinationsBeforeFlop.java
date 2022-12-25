@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ParDeAces extends AbstractSimulationReport {
+public class CombinationsBeforeFlop extends AbstractSimulationReport {
 
     private static final int SIMULATIONS = 100000;
 
-    private static final int PLAYERS = 3; //23 Max con un mazo
+    private static final int PLAYERS = 8; //23 Max con un mazo
 
     public static void main(String[] args) {
-        new ParDeAces().simulate();
+        new CombinationsBeforeFlop().simulate();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ParDeAces extends AbstractSimulationReport {
 
         @Override
         public void setCards() {
-            //setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
+            setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Clubs, Rank.JACK));
@@ -37,10 +37,29 @@ public class ParDeAces extends AbstractSimulationReport {
             //setCards(Card.of(Suit.Spades, Rank.FIVE), Card.of(Suit.Clubs, Rank.FIVE));
             //setCards(Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.FOUR));
             //setCards(Card.of(Suit.Spades, Rank.THREE), Card.of(Suit.Clubs, Rank.THREE));
-            setCards(Card.of(Suit.Spades, Rank.TWO), Card.of(Suit.Clubs, Rank.TWO));
+            //setCards(Card.of(Suit.Spades, Rank.TWO), Card.of(Suit.Clubs, Rank.TWO));
 
-            //setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Clubs, Rank.KING));
-            //setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
+
+            // Prospect escalera
+            //setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.KING));
+            //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
+            //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.JACK));
+            //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Clubs, Rank.TEN));
+            //setCards(Card.of(Suit.Spades, Rank.TEN), Card.of(Suit.Clubs, Rank.NINE));
+            //setCards(Card.of(Suit.Spades, Rank.NINE), Card.of(Suit.Clubs, Rank.EIGHT));
+
+
+            // Prospect color
+            //setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Spades, Rank.NINE));
+            //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Spades, Rank.EIGHT));
+            //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Spades, Rank.SEVEN));
+            //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SIX));
+            //setCards(Card.of(Suit.Spades, Rank.TEN), Card.of(Suit.Spades, Rank.FIVE));
+
+
+            // Juegos Bajos
+            //setCards(Card.of(Suit.Spades, Rank.SEVEN), Card.of(Suit.Clubs, Rank.TWO));
+            //setCards(Card.of(Suit.Spades, Rank.THREE), Card.of(Suit.Clubs, Rank.TWO));
         }
     };
 
@@ -69,17 +88,15 @@ public class ParDeAces extends AbstractSimulationReport {
             @Override
             public void catchEvent(HoldemEvents event, Holdem holdem) {
                 if (event.equals(HoldemEvents.FINISHED)) {
-                    if (holdem.getGanadores().size() == 1) {
-                        if (holdem.getGanadores().contains(observer)) {
-                            observerCounter++;
-                        }
+                    if (holdem.getGanadores().contains(observer)) {
+                        observerCounter++;
                     }
                 }
             }
 
             @Override
             public void printStatics() {
-                System.out.println("% de veces que gano con par de ACEs = \t\t\t" + String.format("%3.2f%%", 100f * (float) observerCounter / (float) SIMULATIONS));
+                System.out.println("Probabilidad de ganar con xxx en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) observerCounter / (float) SIMULATIONS));
             }
 
             @Override

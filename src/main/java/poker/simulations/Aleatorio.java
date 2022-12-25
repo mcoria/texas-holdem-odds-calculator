@@ -11,15 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Aleatorio extends AbstractSimulationReport{
-    private static final int SIMULATIONS = 10000;
+    private static final int SIMULATIONS = 100000;
 
-    private static final int PLAYERS = 5; //23 Max con un mazo
+    private static final int PLAYERS = 2; //23 Max con un mazo
 
     public static void main(String[] args) {
         new Aleatorio().simulate();
     }
-
-    private Player observer = null;
 
     @Override
     protected List<Player> createPlayers() {
@@ -27,13 +25,12 @@ public class Aleatorio extends AbstractSimulationReport{
         for (int i = 0; i < PLAYERS; i++) {
             players.add(new Player());
         }
-        observer = players.get(0);
         return players;
     }
 
     @Override
     protected List<EventListener> setupEventListeners() {
-        return List.of(new PairListener(observer), new JuegosGanadores());
+        return List.of(new PairListener(), new JuegosGanadores());
     }
 
     @Override

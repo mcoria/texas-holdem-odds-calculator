@@ -25,6 +25,9 @@ public class Holdem {
     public Set<Player> getGanadores() {
         return ganadores;
     }
+    public List<Player> getPlayers() {
+        return players;
+    }
 
     public Set<Player> play() {
         // Reset
