@@ -92,9 +92,9 @@ public class PokerBestVideo02Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards());
 
-        daniel.setCallResponse(false);
-        scotty.setCallResponse(false);
-        shawn.setCallResponse(false);
+        daniel.setCallPredicate((p, e) -> false);
+        scotty.setCallPredicate((p, e) -> false);
+        shawn.setCallPredicate((p, e) -> false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
         simulator.simulate(SIMULATIONS);

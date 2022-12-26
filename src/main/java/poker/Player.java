@@ -4,15 +4,16 @@ import poker.juegos.Juego;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.BiPredicate;
 
 public class Player {
     private final Set<Card> cards = new HashSet<>();
     private Juego juego = null;
-    private boolean callResponse = true;
+    private BiPredicate<Player, EventListener.HoldemEvents> callPredicate;
     private boolean clearCardsOnRest = true;
 
-    public boolean call(EventListener.HoldemEvents stage) {
-        return callResponse;
+    public Player() {
+        setCallPredicate((p, e) -> true);
     }
 
     public void receiveRandomCards(Mazo mazo) {
@@ -63,8 +64,12 @@ public class Player {
         return this;
     }
 
-    public Player setCallResponse(boolean callResponse) {
-        this.callResponse = callResponse;
+    public boolean call(EventListener.HoldemEvents stage) {
+        return callPredicate.test(this, stage);
+    }
+
+    public Player setCallPredicate(BiPredicate<Player, EventListener.HoldemEvents> callPredicate) {
+        this.callPredicate = callPredicate;
         return this;
     }
 }
