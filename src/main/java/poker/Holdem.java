@@ -20,7 +20,7 @@ public class Holdem {
         this.commonCards.collectCardsToAvoid(this.mazo);
 
         this.players.forEach(player -> {
-            this.mazo.addCardsToAvoid(player.getCards());
+            player.collectCardsToAvoid(this.mazo);
         });
     }
 

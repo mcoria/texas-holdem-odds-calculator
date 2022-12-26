@@ -8,7 +8,7 @@ import java.util.function.BiPredicate;
 
 public class Player {
     private final Set<Card> cards = new HashSet<>();
-    private Juego juego = null;
+    private Juego juego;
     private BiPredicate<Player, EventListener.HoldemEvents> callPredicate;
     private CardBucket cardBucket = new DefaultCardBucket();
 
@@ -63,11 +63,17 @@ public class Player {
         return this;
     }
 
+    public void collectCardsToAvoid(Mazo mazo) {
+        cardBucket.collectCardsToAvoid(mazo);
+    }
+
     private interface CardBucket {
 
         void receiveRandomCards(Mazo mazo);
 
         void reset();
+
+        void collectCardsToAvoid(Mazo mazo);
     }
 
     private class DefaultCardBucket implements CardBucket {
@@ -82,10 +88,14 @@ public class Player {
         public void reset() {
             cards.clear();
         }
+
+        @Override
+        public void collectCardsToAvoid(Mazo mazo) {
+
+        }
     }
 
     private class NoOpCardBucket implements CardBucket {
-
         @Override
         public void receiveRandomCards(Mazo mazo) {
         }
@@ -94,6 +104,10 @@ public class Player {
         public void reset() {
         }
 
+        @Override
+        public void collectCardsToAvoid(Mazo mazo) {
+            mazo.addCardsToAvoid(cards);
+        }
     }
 
 
