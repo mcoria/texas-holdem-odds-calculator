@@ -83,8 +83,8 @@ public class PokerBestVideo04Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards());
 
-        scotty.setCallPredicate((p, e) -> false);
-        shawn.setCallPredicate((p, e) -> false);
+        scotty.setDefaultCallResponse(false);
+        shawn.setDefaultCallResponse(false);
 
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
@@ -105,8 +105,8 @@ public class PokerBestVideo04Test {
 
         simulator.setCommonCards(commonCards);
 
-        scotty.setCallPredicate((p, e) -> false);
-        shawn.setCallPredicate((p, e) -> false);
+        scotty.setDefaultCallResponse(false);
+        shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
         simulator.simulate(SIMULATIONS);
@@ -127,9 +127,9 @@ public class PokerBestVideo04Test {
 
         simulator.setCommonCards(commonCards);
 
-        scotty.setCallPredicate((p, e) -> false);
-        faraz.setCallPredicate((p, e) -> false);
-        shawn.setCallPredicate((p, e) -> false);
+        scotty.setDefaultCallResponse(false);
+        faraz.setDefaultCallResponse(false);
+        shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
         simulator.simulate(SIMULATIONS);
@@ -150,9 +150,9 @@ public class PokerBestVideo04Test {
 
         simulator.setCommonCards(commonCards);
 
-        scotty.setCallPredicate((p, e) -> false);
-        faraz.setCallPredicate((p, e) -> false);
-        shawn.setCallPredicate((p, e) -> false);
+        scotty.setDefaultCallResponse(false);
+        faraz.setDefaultCallResponse(false);
+        shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
 
         simulator.simulate(SIMULATIONS);

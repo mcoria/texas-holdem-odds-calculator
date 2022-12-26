@@ -100,7 +100,7 @@ public class Holdem {
                 case FLOP:
                 case TURN:
                 case RIVER:
-                    call = player.call(stage);
+                    call = player.call(stage, playersInGame.size(), commonCards);
                     break;
             }
             if (!call) {

@@ -3,18 +3,16 @@ package poker;
 import poker.juegos.Juego;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.BiPredicate;
 
 public class Player {
     private final Set<Card> cards = new HashSet<>();
     private Juego juego;
-    private BiPredicate<Player, EventListener.HoldemEvents> callPredicate;
     private CardBucket cardBucket = new DefaultCardBucket();
+    private boolean defaultCallResponse = true;
 
-    public Player() {
-        setCallPredicate((p, e) -> true);
-    }
 
     public void receiveRandomCards(Mazo mazo) {
         cardBucket.receiveRandomCards(mazo);
@@ -54,17 +52,16 @@ public class Player {
         return this;
     }
 
-    public boolean call(EventListener.HoldemEvents stage) {
-        return callPredicate.test(this, stage);
-    }
-
-    public Player setCallPredicate(BiPredicate<Player, EventListener.HoldemEvents> callPredicate) {
-        this.callPredicate = callPredicate;
-        return this;
+    public boolean call(EventListener.HoldemEvents stage, int playersInGame, CommonCards commonCards) {
+        return this.defaultCallResponse;
     }
 
     public void collectCardsToAvoid(Mazo mazo) {
         cardBucket.collectCardsToAvoid(mazo);
+    }
+
+    public void setDefaultCallResponse(boolean defaultCallResponse) {
+        this.defaultCallResponse = defaultCallResponse;
     }
 
     private interface CardBucket {
@@ -91,7 +88,6 @@ public class Player {
 
         @Override
         public void collectCardsToAvoid(Mazo mazo) {
-
         }
     }
 
