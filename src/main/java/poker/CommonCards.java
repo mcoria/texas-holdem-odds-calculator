@@ -6,7 +6,7 @@ import java.util.Set;
 public class CommonCards {
     private final Set<Card> cards = new HashSet<>();
 
-    public void setCards() {
+    public void injectCards() {
     }
 
     public void receiveRandomCards(Mazo mazo) {
@@ -64,6 +64,7 @@ public class CommonCards {
 
     public void reset() {
         cards.clear();
+        injectCards();
     }
 
 }

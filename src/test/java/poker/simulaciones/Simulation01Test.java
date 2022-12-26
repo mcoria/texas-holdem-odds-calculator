@@ -18,14 +18,14 @@ public class Simulation01Test {
     public void setup() {
         player1 = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
             }
         };
 
         player2 = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
             }
         };
@@ -92,7 +92,7 @@ public class Simulation01Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
             }
         });
@@ -113,7 +113,7 @@ public class Simulation01Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
                 setTurn(Card.of(Suit.Spades, Rank.NINE));
             }
@@ -135,7 +135,7 @@ public class Simulation01Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
                 setTurn(Card.of(Suit.Spades, Rank.NINE));
                 setRiver(Card.of(Suit.Spades, Rank.KING));
@@ -159,7 +159,7 @@ public class Simulation01Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
                 setTurn(Card.of(Suit.Spades, Rank.NINE));
                 setRiver(Card.of(Suit.Spades, Rank.KING));
@@ -183,7 +183,7 @@ public class Simulation01Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommonCards(new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
                 setTurn(Card.of(Suit.Spades, Rank.NINE));
                 setRiver(Card.of(Suit.Spades, Rank.KING));

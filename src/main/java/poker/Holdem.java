@@ -17,11 +17,11 @@ public class Holdem {
         this.players = players;
         this.commonCards = commonCards;
 
-        this.commonCards.setCards();
+        this.commonCards.injectCards();
         this.mazo.addCardsToAvoid(commonCards.getCards());
 
         this.players.forEach(player -> {
-            player.setCards();
+            player.injectCards();
             mazo.addCardsToAvoid(player.getCards());
         });
     }
@@ -42,12 +42,6 @@ public class Holdem {
         mazo.reset();
         commonCards.reset();
         players.forEach(player -> player.reset());
-
-        // Repartir las cartas fijas
-        commonCards.setCards();
-        players.forEach(player -> {
-            player.setCards();
-        });
     }
 
     public Set<Player> play() {

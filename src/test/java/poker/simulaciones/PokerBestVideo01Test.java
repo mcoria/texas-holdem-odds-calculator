@@ -17,7 +17,7 @@ public class PokerBestVideo01Test {
     public void setup() {
         daniel = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 // Daniel =    2(Hearts)        2(Diamonds)
                 setCards(Card.of(Suit.Hearts, Rank.TWO), Card.of(Suit.Diamonds, Rank.TWO)); //Daniel
             }
@@ -25,7 +25,7 @@ public class PokerBestVideo01Test {
 
         scotty = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 // Scotty =    K(Spades)       Q(Clubs)
                 setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
             }
@@ -33,7 +33,7 @@ public class PokerBestVideo01Test {
 
         faraz = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 // Faraz  =    Q(Diamonds)      6(Clubs)
                 setCards(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX));
             }
@@ -41,7 +41,7 @@ public class PokerBestVideo01Test {
 
         josh = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 // Josh  =    7(Clubs)          4(Diamonds)
                 setCards(Card.of(Suit.Clubs, Rank.SEVEN), Card.of(Suit.Diamonds, Rank.FOUR));
             }
@@ -49,7 +49,7 @@ public class PokerBestVideo01Test {
 
         shawn = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 // Shawn  =    8(Spades)        4(Clubs)
                 setCards(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR));
             }

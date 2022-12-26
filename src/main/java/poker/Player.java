@@ -4,7 +4,6 @@ import poker.juegos.Juego;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Supplier;
 
 public class Player {
     private final Set<Card> cards = new HashSet<>();
@@ -16,7 +15,7 @@ public class Player {
         return callResponse;
     }
 
-    public void setCards() {
+    public void injectCards() {
     }
 
     public Player setCallResponse(boolean callResponse) {
@@ -39,6 +38,7 @@ public class Player {
     public void reset() {
         juego = null;
         cards.clear();
+        injectCards();
     }
 
     public Juego getJuego() {

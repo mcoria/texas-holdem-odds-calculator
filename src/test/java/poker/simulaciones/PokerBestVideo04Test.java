@@ -17,35 +17,35 @@ public class PokerBestVideo04Test {
     public void setup() {
         daniel = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
             }
         };
 
         scotty = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
             }
         };
 
         faraz = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
             }
         };
 
         josh = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
             }
         };
 
         shawn = new Player() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
             }
         };
@@ -122,7 +122,7 @@ public class PokerBestVideo04Test {
 
         CommonCards commonCards = new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
             }
         };
@@ -146,7 +146,7 @@ public class PokerBestVideo04Test {
 
         CommonCards commonCards = new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
                 setTurn(Card.of(Suit.Clubs, Rank.TEN));
             }
@@ -171,7 +171,7 @@ public class PokerBestVideo04Test {
 
         CommonCards commonCards = new CommonCards() {
             @Override
-            public void setCards() {
+            public void injectCards() {
                 setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
                 setTurn(Card.of(Suit.Clubs, Rank.TEN));
                 setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
