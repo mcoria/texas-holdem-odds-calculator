@@ -16,12 +16,19 @@ public class Holdem {
     public Holdem(List<Player> players, CommonCards commonCards) {
         this.players = players;
         this.commonCards = commonCards;
+
+        this.commonCards.setCards();
+        this.mazo.addCardsToAvoid(commonCards.getCards());
+
+        this.players.forEach(player -> {
+            player.setCards();
+            mazo.addCardsToAvoid(player.getCards());
+        });
     }
 
     public void addListener(EventListener listener) {
         listeners.add(listener);
     }
-
     public Set<Player> getGanadores() {
         return ganadores;
     }
@@ -29,28 +36,29 @@ public class Holdem {
         return players;
     }
 
-    public Set<Player> play() {
+    public void reset() {
         // Reset
         ganadores.clear();
         mazo.reset();
         commonCards.reset();
         players.forEach(player -> player.reset());
+
+        // Repartir las cartas fijas
+        commonCards.setCards();
+        players.forEach(player -> {
+            player.setCards();
+        });
+    }
+
+    public Set<Player> play() {
         triggerEvent(EventListener.HoldemEvents.NEW_GAME);
 
+        //Comienza el partido
         List<Player> playersInGame = new ArrayList<>(players);
 
-        // Repartir las cartas
-        commonCards.setCards();
-        mazo.removeCards(commonCards.getCards());
-
-        playersInGame.forEach(player -> {
-            player.setCards();
-            mazo.removeCards(player.getCards());
-        });
-
+        // Repartir las cartas aleatorias
         commonCards.receiveRandomCards(mazo);
         playersInGame.forEach(player -> player.receiveRandomCards(mazo));
-
 
         if (commonCards.getCards().size() != 5) {
             throw new RuntimeException("Common cards have not been set");

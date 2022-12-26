@@ -18,6 +18,7 @@ public class Simulator {
         }
 
         for (int i = 0; i < numberOfSimulations; i++) {
+            holdem.reset();
             holdem.play();
         }
     }
