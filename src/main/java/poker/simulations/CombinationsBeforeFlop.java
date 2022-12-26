@@ -21,11 +21,9 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
         return SIMULATIONS;
     }
 
-    private Player observer = new Player() {
-
-        @Override
-        public void injectCards() {
-            setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
+    private Player observer = new Player()
+            .setClearCardsOnRest(false)
+            .setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Clubs, Rank.JACK));
@@ -60,8 +58,6 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
             // Juegos Bajos
             //setCards(Card.of(Suit.Spades, Rank.SEVEN), Card.of(Suit.Clubs, Rank.TWO));
             //setCards(Card.of(Suit.Spades, Rank.THREE), Card.of(Suit.Clubs, Rank.TWO));
-        }
-    };
 
 
     @Override

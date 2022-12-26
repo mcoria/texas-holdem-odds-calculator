@@ -8,26 +8,16 @@ import java.util.Set;
 public class Player {
     private final Set<Card> cards = new HashSet<>();
     private Juego juego = null;
-
     private boolean callResponse = true;
+    private boolean clearCardsOnRest = true;
 
     public boolean call(EventListener.HoldemEvents stage) {
         return callResponse;
     }
 
-    public void injectCards() {
-    }
-
-    public Player setCallResponse(boolean callResponse) {
-        this.callResponse = callResponse;
-        return this;
-    }
-
     public void receiveRandomCards(Mazo mazo) {
         if (cards.size() == 0) {
             setCards(mazo.getRandomCard(), mazo.getRandomCard());
-        } else if (cards.size() == 1) {
-            cards.add(mazo.getRandomCard());
         }
     }
 
@@ -37,8 +27,9 @@ public class Player {
 
     public void reset() {
         juego = null;
-        cards.clear();
-        injectCards();
+        if (clearCardsOnRest) {
+            cards.clear();
+        }
     }
 
     public Juego getJuego() {
@@ -56,11 +47,25 @@ public class Player {
         return juego;
     }
 
-    protected void setCards(Card card1, Card card2) {
-        if(cards.size() != 0){
+    public Player setCards(Card card1, Card card2) {
+        if (cards.size() != 0) {
             throw new RuntimeException("Las cartas ya fueron recibidas.");
         }
+
         cards.add(card1);
         cards.add(card2);
+
+        return this;
+    }
+
+    public Player setClearCardsOnRest(boolean clearCardsOnRest) {
+        this.clearCardsOnRest = clearCardsOnRest;
+        return this;
+    }
+
+    public Player setCallResponse(boolean callResponse) {
+        this.callResponse = callResponse;
+        return this;
     }
 }
+

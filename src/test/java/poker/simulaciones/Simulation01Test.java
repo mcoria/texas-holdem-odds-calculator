@@ -16,19 +16,13 @@ public class Simulation01Test {
 
     @Before
     public void setup() {
-        player1 = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
-            }
-        };
+        player1 = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Clubs, Rank.KING), Card.of(Suit.Spades, Rank.TWO));
 
-        player2 = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
-            }
-        };
+        player2 = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Hearts, Rank.NINE), Card.of(Suit.Diamonds, Rank.EIGHT));
 
         listener = new MyEventListener();
     }

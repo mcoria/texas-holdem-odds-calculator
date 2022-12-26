@@ -15,40 +15,25 @@ public class PokerBestVideo04Test {
 
     @Before
     public void setup() {
-        daniel = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
-            }
-        };
+        daniel = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
 
-        scotty = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
-            }
-        };
+        scotty = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
 
-        faraz = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
-            }
-        };
+        faraz = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
 
-        josh = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
-            }
-        };
+        josh = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
 
-        shawn = new Player() {
-            @Override
-            public void injectCards() {
-                setCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
-            }
-        };
+        shawn = new Player()
+                .setClearCardsOnRest(false)
+                .setCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
 
         listener = new MyEventListener();
     }

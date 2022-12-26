@@ -15,45 +15,30 @@ public class PokerBestVideo03Test {
 
     @Before
     public void setup() {
-        daniel = new Player() {
-            @Override
-            public void injectCards() {
+        daniel = new Player()
+                .setClearCardsOnRest(false)
                 //* Daniel =    J(spades)     7(spades)              - 31%
-                setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
-            }
-        };
+                .setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
 
-        scotty = new Player() {
-            @Override
-            public void injectCards() {
+        scotty = new Player()
+                .setClearCardsOnRest(false)
                 //* Scotty =    6(spades)     4(hearts)             - se va
-                setCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
-            }
-        };
+                .setCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
 
-        faraz = new Player() {
-            @Override
-            public void injectCards() {
+        faraz = new Player()
+                .setClearCardsOnRest(false)
                 // Faraz  = -  6(clubs)      7(hearts)              - 16%
-                setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
-            }
-        };
+                .setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
 
-        josh = new Player() {
-            @Override
-            public void injectCards() {
+        josh = new Player()
+                .setClearCardsOnRest(false)
                 // Josh =  K(diamonds)   Q(hearts)                  - 51%
-                setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
-            }
-        };
+                .setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
 
-        shawn = new Player() {
-            @Override
-            public void injectCards() {
+        shawn = new Player()
+                .setClearCardsOnRest(false)
                 //* Shawn  =    A(clubs)      K(hearts)             - se va
-                setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
-            }
-        };
+                .setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
 
         listener = new MyEventListener();
     }
