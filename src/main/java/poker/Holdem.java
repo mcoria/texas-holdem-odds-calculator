@@ -17,11 +17,10 @@ public class Holdem {
         this.players = players;
         this.commonCards = commonCards;
 
-        this.commonCards.injectCards();
-        this.mazo.addCardsToAvoid(commonCards.getCards());
+        this.commonCards.collectCardsToAvoid(this.mazo);
 
         this.players.forEach(player -> {
-            mazo.addCardsToAvoid(player.getCards());
+            this.mazo.addCardsToAvoid(player.getCards());
         });
     }
 

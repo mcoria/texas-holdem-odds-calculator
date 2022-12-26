@@ -72,9 +72,9 @@ public class Simulation01Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(54f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(45f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(1f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(54f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(45f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(1f, (100 * listener.tie) / SIMULATIONS, 2);
 
     }
 
@@ -82,20 +82,18 @@ public class Simulation01Test {
     public void test2() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-            }
-        });
+
+        simulator.setCommonCards(new CommonCards()
+                .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
+        );
 
         simulator.setPlayers(List.of(player1, player2));
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(73f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(26f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(1f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(73f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(26f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(1f, (100 * listener.tie) / SIMULATIONS, 2);
 
     }
 
@@ -103,21 +101,18 @@ public class Simulation01Test {
     public void test3() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-                setTurn(Card.of(Suit.Spades, Rank.NINE));
-            }
-        });
+        simulator.setCommonCards(new CommonCards()
+                .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
+                .setTurn(Card.of(Suit.Spades, Rank.NINE))
+        );
 
         simulator.setPlayers(List.of(player1, player2));
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(7f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(93f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(1f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(7f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(93f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(1f, (100 * listener.tie) / SIMULATIONS, 2);
 
     }
 
@@ -125,22 +120,19 @@ public class Simulation01Test {
     public void test4() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-                setTurn(Card.of(Suit.Spades, Rank.NINE));
-                setRiver(Card.of(Suit.Spades, Rank.KING));
-            }
-        });
+        simulator.setCommonCards(new CommonCards()
+                .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
+                .setTurn(Card.of(Suit.Spades, Rank.NINE))
+                .setRiver(Card.of(Suit.Spades, Rank.KING))
+        );
 
         simulator.setPlayers(List.of(player1, player2));
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(100f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(0f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(0f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(100f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(0f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(0f, (100 * listener.tie) / SIMULATIONS, 2);
     }
 
     @Test
@@ -149,22 +141,19 @@ public class Simulation01Test {
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-                setTurn(Card.of(Suit.Spades, Rank.NINE));
-                setRiver(Card.of(Suit.Spades, Rank.KING));
-            }
-        });
+        simulator.setCommonCards(new CommonCards()
+                .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
+                .setTurn(Card.of(Suit.Spades, Rank.NINE))
+                .setRiver(Card.of(Suit.Spades, Rank.KING))
+        );
 
         simulator.setPlayers(List.of(player1, player2));
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(72f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(24f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(3f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(72f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(24f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(3f, (100 * listener.tie) / SIMULATIONS, 2);
     }
 
     @Test
@@ -173,22 +162,20 @@ public class Simulation01Test {
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN));
-                setTurn(Card.of(Suit.Spades, Rank.NINE));
-                setRiver(Card.of(Suit.Spades, Rank.KING));
-            }
-        });
+        simulator.setCommonCards(new CommonCards()
+                .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
+                .setTurn(Card.of(Suit.Spades, Rank.NINE))
+                .setRiver(Card.of(Suit.Spades, Rank.KING))
+
+        );
 
         simulator.setPlayers(List.of(player1, player2));
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(35f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
-        assertEquals(63f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);
-        assertEquals(1f, ( 100 * listener.tie ) / SIMULATIONS, 2);
+        assertEquals(35f, (100 * listener.player1Counter) / SIMULATIONS, 2);
+        assertEquals(63f, (100 * listener.player2Counter) / SIMULATIONS, 2);
+        assertEquals(1f, (100 * listener.tie) / SIMULATIONS, 2);
     }
 
 }

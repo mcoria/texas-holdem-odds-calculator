@@ -13,15 +13,11 @@ import static poker.Rank.*;
 public class HoldemTest {
 
     @Test
-    public void testCalcularGanadores_01(){
+    public void testCalcularGanadores_01() {
         CommonCards commonCards = new CommonCards();
-        commonCards.setCards(
-                Card.of(Clubs, TWO),
-                Card.of(Clubs, THREE),
-                Card.of(Hearts, FIVE),
-                Card.of(Hearts, SEVEN),
-                Card.of(Spades, NINE)
-        );
+        commonCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
+        commonCards.setTurn(Card.of(Hearts, SEVEN));
+        commonCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
         player1.setCards(
@@ -42,15 +38,11 @@ public class HoldemTest {
     }
 
     @Test
-    public void testCalcularGanadores_02(){
+    public void testCalcularGanadores_02() {
         CommonCards commonCards = new CommonCards();
-        commonCards.setCards(
-                Card.of(Clubs, TWO),
-                Card.of(Clubs, THREE),
-                Card.of(Hearts, FIVE),
-                Card.of(Hearts, SEVEN),
-                Card.of(Spades, NINE)
-        );
+        commonCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
+        commonCards.setTurn(Card.of(Hearts, SEVEN));
+        commonCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
         player1.setCards(

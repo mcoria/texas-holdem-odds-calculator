@@ -90,9 +90,9 @@ public class PokerBestVideo04Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(33f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
-        assertEquals(16f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);
-        assertEquals(47f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
+        assertEquals(33f, (100 * listener.danielCounter) / SIMULATIONS, 2);
+        assertEquals(16f, (100 * listener.farazCounter) / SIMULATIONS, 2);
+        assertEquals(47f, (100 * listener.joshCounter) / SIMULATIONS, 2);
     }
 
     @Test
@@ -100,12 +100,9 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
-            }
-        };
+        CommonCards commonCards = new CommonCards();
+        commonCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
+
         simulator.setCommonCards(commonCards);
 
         scotty.setCallPredicate((p, e) -> false);
@@ -114,9 +111,9 @@ public class PokerBestVideo04Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(84f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
-        assertEquals(1f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);
-        assertEquals(15f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
+        assertEquals(84f, (100 * listener.danielCounter) / SIMULATIONS, 2);
+        assertEquals(1f, (100 * listener.farazCounter) / SIMULATIONS, 2);
+        assertEquals(15f, (100 * listener.joshCounter) / SIMULATIONS, 2);
     }
 
     @Test
@@ -124,13 +121,10 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
-                setTurn(Card.of(Suit.Clubs, Rank.TEN));
-            }
-        };
+        CommonCards commonCards = new CommonCards()
+                .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
+                .setTurn(Card.of(Suit.Clubs, Rank.TEN));
+
         simulator.setCommonCards(commonCards);
 
         scotty.setCallPredicate((p, e) -> false);
@@ -140,8 +134,8 @@ public class PokerBestVideo04Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(92f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
-        assertEquals(8f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
+        assertEquals(92f, (100 * listener.danielCounter) / SIMULATIONS, 2);
+        assertEquals(8f, (100 * listener.joshCounter) / SIMULATIONS, 2);
     }
 
     @Test
@@ -149,14 +143,11 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards() {
-            @Override
-            public void injectCards() {
-                setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
-                setTurn(Card.of(Suit.Clubs, Rank.TEN));
-                setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
-            }
-        };
+        CommonCards commonCards = new CommonCards()
+                .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
+                .setTurn(Card.of(Suit.Clubs, Rank.TEN))
+                .setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
+
         simulator.setCommonCards(commonCards);
 
         scotty.setCallPredicate((p, e) -> false);
@@ -166,8 +157,8 @@ public class PokerBestVideo04Test {
 
         simulator.simulate(SIMULATIONS);
 
-        assertEquals(0f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
-        assertEquals(100f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);
+        assertEquals(0f, (100 * listener.danielCounter) / SIMULATIONS, 2);
+        assertEquals(100f, (100 * listener.joshCounter) / SIMULATIONS, 2);
     }
 
 }

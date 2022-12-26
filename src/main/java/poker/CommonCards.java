@@ -5,48 +5,40 @@ import java.util.Set;
 
 public class CommonCards {
     private final Set<Card> cards = new HashSet<>();
-
-    public void injectCards() {
-    }
+    private Card flopCard1 = null;
+    private Card flopCard2 = null;
+    private Card flopCard3 = null;
+    private Card turnCard = null;
+    private Card riverCard = null;
 
     public void receiveRandomCards(Mazo mazo) {
-        while(cards.size() < 5) {
+        while (cards.size() < 5) {
             cards.add(mazo.getRandomCard());
         }
     }
 
-    public void setCards(Card card1, Card card2, Card card3, Card card4, Card card5) {
-        if (cards.size() != 0) {
-            throw new RuntimeException("reset operation has not been invoked.");
-        }
-        cards.add(card1);
-        cards.add(card2);
-        cards.add(card3);
-        cards.add(card4);
-        cards.add(card5);
+    public CommonCards setFlop(Card card1, Card card2, Card card3) {
+        flopCard1 = card1;
+        flopCard2 = card2;
+        flopCard3 = card3;
+
+        cards.add(flopCard1);
+        cards.add(flopCard2);
+        cards.add(flopCard3);
+
+        return this;
     }
 
-    public void setFlop(Card card1, Card card2, Card card3) {
-        if (cards.size() != 0) {
-            throw new RuntimeException("reset operation has not been invoked.");
-        }
-        cards.add(card1);
-        cards.add(card2);
-        cards.add(card3);
+    public CommonCards setTurn(Card card) {
+        turnCard = card;
+        cards.add(turnCard);
+        return this;
     }
 
-    public void setTurn(Card card) {
-        if (cards.size() != 3) {
-            throw new RuntimeException("Flop has not been set.");
-        }
-        cards.add(card);
-    }
-
-    public void setRiver(Card card) {
-        if (cards.size() != 4) {
-            throw new RuntimeException("Turn has not been set.");
-        }
-        cards.add(card);
+    public CommonCards setRiver(Card card) {
+        riverCard = card;
+        cards.add(riverCard);
+        return this;
     }
 
     public Set<Card> getCards() {
@@ -64,7 +56,28 @@ public class CommonCards {
 
     public void reset() {
         cards.clear();
-        injectCards();
+        if (flopCard1 != null && flopCard2 != null && flopCard3 != null) {
+            cards.add(flopCard1);
+            cards.add(flopCard2);
+            cards.add(flopCard3);
+        }
+        if (turnCard != null) {
+            cards.add(turnCard);
+        }
+        if (riverCard != null) {
+            cards.add(riverCard);
+        }
     }
 
+    public void collectCardsToAvoid(Mazo mazo) {
+        if (flopCard1 != null && flopCard2 != null && flopCard3 != null) {
+            mazo.addCardsToAvoid(Set.of(flopCard1, flopCard2, flopCard3));
+        }
+        if (turnCard != null) {
+            mazo.addCardsToAvoid(Set.of(turnCard));
+        }
+        if (riverCard != null) {
+            mazo.addCardsToAvoid(Set.of(riverCard));
+        }
+    }
 }
