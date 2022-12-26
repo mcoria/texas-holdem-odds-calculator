@@ -16,27 +16,22 @@ public class PokerBestVideo01Test {
     @Before
     public void setup() {
         daniel = new Player()
-                .setClearCardsOnRest(false)
                 // Daniel =    2(Hearts)        2(Diamonds)
                 .setCards(Card.of(Suit.Hearts, Rank.TWO), Card.of(Suit.Diamonds, Rank.TWO));
 
         scotty = new Player()
-                .setClearCardsOnRest(false)
                 // Scotty =    K(Spades)       Q(Clubs)
                 .setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
 
         faraz = new Player()
-                .setClearCardsOnRest(false)
                 // Faraz  =    Q(Diamonds)      6(Clubs)
                 .setCards(Card.of(Suit.Diamonds, Rank.QUEEN), Card.of(Suit.Clubs, Rank.SIX));
 
         josh = new Player()
-                .setClearCardsOnRest(false)
                 // Josh  =    7(Clubs)          4(Diamonds)
                 .setCards(Card.of(Suit.Clubs, Rank.SEVEN), Card.of(Suit.Diamonds, Rank.FOUR));
 
         shawn = new Player()
-                .setClearCardsOnRest(false)
                 // Shawn  =    8(Spades)        4(Clubs)
                 .setCards(Card.of(Suit.Spades, Rank.EIGHT), Card.of(Suit.Clubs, Rank.FOUR));
 

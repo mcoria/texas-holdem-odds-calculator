@@ -22,7 +22,6 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
     }
 
     private Player observer = new Player()
-            .setClearCardsOnRest(false)
             .setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));

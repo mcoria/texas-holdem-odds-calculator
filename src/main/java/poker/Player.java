@@ -10,16 +10,14 @@ public class Player {
     private final Set<Card> cards = new HashSet<>();
     private Juego juego = null;
     private BiPredicate<Player, EventListener.HoldemEvents> callPredicate;
-    private boolean clearCardsOnRest = true;
+    private CardBucket cardBucket = new DefaultCardBucket();
 
     public Player() {
         setCallPredicate((p, e) -> true);
     }
 
     public void receiveRandomCards(Mazo mazo) {
-        if (cards.size() == 0) {
-            setCards(mazo.getRandomCard(), mazo.getRandomCard());
-        }
+        cardBucket.receiveRandomCards(mazo);
     }
 
     public Set<Card> getCards() {
@@ -28,9 +26,7 @@ public class Player {
 
     public void reset() {
         juego = null;
-        if (clearCardsOnRest) {
-            cards.clear();
-        }
+        cardBucket.reset();
     }
 
     public Juego getJuego() {
@@ -49,18 +45,12 @@ public class Player {
     }
 
     public Player setCards(Card card1, Card card2) {
-        if (cards.size() != 0) {
-            throw new RuntimeException("Las cartas ya fueron recibidas.");
-        }
+        cardBucket = new NoOpCardBucket();
 
+        cards.clear();
         cards.add(card1);
         cards.add(card2);
 
-        return this;
-    }
-
-    public Player setClearCardsOnRest(boolean clearCardsOnRest) {
-        this.clearCardsOnRest = clearCardsOnRest;
         return this;
     }
 
@@ -72,5 +62,40 @@ public class Player {
         this.callPredicate = callPredicate;
         return this;
     }
+
+    private interface CardBucket {
+
+        void receiveRandomCards(Mazo mazo);
+
+        void reset();
+    }
+
+    private class DefaultCardBucket implements CardBucket {
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+            cards.add(mazo.getRandomCard());
+            cards.add(mazo.getRandomCard());
+        }
+
+        @Override
+        public void reset() {
+            cards.clear();
+        }
+    }
+
+    private class NoOpCardBucket implements CardBucket {
+
+        @Override
+        public void receiveRandomCards(Mazo mazo) {
+        }
+
+        @Override
+        public void reset() {
+        }
+
+    }
+
+
 }
 
