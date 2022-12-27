@@ -40,6 +40,23 @@ public class FullTest {
     }
 
     @Test
+    public void testFull_02() {
+        Juego juego = Juego.cargarJuego(Set.of(
+                Card.of(Suit.Clubs, Rank.TWO),
+                Card.of(Suit.Diamonds, Rank.TWO),
+                Card.of(Suit.Hearts, Rank.TWO),
+                Card.of(Suit.Clubs, Rank.TEN),
+                Card.of(Suit.Diamonds, Rank.TEN),
+                Card.of(Suit.Hearts, Rank.TEN),
+                Card.of(Suit.Clubs, Rank.THREE)
+        ));
+
+        assertEquals(FULL, juego.getType());
+
+        assertTrue(juego.getCards().containsAll(Set.of(Card.of(Suit.Clubs, Rank.TEN), Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Hearts, Rank.TEN))));
+    }
+
+    @Test
     public void testComparar_01() {
         Juego juego1 = Juego.cargarJuego(Set.of(
                 Card.of(Suit.Hearts, Rank.TWO),

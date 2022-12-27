@@ -100,7 +100,7 @@ public abstract class Juego implements Comparable<Juego> {
         }
 
         // Full
-        if (juego == null && piernas.size() > 0 && paresSimples.size() > 0) {
+        if (juego == null && ( piernas.size() == 2 || piernas.size() == 1 && paresSimples.size() > 0)) {
             List<Card> theCards = new ArrayList<>();
 
             Rank piernaRank = piernas.stream().sorted(Comparator.reverseOrder()).limit(1).findAny().get();
@@ -108,12 +108,12 @@ public abstract class Juego implements Comparable<Juego> {
             // Pierna - 3 cartas
             theCards.addAll(groupByValue.get(piernaRank));
 
+            Rank parRank = piernas.size() == 2 ? piernas.stream().sorted().limit(1).findAny().get()
+                    : paresSimples.stream().sorted(Comparator.reverseOrder()).limit(1).findAny().get();
 
-            Rank parRank = paresSimples.stream().sorted(Comparator.reverseOrder()).limit(1).findAny().get();
 
             // Par - 2 cartas
-            theCards.addAll(groupByValue.get(parRank));
-
+            theCards.addAll(groupByValue.get(parRank).stream().limit(2).collect(Collectors.toSet()));
 
             juego = new Full(theCards, piernaRank, parRank);
         }
