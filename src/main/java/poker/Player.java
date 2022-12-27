@@ -3,6 +3,7 @@ package poker;
 import poker.juegos.Juego;
 
 import java.util.HashSet;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiPredicate;
@@ -13,6 +14,7 @@ public class Player {
     private CardBucket cardBucket = new DefaultCardBucket();
     private boolean defaultCallResponse = true;
 
+    private int points = 0;
 
     public void receiveRandomCards(Mazo mazo) {
         cardBucket.receiveRandomCards(mazo);
@@ -62,6 +64,18 @@ public class Player {
 
     public void setDefaultCallResponse(boolean defaultCallResponse) {
         this.defaultCallResponse = defaultCallResponse;
+    }
+
+    public void decreasePoints(int points) {
+        this.points -= points;
+    }
+
+    public void increasePoints(int points) {
+        this.points += points;
+    }
+
+    public int getPoints(){
+        return this.points;
     }
 
     private interface CardBucket {

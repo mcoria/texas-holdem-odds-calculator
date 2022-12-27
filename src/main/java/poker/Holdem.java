@@ -3,6 +3,7 @@ package poker;
 import poker.juegos.Juego;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static poker.EventListener.HoldemEvents.*;
 
@@ -12,6 +13,7 @@ public class Holdem {
     private final Set<Player> ganadores = new HashSet<>();
     private final List<Player> players;
     private final CommonCards commonCards;
+    private int totalPot = 0;
 
     public Holdem(List<Player> players, CommonCards commonCards) {
         this.players = players;
@@ -27,15 +29,18 @@ public class Holdem {
     public void addListener(EventListener listener) {
         listeners.add(listener);
     }
+
     public Set<Player> getGanadores() {
         return ganadores;
     }
+
     public List<Player> getPlayers() {
         return players;
     }
 
     public void reset() {
         // Reset
+        totalPot = 0;
         ganadores.clear();
         mazo.reset();
         commonCards.reset();
@@ -82,30 +87,59 @@ public class Holdem {
 
         bet(RIVER, playersInGame);
 
-        // Mostrar las cartas para calcular ganadores
+
+        // Calcular ganadores
         ganadores.addAll(calcularGanadores(playersInGame, commonCards));
+
+        // Repartir pozo
+        repartirPot(ganadores);
+
         triggerEvent(FINISHED);
 
-        //collect();
         return ganadores;
     }
 
+
     private void bet(EventListener.HoldemEvents stage, List<Player> playersInGame) {
         ListIterator<Player> iterator = playersInGame.listIterator();
+
+        int callPoints = 0;
+        switch (stage) {
+            case CARTAS_REPARETIDAS:
+                callPoints = 1;
+                break;
+            case FLOP:
+                callPoints = 2;
+                break;
+            case TURN:
+                callPoints = 3;
+                break;
+            case RIVER:
+                callPoints = 5;
+                break;
+        }
+
+        int currentPot = 0;
         while (iterator.hasNext()) {
             Player player = iterator.next();
-            boolean call = false;
-            switch (stage) {
-                case CARTAS_REPARETIDAS:
-                case FLOP:
-                case TURN:
-                case RIVER:
-                    call = player.call(stage, playersInGame.size(), commonCards);
-                    break;
-            }
-            if (!call) {
+            if (player.call(stage, playersInGame.size(), commonCards)) {
+                player.decreasePoints(callPoints);
+                currentPot += callPoints;
+            } else {
                 iterator.remove();
             }
+        }
+
+        this.totalPot += currentPot;
+    }
+
+    private void repartirPot(Set<Player> ganadores) {
+        ganadores.forEach(ganador -> ganador.increasePoints(this.totalPot / ganadores.size()));
+
+        int reminder = this.totalPot % ganadores.size();
+
+        if (reminder > 0) {
+            ganadores.stream().sorted(Comparator.comparingInt(Player::getPoints)).limit(reminder).forEach(player -> player.increasePoints(1));
         }
     }
 

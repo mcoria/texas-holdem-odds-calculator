@@ -6,12 +6,13 @@ import poker.Player;
 import poker.Simulator;
 import poker.listeners.JuegosGanadores;
 import poker.listeners.PairListener;
+import poker.listeners.PointsStatics;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Aleatorio extends AbstractSimulationReport{
-    private static final int SIMULATIONS = 100000;
+    private static final int SIMULATIONS = 1000;
 
     private static final int PLAYERS = 2; //23 Max con un mazo
 
@@ -30,7 +31,7 @@ public class Aleatorio extends AbstractSimulationReport{
 
     @Override
     protected List<EventListener> setupEventListeners() {
-        return List.of(new PairListener(), new JuegosGanadores());
+        return List.of(new PairListener(), new JuegosGanadores(), new PointsStatics());
     }
 
     @Override

@@ -31,14 +31,15 @@ public abstract class AbstractSimulationReport {
         int numberOfSimulations = getNumberOfSimulations();
         simulator.simulate(numberOfSimulations);
 
-        printStatics(listeners, players.size(), numberOfSimulations);
+        printStatics(listeners, players, numberOfSimulations);
     }
 
 
 
-    private void printStatics(List<EventListener> listeners, int numberOfPlayers, int numberOfSimulations) {
+    private void printStatics(List<EventListener> listeners, List<Player> players, int numberOfSimulations) {
         System.out.println("Total games = " + numberOfSimulations);
-        System.out.println("Players = " + numberOfPlayers);
+        System.out.println("Players = " + players.size());
+
         for (EventListener listener : listeners) {
             System.out.println("===========================" + listener.getClass().getName() + "===========================");
             listener.printStatics();

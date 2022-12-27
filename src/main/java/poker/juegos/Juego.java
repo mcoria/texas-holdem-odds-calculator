@@ -232,4 +232,9 @@ public abstract class Juego implements Comparable<Juego> {
         return cards.stream().collect(Collectors.toSet());
     }
 
+
+    @Override
+    public String toString() {
+        return String.format("Tipo={%s}; Cards=%s", type.toString(), cards.toString());
+    }
 }
