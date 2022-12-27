@@ -182,4 +182,32 @@ public class EscaleraTest {
         assertTrue(juego2.compareTo(juego1) == 0);
     }
 
+    //Tipo={ESCALERA}; Cards=[♦2, ♠3, ♦4, ♣5, ❤A]
+    //Tipo={ESCALERA}; Cards=[♦2, ♠3, ♦4, ♣5, ♠6]
+    @Test
+    public void testCompararEscalera_03() {
+        Juego juego1 = Juego.cargarJuego(Set.of(
+                Card.of(Suit.Hearts, Rank.TWO),
+                Card.of(Suit.Diamonds, Rank.THREE),
+                Card.of(Suit.Diamonds, Rank.FOUR),
+                Card.of(Suit.Spades, Rank.FIVE),
+                Card.of(Suit.Spades, Rank.ACE)
+        ));
+
+        Juego juego2 = Juego.cargarJuego(Set.of(
+                Card.of(Suit.Hearts, Rank.TWO),
+                Card.of(Suit.Diamonds, Rank.THREE),
+                Card.of(Suit.Diamonds, Rank.FOUR),
+                Card.of(Suit.Spades, Rank.FIVE),
+                Card.of(Suit.Spades, Rank.SIX)
+        ));
+
+
+        assertEquals(ESCALERA, juego1.getType());
+        assertEquals(ESCALERA, juego2.getType());
+
+        assertTrue(juego1.compareTo(juego2) < 0);
+        assertTrue(juego2.compareTo(juego1) > 0);
+    }
+
 }

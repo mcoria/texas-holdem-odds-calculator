@@ -158,5 +158,31 @@ public class EscaleraColorTest {
         assertTrue(juego2.compareTo(juego1) == 0);
     }
 
+    @Test
+    public void testCompararEscalera_03() {
+        Juego juego1 = Juego.cargarJuego(Set.of(
+                Card.of(Suit.Diamonds, Rank.TWO),
+                Card.of(Suit.Diamonds, Rank.THREE),
+                Card.of(Suit.Diamonds, Rank.FOUR),
+                Card.of(Suit.Diamonds, Rank.FIVE),
+                Card.of(Suit.Diamonds, Rank.ACE)
+        ));
+
+        Juego juego2 = Juego.cargarJuego(Set.of(
+                Card.of(Suit.Hearts, Rank.TWO),
+                Card.of(Suit.Hearts, Rank.THREE),
+                Card.of(Suit.Hearts, Rank.FOUR),
+                Card.of(Suit.Hearts, Rank.FIVE),
+                Card.of(Suit.Hearts, Rank.SIX)
+        ));
+
+
+        assertEquals(ESCALERA_COLOR, juego1.getType());
+        assertEquals(ESCALERA_COLOR, juego2.getType());
+
+        assertTrue(juego1.compareTo(juego2) < 0);
+        assertTrue(juego2.compareTo(juego1) > 0);
+    }
+
 
 }
