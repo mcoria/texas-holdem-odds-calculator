@@ -82,11 +82,6 @@ public class AllCombinationsBeforeFlop extends AbstractSimulationReport {
                     }
                 }
             }
-
-            @Override
-            public Map<String, Object> getStatics() {
-                return null;
-            }
         });
     }
 

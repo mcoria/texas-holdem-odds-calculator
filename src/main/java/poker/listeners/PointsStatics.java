@@ -50,11 +50,6 @@ public class PointsStatics implements EventListener {
             System.out.printf ("Player partidos ganados = %d, points = %d, min = %d, max = %d, avg = %f \n", juegosGanados, player.getPoints(), playerStatic.getMin(),  playerStatic.getMax(), playerStatic.getAverage());
         });
     }
-
-    @Override
-    public Map<String, Object> getStatics() {
-        return null;
-    }
 }
 
 

@@ -94,10 +94,6 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
                 System.out.println("Probabilidad de ganar con xxx en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) observerCounter / (float) SIMULATIONS));
             }
 
-            @Override
-            public Map<String, Object> getStatics() {
-                return null;
-            }
         });
     }
 }

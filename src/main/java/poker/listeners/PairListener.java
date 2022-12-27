@@ -113,10 +113,5 @@ public class PairListener implements EventListener {
         System.out.println("% que alguno de los jugadores que obtuvo par de Ks en mano gane =\t\t" + String.format("%3.2f%%", 100f * (float) pairOfKsGanador / (float) pairOfKs));
         System.out.println("% que alguno de los jugadores que obtuvo par de Qs en mano gane =\t\t" + String.format("%3.2f%%", 100f * (float) pairOfQsGanador / (float) pairOfQs));
     }
-
-    @Override
-    public Map<String, Object> getStatics() {
-        return null;
-    }
 }
 

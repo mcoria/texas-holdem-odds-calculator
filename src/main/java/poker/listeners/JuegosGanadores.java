@@ -59,9 +59,4 @@ public class JuegosGanadores implements EventListener {
 
         System.out.println("Totalidad de juegos ganadores = \t\t\t\t\t\t" + String.format("%3.2f%%", 100f * (float) contadores.values().stream().mapToInt(Integer::intValue).sum() / (float) games));
     }
-
-    @Override
-    public Map<String, Object> getStatics() {
-        return null;
-    }
 }

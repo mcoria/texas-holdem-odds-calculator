@@ -10,6 +10,4 @@ public interface EventListener {
 
     void printStatics();
 
-    Map<String, Object> getStatics();
-
 }

@@ -74,11 +74,6 @@ public class PokerBestVideo02Test {
         @Override
         public void printStatics() {
         }
-
-        @Override
-        public Map<String, Object> getStatics() {
-            return null;
-        }
     }
 
     @Test
