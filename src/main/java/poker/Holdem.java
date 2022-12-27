@@ -167,4 +167,8 @@ public class Holdem {
             listener.catchEvent(event, this);
         }
     }
+
+    public CommonCards getCommonCards() {
+        return commonCards;
+    }
 }

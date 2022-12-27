@@ -1,7 +1,9 @@
 package poker;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CommonCards {
     private final Set<Card> cards = new HashSet<>();
@@ -79,5 +81,10 @@ public class CommonCards {
         if (riverCard != null) {
             mazo.addCardsToAvoid(Set.of(riverCard));
         }
+    }
+
+    @Override
+    public String toString() {
+        return cards.stream().sorted(Comparator.comparing(Card::getRank)).collect(Collectors.toList()).toString();
     }
 }

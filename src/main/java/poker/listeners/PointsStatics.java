@@ -28,23 +28,13 @@ public class PointsStatics implements EventListener {
                 playerStatic.accept(player.getPoints());
             }
 
-            boolean printJuego = false;
             if(holdem.getGanadores().size() > 1) {
                 empates++;
-                printJuego = true;
             }
 
             for (Player player :
                     holdem.getGanadores()) {
                 contadorGanador.compute(player, (k,v) -> v == null ? 1 : v + 1);
-
-                if(printJuego){
-                    System.out.println(player.getJuego());
-                }
-            }
-
-            if(printJuego){
-                System.out.println("--------------------------------------------");
             }
         }
     }
