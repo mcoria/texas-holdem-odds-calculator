@@ -96,7 +96,7 @@ public abstract class Juego implements Comparable<Juego> {
                     .findAny().get()
             );
 
-            juego = new Poker(theCards);
+            juego = new Poker(theCards, pokerRank);
         }
 
         // Full
