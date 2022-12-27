@@ -29,7 +29,7 @@ public class Aleatorio extends AbstractSimulationReport{
 
     @Override
     protected List<HoldemStatics> setupEventListeners() {
-        return List.of(new PairListener(), new JuegosGanadores(), new PointsStatics());
+        return List.of(new PairListener(), new JuegosGanadores(), new Combinacion(), new PointsStatics());
         //, new GamesDebug()
     }
 
