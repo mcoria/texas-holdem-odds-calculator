@@ -75,10 +75,6 @@ public class PokerBestVideo03Test {
                 }
             }
         }
-
-        @Override
-        public void printStatics() {
-        }
     }
 
     @Test

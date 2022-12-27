@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.Map;
 
-public class PointsStatics implements EventListener {
+public class PointsStatics implements HoldemStatics {
 
     int games = 0;
     int empates = 0;

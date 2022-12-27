@@ -47,10 +47,6 @@ public class Simulation02Test {
                 }
             }
         }
-
-        @Override
-        public void printStatics() {
-        }
     }
 
     @Test

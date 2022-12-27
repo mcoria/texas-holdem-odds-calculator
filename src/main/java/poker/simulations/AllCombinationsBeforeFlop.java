@@ -3,6 +3,7 @@ package poker.simulations;
 import poker.*;
 import poker.EventListener;
 import poker.juegos.Juego;
+import poker.listeners.HoldemStatics;
 
 import java.util.*;
 
@@ -41,8 +42,8 @@ public class AllCombinationsBeforeFlop extends AbstractSimulationReport {
     }
 
     @Override
-    protected List<EventListener> setupEventListeners() {
-        return List.of(new EventListener() {
+    protected List<HoldemStatics> setupEventListeners() {
+        return List.of(new HoldemStatics() {
             private int observerGana = 0;
 
             private Map<TipoCombinacion, Integer> contadorJuego = new HashMap<>();

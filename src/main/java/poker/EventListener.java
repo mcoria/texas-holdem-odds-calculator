@@ -8,6 +8,4 @@ public interface EventListener {
 
     void catchEvent(HoldemEvents event, Holdem holdem);
 
-    void printStatics();
-
 }

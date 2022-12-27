@@ -7,7 +7,7 @@ import poker.juegos.Juego;
 
 import java.util.*;
 
-public class GamesDebug implements EventListener {
+public class GamesDebug implements HoldemStatics {
     @Override
     public void catchEvent(HoldemEvents event, Holdem holdem) {
         if (HoldemEvents.FINISHED.equals(event)) {

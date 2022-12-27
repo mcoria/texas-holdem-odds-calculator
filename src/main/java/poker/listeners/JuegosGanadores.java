@@ -8,7 +8,7 @@ import poker.juegos.Juego;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JuegosGanadores implements EventListener {
+public class JuegosGanadores implements HoldemStatics {
 
     private int games = 0;
     private Map<Juego.Tipo, Integer> contadores = new HashMap<>();

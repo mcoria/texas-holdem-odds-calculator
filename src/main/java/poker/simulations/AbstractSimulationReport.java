@@ -4,12 +4,13 @@ import poker.CommonCards;
 import poker.EventListener;
 import poker.Player;
 import poker.Simulator;
+import poker.listeners.HoldemStatics;
 
 import java.util.List;
 
 public abstract class AbstractSimulationReport {
 
-    protected abstract List<EventListener> setupEventListeners();
+    protected abstract List<HoldemStatics> setupEventListeners();
 
     protected abstract List<Player> createPlayers();
 
@@ -25,7 +26,7 @@ public abstract class AbstractSimulationReport {
         List<Player> players = createPlayers();
         simulator.setPlayers(players);
 
-        List<EventListener> listeners = setupEventListeners();
+        List<HoldemStatics> listeners = setupEventListeners();
         simulator.setListeners(listeners);
 
         int numberOfSimulations = getNumberOfSimulations();
@@ -36,11 +37,11 @@ public abstract class AbstractSimulationReport {
 
 
 
-    private void printStatics(List<EventListener> listeners, List<Player> players, int numberOfSimulations) {
+    private void printStatics(List<HoldemStatics> listeners, List<Player> players, int numberOfSimulations) {
         System.out.println("Total games = " + numberOfSimulations);
         System.out.println("Players = " + players.size());
 
-        for (EventListener listener : listeners) {
+        for (HoldemStatics listener : listeners) {
             System.out.println("===========================" + listener.getClass().getName() + "===========================");
             listener.printStatics();
         }

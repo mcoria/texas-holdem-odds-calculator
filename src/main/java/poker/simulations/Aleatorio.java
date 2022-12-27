@@ -4,10 +4,7 @@ import poker.CommonCards;
 import poker.EventListener;
 import poker.Player;
 import poker.Simulator;
-import poker.listeners.GamesDebug;
-import poker.listeners.JuegosGanadores;
-import poker.listeners.PairListener;
-import poker.listeners.PointsStatics;
+import poker.listeners.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +28,7 @@ public class Aleatorio extends AbstractSimulationReport{
     }
 
     @Override
-    protected List<EventListener> setupEventListeners() {
+    protected List<HoldemStatics> setupEventListeners() {
         return List.of(new PairListener(), new JuegosGanadores(), new PointsStatics());
         //, new GamesDebug()
     }

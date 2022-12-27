@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Simulator {
 
-    private List<EventListener> listeners;
+    private List<? extends EventListener> listeners;
 
     private List<Player> players;
 
@@ -24,7 +24,7 @@ public class Simulator {
     }
 
 
-    public void setListeners(List<EventListener> listeners) {
+    public void setListeners(List<? extends EventListener> listeners) {
         this.listeners = listeners;
     }
 

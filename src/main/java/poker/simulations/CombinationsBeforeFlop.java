@@ -1,6 +1,7 @@
 package poker.simulations;
 
 import poker.*;
+import poker.listeners.HoldemStatics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,8 +77,8 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
     }
 
     @Override
-    protected List<EventListener> setupEventListeners() {
-        return List.of(new EventListener() {
+    protected List<HoldemStatics> setupEventListeners() {
+        return List.of(new HoldemStatics() {
             private int observerCounter = 0;
 
             @Override

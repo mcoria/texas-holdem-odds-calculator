@@ -7,7 +7,7 @@ import poker.Rank;
 
 import java.util.Map;
 
-public class PairListener implements EventListener {
+public class PairListener implements HoldemStatics {
     private int games = 0;
 
     private int pairOfQs = 0;
