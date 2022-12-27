@@ -106,16 +106,20 @@ public class Holdem {
         int callPoints = 0;
         switch (stage) {
             case CARTAS_REPARETIDAS:
-                callPoints = 1;
+                //callPoints = 1;
+                callPoints = 0;
                 break;
             case FLOP:
-                callPoints = 2;
+                //callPoints = 2;
+                callPoints = 0;
                 break;
             case TURN:
-                callPoints = 3;
+                //callPoints = 3;
+                callPoints = 0;
                 break;
             case RIVER:
-                callPoints = 5;
+                //callPoints = 5;
+                callPoints = 1;
                 break;
         }
 
@@ -134,9 +138,9 @@ public class Holdem {
     }
 
     private void repartirPot(Set<Player> ganadores) {
-        ganadores.forEach(ganador -> ganador.increasePoints(this.totalPot / ganadores.size()));
+        ganadores.forEach(ganador -> ganador.increasePoints(totalPot / ganadores.size()));
 
-        int reminder = this.totalPot % ganadores.size();
+        int reminder = totalPot % ganadores.size();
 
         if (reminder > 0) {
             ganadores.stream().sorted(Comparator.comparingInt(Player::getPoints)).limit(reminder).forEach(player -> player.increasePoints(1));
@@ -151,12 +155,15 @@ public class Holdem {
             if (maxJuego == null) {
                 ganadores.add(player);
                 maxJuego = juego;
-            } else if (juego.compareTo(maxJuego) > 0) {
-                ganadores.clear();
-                ganadores.add(player);
-                maxJuego = juego;
-            } else if (juego.compareTo(maxJuego) == 0) {
-                ganadores.add(player);
+            } else {
+                int compare = juego.compareTo(maxJuego);
+                if (compare > 0) {
+                    ganadores.clear();
+                    ganadores.add(player);
+                    maxJuego = juego;
+                } else if (compare == 0) {
+                    ganadores.add(player);
+                }
             }
         }
         return ganadores;

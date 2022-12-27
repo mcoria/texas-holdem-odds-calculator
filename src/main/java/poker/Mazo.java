@@ -1,15 +1,15 @@
 package poker;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Mazo {
     private final Card[] cards = Card.values();
     private final Set<Integer> repartidas = new HashSet<>();
     private final Set<Integer> cardsToAvoid = new HashSet<>();
-    private final Random rnd = new Random();
+
+    //private final Random rnd = new Random();
+
+    private PrimitiveIterator.OfInt randomIterator = new Random().ints(0, 52).iterator();
 
     public void reset() {
         repartidas.clear();
@@ -28,7 +28,9 @@ public class Mazo {
 
         Integer index = null;
         do {
-            index = rnd.nextInt(52);
+            //index = rnd.nextInt(52);
+            // index = (int) (Math.random() * 52);
+            index = randomIterator.nextInt();
         } while (repartidas.contains(index) || cardsToAvoid.contains(index));
 
         repartidas.add(index);

@@ -41,13 +41,12 @@ public class PointsStatics implements HoldemStatics {
 
     @Override
     public void printStatics() {
-        System.out.println("Cantidad de empates = \t" + String.format("%d", empates ));
-        System.out.println("% de empates = \t" + String.format("%3.2f%%", 100f * (float) empates / (float) games));
+        System.out.printf("Cantidad de empates = %d (%3.2f%%) \n", empates, 100f * (float) empates / (float) games );
         pointStatics.entrySet().stream().forEach( entry -> {
             Player player = entry.getKey();
             IntSummaryStatistics playerStatic = entry.getValue();
             Integer juegosGanados = contadorGanador.getOrDefault(player, 0);
-            System.out.printf ("Player partidos ganados = %d, points = %d, min = %d, max = %d, avg = %f \n", juegosGanados, player.getPoints(), playerStatic.getMin(),  playerStatic.getMax(), playerStatic.getAverage());
+            System.out.printf ("Player partidos ganados = %d (%3.2f%%), points = %d, min = %d, max = %d, avg = %f \n", juegosGanados, 100f * (float) juegosGanados / (float) games , player.getPoints(), playerStatic.getMin(),  playerStatic.getMax(), playerStatic.getAverage());
         });
     }
 }
