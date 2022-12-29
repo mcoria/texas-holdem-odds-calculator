@@ -19,23 +19,28 @@ public enum TipoCombinacion {
     PAR_4("par de 4s"),
     PAR_3("par de 3s"),
     PAR_2("par de 2s"),
-    A_KQJ("A y K/Q/J"),
-    A_10_9_8("A y 10/9/8"),
-    A_7_6_5("A y 7/6/5"),
-    A_4_3_2("A y 4/3/2"),
 
-    K_QJ10("K y Q/J/10"),
-    K_9_8_7("K y 9/8/7"),
-    K_6_5_4("K y 6/5/4"),
-    K_3_2("K y 3/2"),
+
+    A_K_Q("A y K/Q"),
+    A_J_10("A y J/10"),
+    A_9_8("A y 9/8"),
+    A_7_6("A y 7/6"),
+    A_5_4("A y 5/4"),
+    A_3_2("A y 3/2"),
+
+    K_Q_J("K y Q/J"),
+    K_10_9("K y 10/9"),
+    K_8_7("K y 8/7"),
+    K_6_5("K y 6/5"),
+    K_4_3_2("K y 4/3/2"),
+
+
     Q_J_10_9("Q y J/10/9"),
     Q_8_7_6("Q y 8/7/6"),
     Q_5_4_3_2("Q y 5/4/3/2"),
 
     J_10_9_8("J y 10/9/8"),
-
     J_7_6_5("J y 7/6/5"),
-
     J_4_3_2("J y 4/3/2"),
 
     DOS_DE_10_9_8_7_6("dos de 10/9/8/7/6"),
@@ -84,24 +89,30 @@ public enum TipoCombinacion {
                     return PAR_2;
             }
         } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.ACE.equals(rank)).findAny().isPresent()) {
-            if (cards.stream().map(Card::getRank).filter(rank -> Rank.KING.equals(rank) || Rank.QUEEN.equals(rank) || Rank.JACK.equals(rank)).findAny().isPresent()) {
-                return A_KQJ;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.TEN.equals(rank) || Rank.NINE.equals(rank) || Rank.EIGHT.equals(rank)).findAny().isPresent()) {
-                return A_10_9_8;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.SEVEN.equals(rank) || Rank.SIX.equals(rank) || Rank.FIVE.equals(rank)).findAny().isPresent()) {
-                return A_7_6_5;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.FOUR.equals(rank) || Rank.THREE.equals(rank) || Rank.TWO.equals(rank)).findAny().isPresent()) {
-                return A_4_3_2;
+            if (cards.stream().map(Card::getRank).filter(rank -> Rank.KING.equals(rank) || Rank.QUEEN.equals(rank)).findAny().isPresent()) {
+                return A_K_Q;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.JACK.equals(rank) || Rank.TEN.equals(rank)).findAny().isPresent()) {
+                return A_J_10;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.NINE.equals(rank) || Rank.EIGHT.equals(rank)).findAny().isPresent()) {
+                return A_9_8;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.SEVEN.equals(rank) || Rank.SIX.equals(rank)).findAny().isPresent()) {
+                return A_7_6;
+            }else if (cards.stream().map(Card::getRank).filter(rank -> Rank.FIVE.equals(rank) || Rank.FOUR.equals(rank)).findAny().isPresent()) {
+                return A_5_4;
+            }else if (cards.stream().map(Card::getRank).filter(rank -> Rank.THREE.equals(rank) || Rank.TWO.equals(rank)).findAny().isPresent()) {
+                return A_3_2;
             }
         } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.KING.equals(rank)).findAny().isPresent()) {
-            if (cards.stream().map(Card::getRank).filter(rank -> Rank.QUEEN.equals(rank) || Rank.JACK.equals(rank) || Rank.TEN.equals(rank)).findAny().isPresent()) {
-                return K_QJ10;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.NINE.equals(rank) || Rank.EIGHT.equals(rank) || Rank.SEVEN.equals(rank)).findAny().isPresent()) {
-                return K_9_8_7;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.SIX.equals(rank) || Rank.FIVE.equals(rank) || Rank.FOUR.equals(rank)).findAny().isPresent()) {
-                return K_6_5_4;
-            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.THREE.equals(rank) || Rank.TWO.equals(rank)).findAny().isPresent()) {
-                return K_3_2;
+            if (cards.stream().map(Card::getRank).filter(rank -> Rank.QUEEN.equals(rank) || Rank.JACK.equals(rank)).findAny().isPresent()) {
+                return K_Q_J;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.TEN.equals(rank) || Rank.NINE.equals(rank)).findAny().isPresent()) {
+                return K_10_9;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.EIGHT.equals(rank) || Rank.SEVEN.equals(rank) ).findAny().isPresent()) {
+                return K_8_7;
+            } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.SIX.equals(rank) || Rank.FIVE.equals(rank)).findAny().isPresent()) {
+                return K_6_5;
+            }else if (cards.stream().map(Card::getRank).filter(rank -> Rank.FOUR.equals(rank) || Rank.THREE.equals(rank) || Rank.TWO.equals(rank)).findAny().isPresent()) {
+                return K_4_3_2;
             }
         } else if (cards.stream().map(Card::getRank).filter(rank -> Rank.QUEEN.equals(rank)).findAny().isPresent()) {
             if (cards.stream().map(Card::getRank).filter(rank -> Rank.JACK.equals(rank) || Rank.TEN.equals(rank) || Rank.NINE.equals(rank)).findAny().isPresent()) {

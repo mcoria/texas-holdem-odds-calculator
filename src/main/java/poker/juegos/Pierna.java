@@ -23,7 +23,6 @@ class Pierna extends Juego {
         if (otherJuego instanceof Pierna) {
             Pierna other = (Pierna) otherJuego;
 
-
             if (this.pierna.equals(other.pierna)) {
                 ListIterator<Card> iterator = cards.listIterator(5);
                 ListIterator<Card> iteratorOther = other.cards.listIterator(5);

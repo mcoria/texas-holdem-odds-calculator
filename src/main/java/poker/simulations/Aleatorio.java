@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Aleatorio extends AbstractSimulationReport{
-    private static final int SIMULATIONS = 100000;
+    private static final int SIMULATIONS = 1000000;
 
-    private static final int PLAYERS = 2; //23 Max con un mazo
+    private static final int PLAYERS = 8; //23 Max con un mazo
 
     public static void main(String[] args) {
         new Aleatorio().simulate();
@@ -29,8 +29,9 @@ public class Aleatorio extends AbstractSimulationReport{
 
     @Override
     protected List<HoldemStatics> setupEventListeners() {
-        return List.of(new PairListener(), new JuegosGanadores(), new Combinacion(), new PointsStatics());
-        //, new GamesDebug()
+        return List.of(new PairListener(), new JuegosGanadores(), new DuplaListener(), new PointsStatics());
+        // new GamesDebug()
+        // new Combinacion()
     }
 
     @Override
