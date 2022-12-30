@@ -33,7 +33,7 @@ public class Aleatorio extends AbstractSimulationReport{
     }
 
     @Override
-    protected CommunityCards createCommonCards() {
+    protected CommunityCards createCommunityCards() {
         return new CommunityCards();
     }
 

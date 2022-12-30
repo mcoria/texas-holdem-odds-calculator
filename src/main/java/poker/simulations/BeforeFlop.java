@@ -71,7 +71,7 @@ public class BeforeFlop extends AbstractSimulationReport {
     }
 
     @Override
-    protected CommunityCards createCommonCards() {
+    protected CommunityCards createCommunityCards() {
         return new CommunityCards();
     }
 

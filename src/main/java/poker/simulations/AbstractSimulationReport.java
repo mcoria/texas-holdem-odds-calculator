@@ -13,14 +13,14 @@ public abstract class AbstractSimulationReport {
 
     protected abstract List<Player> createPlayers();
 
-    protected abstract CommunityCards createCommonCards();
+    protected abstract CommunityCards createCommunityCards();
 
     protected abstract int getNumberOfSimulations();
 
     public void simulate() {
         Simulator simulator = new Simulator();
 
-        simulator.setCommonCards(createCommonCards());
+        simulator.setCommonCards(createCommunityCards());
 
         List<Player> players = createPlayers();
         simulator.setPlayers(players);

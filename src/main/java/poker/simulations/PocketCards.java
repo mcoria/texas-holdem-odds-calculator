@@ -12,9 +12,10 @@ public class PocketCards {
     private final boolean sameColor;
 
     private final boolean posibleEscalera;
+
     public PocketCards(Card card1, Card card2) {
         int rankCompare = card1.getRank().compareTo(card2.getRank());
-        if(rankCompare > 0){
+        if (rankCompare > 0) {
             this.maxRank = card1.getRank();
             this.minRank = card2.getRank();
             this.isPair = false;
@@ -28,18 +29,23 @@ public class PocketCards {
             this.isPair = true;
         }
 
-        if(rankCompare != 0 && Math.abs(rankCompare) < 5 ){
-            this.posibleEscalera = true;
-        } else{
+        if (rankCompare != 0) {
+            if (Math.abs(rankCompare) < 5) {
+                this.posibleEscalera = true;
+            } else if (this.maxRank.equals(Rank.ACE) && (this.minRank.equals(Rank.TWO) || this.minRank.equals(Rank.THREE) || this.minRank.equals(Rank.FOUR) || this.minRank.equals(Rank.FIVE))) {
+                this.posibleEscalera = true;
+            } else {
+                this.posibleEscalera = false;
+            }
+        } else {
             this.posibleEscalera = false;
         }
-
         this.sameColor = card1.getSuit().equals(card2.getSuit());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof PocketCards){
+        if (obj instanceof PocketCards) {
             PocketCards other = (PocketCards) obj;
             return this.maxRank.equals(other.maxRank) && this.minRank.equals(other.minRank);
         }
