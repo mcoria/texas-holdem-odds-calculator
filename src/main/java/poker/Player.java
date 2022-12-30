@@ -3,10 +3,7 @@ package poker;
 import poker.juegos.Juego;
 
 import java.util.HashSet;
-import java.util.IntSummaryStatistics;
-import java.util.List;
 import java.util.Set;
-import java.util.function.BiPredicate;
 
 public class Player {
     private final Set<Card> cards = new HashSet<>();
@@ -16,8 +13,8 @@ public class Player {
 
     private int points = 0;
 
-    public void receiveRandomCards(Mazo mazo) {
-        cardBucket.receiveRandomCards(mazo);
+    public void receiveRandomCards(DeckOfCards deckOfCards) {
+        cardBucket.receiveRandomCards(deckOfCards);
     }
 
     public Set<Card> getCards() {
@@ -36,9 +33,9 @@ public class Player {
         return juego;
     }
 
-    public Juego calcularJuego(CommonCards commonCards) {
+    public Juego calcularJuego(CommunityCards communityCards) {
         Set<Card> theCards = new HashSet<>();
-        theCards.addAll(commonCards.getCards());
+        theCards.addAll(communityCards.getCards());
         theCards.addAll(cards);
         juego = Juego.cargarJuego(theCards);
         return juego;
@@ -54,12 +51,12 @@ public class Player {
         return this;
     }
 
-    public boolean call(EventListener.HoldemEvents stage, int playersInGame, CommonCards commonCards) {
+    public boolean call(EventListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
         return this.defaultCallResponse;
     }
 
-    public void collectCardsToAvoid(Mazo mazo) {
-        cardBucket.collectCardsToAvoid(mazo);
+    public void collectCardsToAvoid(DeckOfCards deckOfCards) {
+        cardBucket.collectCardsToAvoid(deckOfCards);
     }
 
     public void setDefaultCallResponse(boolean defaultCallResponse) {
@@ -80,19 +77,19 @@ public class Player {
 
     private interface CardBucket {
 
-        void receiveRandomCards(Mazo mazo);
+        void receiveRandomCards(DeckOfCards deckOfCards);
 
         void reset();
 
-        void collectCardsToAvoid(Mazo mazo);
+        void collectCardsToAvoid(DeckOfCards deckOfCards);
     }
 
     private class DefaultCardBucket implements CardBucket {
 
         @Override
-        public void receiveRandomCards(Mazo mazo) {
-            cards.add(mazo.getRandomCard());
-            cards.add(mazo.getRandomCard());
+        public void receiveRandomCards(DeckOfCards deckOfCards) {
+            cards.add(deckOfCards.getRandomCard());
+            cards.add(deckOfCards.getRandomCard());
         }
 
         @Override
@@ -101,13 +98,13 @@ public class Player {
         }
 
         @Override
-        public void collectCardsToAvoid(Mazo mazo) {
+        public void collectCardsToAvoid(DeckOfCards deckOfCards) {
         }
     }
 
     private class NoOpCardBucket implements CardBucket {
         @Override
-        public void receiveRandomCards(Mazo mazo) {
+        public void receiveRandomCards(DeckOfCards deckOfCards) {
         }
 
         @Override
@@ -115,8 +112,8 @@ public class Player {
         }
 
         @Override
-        public void collectCardsToAvoid(Mazo mazo) {
-            mazo.addCardsToAvoid(cards);
+        public void collectCardsToAvoid(DeckOfCards deckOfCards) {
+            deckOfCards.addCardsToAvoid(cards);
         }
     }
 

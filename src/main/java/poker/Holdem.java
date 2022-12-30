@@ -3,26 +3,25 @@ package poker;
 import poker.juegos.Juego;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static poker.EventListener.HoldemEvents.*;
 
 public class Holdem {
     private final List<EventListener> listeners = new ArrayList<>();
-    private final Mazo mazo = new Mazo();
+    private final DeckOfCards deckOfCards = new DeckOfCards();
     private final Set<Player> ganadores = new HashSet<>();
     private final List<Player> players;
-    private final CommonCards commonCards;
+    private final CommunityCards communityCards;
     private int totalPot = 0;
 
-    public Holdem(List<Player> players, CommonCards commonCards) {
+    public Holdem(List<Player> players, CommunityCards communityCards) {
         this.players = players;
-        this.commonCards = commonCards;
+        this.communityCards = communityCards;
 
-        this.commonCards.collectCardsToAvoid(this.mazo);
+        this.communityCards.collectCardsToAvoid(this.deckOfCards);
 
         this.players.forEach(player -> {
-            player.collectCardsToAvoid(this.mazo);
+            player.collectCardsToAvoid(this.deckOfCards);
         });
     }
 
@@ -42,8 +41,8 @@ public class Holdem {
         // Reset
         totalPot = 0;
         ganadores.clear();
-        mazo.reset();
-        commonCards.reset();
+        deckOfCards.reset();
+        communityCards.reset();
         players.forEach(player -> player.reset());
     }
 
@@ -54,10 +53,10 @@ public class Holdem {
         List<Player> playersInGame = new ArrayList<>(players);
 
         // Repartir las cartas aleatorias
-        commonCards.receiveRandomCards(mazo);
-        playersInGame.forEach(player -> player.receiveRandomCards(mazo));
+        communityCards.receiveRandomCards(deckOfCards);
+        playersInGame.forEach(player -> player.receiveRandomCards(deckOfCards));
 
-        if (commonCards.getCards().size() != 5) {
+        if (communityCards.getCards().size() != 5) {
             throw new RuntimeException("Common cards have not been set");
         }
         for (Player playerCard : players) {
@@ -70,26 +69,26 @@ public class Holdem {
         bet(CARTAS_REPARETIDAS, playersInGame);
 
         // Mostrar FLOW
-        commonCards.showFlop();
+        communityCards.showFlop();
         triggerEvent(FLOP);
 
         bet(FLOP, playersInGame);
 
         // Mostrar TURN
-        commonCards.showTurn();
+        communityCards.showTurn();
         triggerEvent(TURN);
 
         bet(TURN, playersInGame);
 
         // Mostrar RIVER
-        commonCards.showRiver();
+        communityCards.showRiver();
         triggerEvent(RIVER);
 
         bet(RIVER, playersInGame);
 
 
         // Calcular ganadores
-        ganadores.addAll(calcularGanadores(playersInGame, commonCards));
+        ganadores.addAll(calcularGanadores(playersInGame, communityCards));
 
         // Repartir pozo
         repartirPot(ganadores);
@@ -126,7 +125,7 @@ public class Holdem {
         int currentPot = 0;
         while (iterator.hasNext()) {
             Player player = iterator.next();
-            if (player.call(stage, playersInGame.size(), commonCards)) {
+            if (player.call(stage, playersInGame.size(), communityCards)) {
                 player.decreasePoints(callPoints);
                 currentPot += callPoints;
             } else {
@@ -147,11 +146,11 @@ public class Holdem {
         }
     }
 
-    public static Set<Player> calcularGanadores(List<Player> playerCards, CommonCards commonCards) {
+    public static Set<Player> calcularGanadores(List<Player> playerCards, CommunityCards communityCards) {
         Set<Player> ganadores = new HashSet<>();
         Juego maxJuego = null;
         for (Player player : playerCards) {
-            Juego juego = player.calcularJuego(commonCards);
+            Juego juego = player.calcularJuego(communityCards);
             if (maxJuego == null) {
                 ganadores.add(player);
                 maxJuego = juego;
@@ -175,7 +174,7 @@ public class Holdem {
         }
     }
 
-    public CommonCards getCommonCards() {
-        return commonCards;
+    public CommunityCards getCommonCards() {
+        return communityCards;
     }
 }

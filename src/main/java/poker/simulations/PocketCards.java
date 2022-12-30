@@ -5,14 +5,14 @@ import poker.Rank;
 
 import java.util.Objects;
 
-public class Dupla {
+public class PocketCards {
     private final Rank maxRank;
     private final Rank minRank;
     private final boolean isPair;
-
     private final boolean sameColor;
 
-    public Dupla(Card card1, Card card2) {
+    private final boolean posibleEscalera;
+    public PocketCards(Card card1, Card card2) {
         int rankCompare = card1.getRank().compareTo(card2.getRank());
         if(rankCompare > 0){
             this.maxRank = card1.getRank();
@@ -28,13 +28,19 @@ public class Dupla {
             this.isPair = true;
         }
 
+        if(rankCompare != 0 && Math.abs(rankCompare) < 5 ){
+            this.posibleEscalera = true;
+        } else{
+            this.posibleEscalera = false;
+        }
+
         this.sameColor = card1.getSuit().equals(card2.getSuit());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Dupla){
-            Dupla other = (Dupla) obj;
+        if(obj instanceof PocketCards){
+            PocketCards other = (PocketCards) obj;
             return this.maxRank.equals(other.maxRank) && this.minRank.equals(other.minRank);
         }
         return false;
@@ -47,6 +53,6 @@ public class Dupla {
 
     @Override
     public String toString() {
-        return String.format("{%s %s}%s", this.maxRank.toString(), this.minRank.toString(), sameColor ? "*" : " ");
+        return String.format("{%s %s}%s%s", this.maxRank.toString(), this.minRank.toString(), sameColor ? "*" : " ", posibleEscalera ? "+" : " ");
     }
 }

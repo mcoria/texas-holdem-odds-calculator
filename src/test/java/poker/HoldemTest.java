@@ -14,10 +14,10 @@ public class HoldemTest {
 
     @Test
     public void testCalcularGanadores_01() {
-        CommonCards commonCards = new CommonCards();
-        commonCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
-        commonCards.setTurn(Card.of(Hearts, SEVEN));
-        commonCards.setRiver(Card.of(Spades, NINE));
+        CommunityCards communityCards = new CommunityCards();
+        communityCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
+        communityCards.setTurn(Card.of(Hearts, SEVEN));
+        communityCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
         player1.setCards(
@@ -31,7 +31,7 @@ public class HoldemTest {
                 Card.of(Spades, KING)
         );
 
-        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), commonCards);
+        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), communityCards);
 
         assertEquals(1, ganadores.size());
         assertTrue(ganadores.contains(player1));
@@ -39,10 +39,10 @@ public class HoldemTest {
 
     @Test
     public void testCalcularGanadores_02() {
-        CommonCards commonCards = new CommonCards();
-        commonCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
-        commonCards.setTurn(Card.of(Hearts, SEVEN));
-        commonCards.setRiver(Card.of(Spades, NINE));
+        CommunityCards communityCards = new CommunityCards();
+        communityCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
+        communityCards.setTurn(Card.of(Hearts, SEVEN));
+        communityCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
         player1.setCards(
@@ -56,7 +56,7 @@ public class HoldemTest {
                 Card.of(Spades, ACE)
         );
 
-        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), commonCards);
+        Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), communityCards);
 
         assertEquals(2, ganadores.size());
         assertTrue(ganadores.contains(player1));

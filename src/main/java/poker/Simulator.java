@@ -8,10 +8,10 @@ public class Simulator {
 
     private List<Player> players;
 
-    private CommonCards commonCards;
+    private CommunityCards communityCards;
 
     public void simulate(int numberOfSimulations) {
-        Holdem holdem = new Holdem(players, commonCards);
+        Holdem holdem = new Holdem(players, communityCards);
 
         for (EventListener listener : listeners) {
             holdem.addListener(listener);
@@ -32,7 +32,7 @@ public class Simulator {
         this.players = players;
     }
 
-    public void setCommonCards(CommonCards commonCards) {
-        this.commonCards = commonCards;
+    public void setCommonCards(CommunityCards communityCards) {
+        this.communityCards = communityCards;
     }
 }

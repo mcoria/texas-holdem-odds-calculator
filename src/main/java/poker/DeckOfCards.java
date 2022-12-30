@@ -2,7 +2,7 @@ package poker;
 
 import java.util.*;
 
-public class Mazo {
+public class DeckOfCards {
     private final Card[] cards = Card.values();
     private final Set<Integer> repartidas = new HashSet<>();
     private final Set<Integer> cardsToAvoid = new HashSet<>();

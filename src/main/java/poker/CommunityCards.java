@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CommonCards {
+public class CommunityCards {
     private final Set<Card> cards = new HashSet<>();
     private Card flopCard1 = null;
     private Card flopCard2 = null;
@@ -13,13 +13,13 @@ public class CommonCards {
     private Card turnCard = null;
     private Card riverCard = null;
 
-    public void receiveRandomCards(Mazo mazo) {
+    public void receiveRandomCards(DeckOfCards deckOfCards) {
         while (cards.size() < 5) {
-            cards.add(mazo.getRandomCard());
+            cards.add(deckOfCards.getRandomCard());
         }
     }
 
-    public CommonCards setFlop(Card card1, Card card2, Card card3) {
+    public CommunityCards setFlop(Card card1, Card card2, Card card3) {
         flopCard1 = card1;
         flopCard2 = card2;
         flopCard3 = card3;
@@ -31,13 +31,13 @@ public class CommonCards {
         return this;
     }
 
-    public CommonCards setTurn(Card card) {
+    public CommunityCards setTurn(Card card) {
         turnCard = card;
         cards.add(turnCard);
         return this;
     }
 
-    public CommonCards setRiver(Card card) {
+    public CommunityCards setRiver(Card card) {
         riverCard = card;
         cards.add(riverCard);
         return this;
@@ -71,15 +71,15 @@ public class CommonCards {
         }
     }
 
-    public void collectCardsToAvoid(Mazo mazo) {
+    public void collectCardsToAvoid(DeckOfCards deckOfCards) {
         if (flopCard1 != null && flopCard2 != null && flopCard3 != null) {
-            mazo.addCardsToAvoid(Set.of(flopCard1, flopCard2, flopCard3));
+            deckOfCards.addCardsToAvoid(Set.of(flopCard1, flopCard2, flopCard3));
         }
         if (turnCard != null) {
-            mazo.addCardsToAvoid(Set.of(turnCard));
+            deckOfCards.addCardsToAvoid(Set.of(turnCard));
         }
         if (riverCard != null) {
-            mazo.addCardsToAvoid(Set.of(riverCard));
+            deckOfCards.addCardsToAvoid(Set.of(riverCard));
         }
     }
 

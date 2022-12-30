@@ -1,9 +1,7 @@
 package poker.simulations;
 
-import poker.CommonCards;
-import poker.EventListener;
+import poker.CommunityCards;
 import poker.Player;
-import poker.Simulator;
 import poker.listeners.*;
 
 import java.util.ArrayList;
@@ -35,8 +33,8 @@ public class Aleatorio extends AbstractSimulationReport{
     }
 
     @Override
-    protected CommonCards createCommonCards() {
-        return new CommonCards();
+    protected CommunityCards createCommonCards() {
+        return new CommunityCards();
     }
 
     @Override

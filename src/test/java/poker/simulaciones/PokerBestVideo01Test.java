@@ -5,7 +5,6 @@ import org.junit.Test;
 import poker.*;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -74,7 +73,7 @@ public class PokerBestVideo01Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards());
+        simulator.setCommonCards(new CommunityCards());
 
         faraz.setDefaultCallResponse(false);
         josh.setDefaultCallResponse(false);

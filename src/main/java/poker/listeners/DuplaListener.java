@@ -3,29 +3,29 @@ package poker.listeners;
 import poker.Card;
 import poker.Holdem;
 import poker.Player;
-import poker.simulations.Dupla;
+import poker.simulations.PocketCards;
 
 import java.util.*;
 
 public class DuplaListener implements HoldemStatics {
 
-    private Map<Dupla, Integer> contadoresJuego = new HashMap<>();
-    private Map<Dupla, Integer> contadoresJuegoGanador = new HashMap<>();
+    private Map<PocketCards, Integer> contadoresJuego = new HashMap<>();
+    private Map<PocketCards, Integer> contadoresJuegoGanador = new HashMap<>();
 
     @Override
     public void catchEvent(HoldemEvents event, Holdem holdem) {
         if (event.equals(HoldemEvents.FINISHED)) {
-            Set<Dupla> dupleSet = new HashSet<>();
+            Set<PocketCards> dupleSet = new HashSet<>();
             for (Player player : holdem.getPlayers()) {
                 Card[] cards = player.getCards().toArray(new Card[2]);
-                Dupla dupla = new Dupla(cards[0], cards[1]);
+                PocketCards pocketCards = new PocketCards(cards[0], cards[1]);
                 // Si el juego es ganador evitamos contarlo mas de una vez
-                if (!dupleSet.contains(dupla)) {
-                    contadoresJuego.compute(dupla, (k, v) -> v == null ? 1 : v + 1);
+                if (!dupleSet.contains(pocketCards)) {
+                    contadoresJuego.compute(pocketCards, (k, v) -> v == null ? 1 : v + 1);
                     if (holdem.getGanadores().contains(player)) {
-                        contadoresJuegoGanador.compute(dupla, (k, v) -> v == null ? 1 : v + 1);
+                        contadoresJuegoGanador.compute(pocketCards, (k, v) -> v == null ? 1 : v + 1);
                     }
-                    dupleSet.add(dupla);
+                    dupleSet.add(pocketCards);
                 }
             }
         }
@@ -34,10 +34,10 @@ public class DuplaListener implements HoldemStatics {
     @Override
     public void printStatics() {
         contadoresJuegoGanador.entrySet().stream().sorted(Comparator.comparingDouble(entry -> (double) entry.getValue() / contadoresJuego.get(entry.getKey()))).forEach(entry -> {
-            Dupla dupla = entry.getKey();
+            PocketCards pocketCards = entry.getKey();
             int contadorGanador = entry.getValue();
-            int contadorJuego = contadoresJuego.get(dupla);
-            System.out.printf("Probabilidad de ganar con %s  = \t\t\t %3.2f%% \n", dupla.toString(), 100f * (float) contadorGanador / (float) contadorJuego);
+            int contadorJuego = contadoresJuego.get(pocketCards);
+            System.out.printf("Probabilidad de ganar con %s  = \t\t\t %3.2f%% \n", pocketCards.toString(), 100f * (float) contadorGanador / (float) contadorJuego);
         });
     }
 

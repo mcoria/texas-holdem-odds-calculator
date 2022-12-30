@@ -5,7 +5,6 @@ import org.junit.Test;
 import poker.*;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -72,7 +71,7 @@ public class PokerBestVideo04Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommonCards());
+        simulator.setCommonCards(new CommunityCards());
 
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
@@ -91,10 +90,10 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards();
-        commonCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
+        CommunityCards communityCards = new CommunityCards();
+        communityCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
 
-        simulator.setCommonCards(commonCards);
+        simulator.setCommonCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
@@ -112,11 +111,11 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards()
+        CommunityCards communityCards = new CommunityCards()
                 .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
                 .setTurn(Card.of(Suit.Clubs, Rank.TEN));
 
-        simulator.setCommonCards(commonCards);
+        simulator.setCommonCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         faraz.setDefaultCallResponse(false);
@@ -134,12 +133,12 @@ public class PokerBestVideo04Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        CommonCards commonCards = new CommonCards()
+        CommunityCards communityCards = new CommunityCards()
                 .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
                 .setTurn(Card.of(Suit.Clubs, Rank.TEN))
                 .setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
 
-        simulator.setCommonCards(commonCards);
+        simulator.setCommonCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         faraz.setDefaultCallResponse(false);

@@ -5,16 +5,15 @@ import poker.listeners.HoldemStatics;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class CombinationsBeforeFlop extends AbstractSimulationReport {
+public class BeforeFlop extends AbstractSimulationReport {
 
-    private static final int SIMULATIONS = 100000;
+    private static final int SIMULATIONS = 10000000;
 
     private static final int PLAYERS = 8; //23 Max con un mazo
 
     public static void main(String[] args) {
-        new CombinationsBeforeFlop().simulate();
+        new BeforeFlop().simulate();
     }
 
     @Override
@@ -23,7 +22,7 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
     }
 
     private Player observer = new Player()
-            .setCards(Card.of(Suit.Spades, Rank.ACE), Card.of(Suit.Clubs, Rank.ACE));
+            .setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Clubs, Rank.JACK));
@@ -72,8 +71,8 @@ public class CombinationsBeforeFlop extends AbstractSimulationReport {
     }
 
     @Override
-    protected CommonCards createCommonCards() {
-        return new CommonCards();
+    protected CommunityCards createCommonCards() {
+        return new CommunityCards();
     }
 
     @Override

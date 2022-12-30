@@ -1,7 +1,6 @@
 package poker.simulations;
 
-import poker.CommonCards;
-import poker.EventListener;
+import poker.CommunityCards;
 import poker.Player;
 import poker.Simulator;
 import poker.listeners.HoldemStatics;
@@ -14,7 +13,7 @@ public abstract class AbstractSimulationReport {
 
     protected abstract List<Player> createPlayers();
 
-    protected abstract CommonCards createCommonCards();
+    protected abstract CommunityCards createCommonCards();
 
     protected abstract int getNumberOfSimulations();
 
