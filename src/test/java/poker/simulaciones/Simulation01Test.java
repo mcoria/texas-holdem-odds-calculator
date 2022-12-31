@@ -56,7 +56,7 @@ public class Simulation01Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards());
+        simulator.setCommunityCards(new CommunityCards());
 
         simulator.setPlayers(List.of(player1, player2));
 
@@ -73,7 +73,7 @@ public class Simulation01Test {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
 
-        simulator.setCommonCards(new CommunityCards()
+        simulator.setCommunityCards(new CommunityCards()
                 .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
         );
 
@@ -91,7 +91,7 @@ public class Simulation01Test {
     public void test3() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards()
+        simulator.setCommunityCards(new CommunityCards()
                 .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
                 .setTurn(Card.of(Suit.Spades, Rank.NINE))
         );
@@ -110,7 +110,7 @@ public class Simulation01Test {
     public void test4() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards()
+        simulator.setCommunityCards(new CommunityCards()
                 .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
                 .setTurn(Card.of(Suit.Spades, Rank.NINE))
                 .setRiver(Card.of(Suit.Spades, Rank.KING))
@@ -131,7 +131,7 @@ public class Simulation01Test {
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards()
+        simulator.setCommunityCards(new CommunityCards()
                 .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
                 .setTurn(Card.of(Suit.Spades, Rank.NINE))
                 .setRiver(Card.of(Suit.Spades, Rank.KING))
@@ -152,7 +152,7 @@ public class Simulation01Test {
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards()
+        simulator.setCommunityCards(new CommunityCards()
                 .setFlop(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Spades, Rank.FOUR), Card.of(Suit.Clubs, Rank.SEVEN))
                 .setTurn(Card.of(Suit.Spades, Rank.NINE))
                 .setRiver(Card.of(Suit.Spades, Rank.KING))

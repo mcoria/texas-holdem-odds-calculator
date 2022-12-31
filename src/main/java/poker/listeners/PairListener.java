@@ -1,11 +1,8 @@
 package poker.listeners;
 
-import poker.EventListener;
 import poker.Holdem;
 import poker.Player;
 import poker.Rank;
-
-import java.util.Map;
 
 public class PairListener implements HoldemStatics {
     private int games = 0;
@@ -88,14 +85,14 @@ public class PairListener implements HoldemStatics {
     }
 
     private boolean isPair(Player player) {
-        if (player.getCards().stream().map(card -> card.getRank()).distinct().count() == 1l) {
+        if (player.getPocketCards().stream().map(card -> card.getRank()).distinct().count() == 1l) {
             return true;
         }
         return false;
     }
 
     private boolean isPairOfValue(Player player, Rank rank) {
-        if (player.getCards().stream().filter(theCard -> rank.equals(theCard.getRank())).count() == 2l) {
+        if (player.getPocketCards().stream().filter(theCard -> rank.equals(theCard.getRank())).count() == 2l) {
             return true;
         }
         return false;

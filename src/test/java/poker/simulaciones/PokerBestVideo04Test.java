@@ -71,7 +71,7 @@ public class PokerBestVideo04Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards());
+        simulator.setCommunityCards(new CommunityCards());
 
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
@@ -93,7 +93,7 @@ public class PokerBestVideo04Test {
         CommunityCards communityCards = new CommunityCards();
         communityCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
 
-        simulator.setCommonCards(communityCards);
+        simulator.setCommunityCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
@@ -115,7 +115,7 @@ public class PokerBestVideo04Test {
                 .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
                 .setTurn(Card.of(Suit.Clubs, Rank.TEN));
 
-        simulator.setCommonCards(communityCards);
+        simulator.setCommunityCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         faraz.setDefaultCallResponse(false);
@@ -138,7 +138,7 @@ public class PokerBestVideo04Test {
                 .setTurn(Card.of(Suit.Clubs, Rank.TEN))
                 .setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
 
-        simulator.setCommonCards(communityCards);
+        simulator.setCommunityCards(communityCards);
 
         scotty.setDefaultCallResponse(false);
         faraz.setDefaultCallResponse(false);

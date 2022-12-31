@@ -60,7 +60,7 @@ public class Holdem {
             throw new RuntimeException("Common cards have not been set");
         }
         for (Player playerCard : players) {
-            if (playerCard.getCards().size() != 2) {
+            if (playerCard.getPocketCards().size() != 2) {
                 throw new RuntimeException("Player cards have not been set");
             }
         }
@@ -68,32 +68,55 @@ public class Holdem {
 
         bet(CARTAS_REPARETIDAS, playersInGame);
 
-        // Mostrar FLOW
-        communityCards.showFlop();
-        triggerEvent(FLOP);
+        if (playersInGame.size() > 1) {
+            // Mostrar FLOP
+            communityCards.showFlop();
+            triggerEvent(FLOP);
 
-        bet(FLOP, playersInGame);
+            bet(FLOP, playersInGame);
 
-        // Mostrar TURN
-        communityCards.showTurn();
-        triggerEvent(TURN);
+            if (playersInGame.size() > 1) {
 
-        bet(TURN, playersInGame);
+                // Mostrar TURN
+                communityCards.showTurn();
+                triggerEvent(TURN);
 
-        // Mostrar RIVER
-        communityCards.showRiver();
-        triggerEvent(RIVER);
+                bet(TURN, playersInGame);
 
-        bet(RIVER, playersInGame);
+                if (playersInGame.size() > 1) {
 
+                    // Mostrar RIVER
+                    communityCards.showRiver();
+                    triggerEvent(RIVER);
+
+                    bet(RIVER, playersInGame);
+
+                    if (playersInGame.size() > 1) {
+                        // Calcular ganadores
+                        ganadores.addAll(calcularGanadores(playersInGame, communityCards));
+
+                        // Repartir pozo
+                        repartirPot(ganadores);
+
+                        triggerEvent(FINISHED);
+
+                        return ganadores;
+                    }
+                }
+            }
+        }
+
+        if (playersInGame.size() != 1) {
+            throw new RuntimeException("playersInGame should be equals to 1");
+        }
 
         // Calcular ganadores
-        ganadores.addAll(calcularGanadores(playersInGame, communityCards));
+        ganadores.addAll(playersInGame);
 
         // Repartir pozo
         repartirPot(ganadores);
 
-        triggerEvent(FINISHED);
+        triggerEvent(FINISHED_ABANDONO);
 
         return ganadores;
     }
@@ -105,20 +128,16 @@ public class Holdem {
         int callPoints = 0;
         switch (stage) {
             case CARTAS_REPARETIDAS:
-                //callPoints = 1;
-                callPoints = 0;
+                callPoints = 1;
                 break;
             case FLOP:
-                //callPoints = 2;
-                callPoints = 0;
+                callPoints = 2;
                 break;
             case TURN:
-                //callPoints = 3;
-                callPoints = 0;
+                callPoints = 3;
                 break;
             case RIVER:
-                //callPoints = 5;
-                callPoints = 1;
+                callPoints = 5;
                 break;
         }
 

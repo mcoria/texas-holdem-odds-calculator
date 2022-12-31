@@ -32,7 +32,7 @@ public class Simulator {
         this.players = players;
     }
 
-    public void setCommonCards(CommunityCards communityCards) {
+    public void setCommunityCards(CommunityCards communityCards) {
         this.communityCards = communityCards;
     }
 }

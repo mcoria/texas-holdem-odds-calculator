@@ -80,7 +80,7 @@ public class PokerBestVideo03Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards());
+        simulator.setCommunityCards(new CommunityCards());
 
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);

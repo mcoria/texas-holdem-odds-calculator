@@ -20,7 +20,7 @@ public abstract class AbstractSimulationReport {
     public void simulate() {
         Simulator simulator = new Simulator();
 
-        simulator.setCommonCards(createCommunityCards());
+        simulator.setCommunityCards(createCommunityCards());
 
         List<Player> players = createPlayers();
         simulator.setPlayers(players);

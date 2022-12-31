@@ -52,7 +52,7 @@ public class Simulation02Test {
     public void test1() {
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
-        simulator.setCommonCards(new CommunityCards());
+        simulator.setCommunityCards(new CommunityCards());
 
         simulator.setPlayers(List.of(player1, player2));
 

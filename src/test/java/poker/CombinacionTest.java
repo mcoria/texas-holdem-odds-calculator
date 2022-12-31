@@ -1,7 +1,7 @@
 package poker;
 
 import org.junit.Test;
-import poker.simulations.PocketCards;
+import poker.simulations.PocketCardsGrouping;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class CombinacionTest {
 
     @Test
     public void combinar(){
-        Map<PocketCards, Integer> duplaCounters = new HashMap<>();
+        Map<PocketCardsGrouping, Integer> duplaCounters = new HashMap<>();
         Card[] cardArray = Card.values();
         int counter = 0;
         for (int i = 0; i < 51; i++) {
@@ -18,8 +18,8 @@ public class CombinacionTest {
             for (int j = i + 1; j < 52; j++) {
                 Card card2 = cardArray[j];
 
-                PocketCards pocketCards = new PocketCards(card1, card2);
-                duplaCounters.compute(pocketCards, (k, v) -> v == null ? 1 : v + 1);
+                PocketCardsGrouping pocketCardsGrouping = new PocketCardsGrouping(card1, card2);
+                duplaCounters.compute(pocketCardsGrouping, (k, v) -> v == null ? 1 : v + 1);
 
                 counter++;
             }
@@ -27,11 +27,11 @@ public class CombinacionTest {
         System.out.printf("Combinaciones posibles %d \n", counter);
 
 
-        for (Map.Entry<PocketCards, Integer> duplaCounter:
+        for (Map.Entry<PocketCardsGrouping, Integer> duplaCounter:
                 duplaCounters.entrySet()) {
-            PocketCards pocketCards = duplaCounter.getKey();
+            PocketCardsGrouping pocketCardsGrouping = duplaCounter.getKey();
             int contador = duplaCounter.getValue();
-            System.out.printf("Combinacion '%s'\t\t%3d\t\t%3.2f%%\n",  pocketCards.toString(), contador, 100f * (float) contador / (float) counter);
+            System.out.printf("Combinacion '%s'\t\t%3d\t\t%3.2f%%\n",  pocketCardsGrouping.toString(), contador, 100f * (float) contador / (float) counter);
         }
 
     }

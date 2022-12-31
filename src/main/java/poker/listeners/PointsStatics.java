@@ -21,7 +21,7 @@ public class PointsStatics implements HoldemStatics {
     public void catchEvent(HoldemEvents event, Holdem holdem) {
         if (HoldemEvents.NEW_GAME.equals(event)) {
             games++;
-        } else if (HoldemEvents.FINISHED.equals(event)) {
+        } else if (HoldemEvents.FINISHED.equals(event) || HoldemEvents.FINISHED_ABANDONO.equals(event)) {
             for (Player player :
                     holdem.getPlayers()) {
                 IntSummaryStatistics playerStatic = pointStatics.computeIfAbsent(player, k -> new IntSummaryStatistics());

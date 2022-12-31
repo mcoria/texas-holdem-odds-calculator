@@ -5,7 +5,7 @@ import poker.Rank;
 
 import java.util.Objects;
 
-public class PocketCards {
+public class PocketCardsGrouping {
     private final Rank maxRank;
     private final Rank minRank;
     private final boolean isPair;
@@ -13,7 +13,7 @@ public class PocketCards {
 
     private final boolean posibleEscalera;
 
-    public PocketCards(Card card1, Card card2) {
+    public PocketCardsGrouping(Card card1, Card card2) {
         int rankCompare = card1.getRank().compareTo(card2.getRank());
         if (rankCompare > 0) {
             this.maxRank = card1.getRank();
@@ -45,8 +45,8 @@ public class PocketCards {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof PocketCards) {
-            PocketCards other = (PocketCards) obj;
+        if (obj instanceof PocketCardsGrouping) {
+            PocketCardsGrouping other = (PocketCardsGrouping) obj;
             return this.maxRank.equals(other.maxRank) && this.minRank.equals(other.minRank);
         }
         return false;

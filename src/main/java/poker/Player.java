@@ -6,24 +6,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
-    private final Set<Card> cards = new HashSet<>();
+    private final Set<Card> pocketCards = new HashSet<>();
     private Juego juego;
-    private CardBucket cardBucket = new DefaultCardBucket();
+    private CardBucketStrategy cardBucketStrategy = new DefaultCardBucketStrategy();
     private boolean defaultCallResponse = true;
 
     private int points = 0;
 
     public void receiveRandomCards(DeckOfCards deckOfCards) {
-        cardBucket.receiveRandomCards(deckOfCards);
+        cardBucketStrategy.receiveRandomCards(deckOfCards);
     }
 
-    public Set<Card> getCards() {
-        return cards;
+    public Set<Card> getPocketCards() {
+        return pocketCards;
     }
 
     public void reset() {
         juego = null;
-        cardBucket.reset();
+        cardBucketStrategy.reset();
     }
 
     public Juego getJuego() {
@@ -36,17 +36,17 @@ public class Player {
     public Juego calcularJuego(CommunityCards communityCards) {
         Set<Card> theCards = new HashSet<>();
         theCards.addAll(communityCards.getCards());
-        theCards.addAll(cards);
+        theCards.addAll(pocketCards);
         juego = Juego.cargarJuego(theCards);
         return juego;
     }
 
     public Player setCards(Card card1, Card card2) {
-        cardBucket = new NoOpCardBucket();
+        cardBucketStrategy = new NoOpCardBucketStrategy();
 
-        cards.clear();
-        cards.add(card1);
-        cards.add(card2);
+        pocketCards.clear();
+        pocketCards.add(card1);
+        pocketCards.add(card2);
 
         return this;
     }
@@ -56,11 +56,12 @@ public class Player {
     }
 
     public void collectCardsToAvoid(DeckOfCards deckOfCards) {
-        cardBucket.collectCardsToAvoid(deckOfCards);
+        cardBucketStrategy.collectCardsToAvoid(deckOfCards);
     }
 
-    public void setDefaultCallResponse(boolean defaultCallResponse) {
+    public Player setDefaultCallResponse(boolean defaultCallResponse) {
         this.defaultCallResponse = defaultCallResponse;
+        return this;
     }
 
     public void decreasePoints(int points) {
@@ -75,7 +76,7 @@ public class Player {
         return this.points;
     }
 
-    private interface CardBucket {
+    private interface CardBucketStrategy {
 
         void receiveRandomCards(DeckOfCards deckOfCards);
 
@@ -84,17 +85,17 @@ public class Player {
         void collectCardsToAvoid(DeckOfCards deckOfCards);
     }
 
-    private class DefaultCardBucket implements CardBucket {
+    private class DefaultCardBucketStrategy implements CardBucketStrategy {
 
         @Override
         public void receiveRandomCards(DeckOfCards deckOfCards) {
-            cards.add(deckOfCards.getRandomCard());
-            cards.add(deckOfCards.getRandomCard());
+            pocketCards.add(deckOfCards.getRandomCard());
+            pocketCards.add(deckOfCards.getRandomCard());
         }
 
         @Override
         public void reset() {
-            cards.clear();
+            pocketCards.clear();
         }
 
         @Override
@@ -102,7 +103,7 @@ public class Player {
         }
     }
 
-    private class NoOpCardBucket implements CardBucket {
+    private class NoOpCardBucketStrategy implements CardBucketStrategy {
         @Override
         public void receiveRandomCards(DeckOfCards deckOfCards) {
         }
@@ -113,7 +114,7 @@ public class Player {
 
         @Override
         public void collectCardsToAvoid(DeckOfCards deckOfCards) {
-            deckOfCards.addCardsToAvoid(cards);
+            deckOfCards.addCardsToAvoid(pocketCards);
         }
     }
 
