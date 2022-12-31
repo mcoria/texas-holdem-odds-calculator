@@ -10,7 +10,6 @@ public class PocketCardsGrouping {
     private final Rank minRank;
     private final boolean isPair;
     private final boolean sameColor;
-
     private final boolean posibleEscalera;
 
     public PocketCardsGrouping(Card card1, Card card2) {
@@ -60,5 +59,21 @@ public class PocketCardsGrouping {
     @Override
     public String toString() {
         return String.format("{%s %s}%s%s", this.maxRank.toString(), this.minRank.toString(), sameColor ? "*" : " ", posibleEscalera ? "+" : " ");
+    }
+
+    public Rank getMaxRank() {
+        return maxRank;
+    }
+
+    public Rank getMinRank() {
+        return minRank;
+    }
+
+    public boolean isPair() {
+        return isPair;
+    }
+
+    public boolean isPosibleEscalera() {
+        return posibleEscalera;
     }
 }

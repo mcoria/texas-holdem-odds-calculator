@@ -5,6 +5,7 @@ import poker.Holdem;
 import poker.Player;
 import poker.juegos.Juego;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.Map;
@@ -42,11 +43,11 @@ public class PointsStatics implements HoldemStatics {
     @Override
     public void printStatics() {
         System.out.printf("Cantidad de empates = %d (%3.2f%%) \n", empates, 100f * (float) empates / (float) games );
-        pointStatics.entrySet().stream().forEach( entry -> {
+        pointStatics.entrySet().stream().sorted(Comparator.comparingDouble(o -> o.getValue().getAverage())).forEach(entry -> {
             Player player = entry.getKey();
             IntSummaryStatistics playerStatic = entry.getValue();
             Integer juegosGanados = contadorGanador.getOrDefault(player, 0);
-            System.out.printf ("Player partidos ganados = %d (%3.2f%%), points = %d, min = %d, max = %d, avg = %f \n", juegosGanados, 100f * (float) juegosGanados / (float) games , player.getPoints(), playerStatic.getMin(),  playerStatic.getMax(), playerStatic.getAverage());
+            System.out.printf ("Player [%s] partidos ganados = %10d (%5.2f%%), points = %10d, min = %10d, max = %10d, avg = %13.2f \n", player.getPlayerName() ,juegosGanados, 100f * (float) juegosGanados / (float) games , player.getPoints(), playerStatic.getMin(),  playerStatic.getMax(), playerStatic.getAverage());
         });
     }
 }

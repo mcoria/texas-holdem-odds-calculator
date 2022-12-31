@@ -9,7 +9,7 @@ public class Player {
     private final Set<Card> pocketCards = new HashSet<>();
     private Juego juego;
     private CardBucketStrategy cardBucketStrategy = new DefaultCardBucketStrategy();
-    private boolean defaultCallResponse = true;
+    protected boolean defaultCallResponse = true;
 
     private int points = 0;
 
@@ -118,6 +118,9 @@ public class Player {
         }
     }
 
+    public String getPlayerName(){
+        return getClass().getSimpleName().toString();
+    }
 
 }
 

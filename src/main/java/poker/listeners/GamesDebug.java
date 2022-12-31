@@ -1,6 +1,5 @@
 package poker.listeners;
 
-import poker.EventListener;
 import poker.Holdem;
 import poker.Player;
 import poker.juegos.Juego;
@@ -13,7 +12,7 @@ public class GamesDebug implements HoldemStatics {
         if (HoldemEvents.FINISHED.equals(event)) {
             System.out.println("--------------------------------------------");
 
-            System.out.println("Common cards " + holdem.getCommonCards());
+            System.out.println("Common cards " + holdem.getCommunityCards());
 
             for (Player player :
                     holdem.getGanadores()) {
