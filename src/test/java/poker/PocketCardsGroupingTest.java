@@ -3,10 +3,14 @@ package poker;
 import org.junit.Test;
 import poker.simulations.PocketCardsGrouping;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class CombinacionTest {
+import static org.junit.Assert.assertEquals;
+
+public class PocketCardsGroupingTest {
 
     @Test
     public void combinar(){
@@ -26,12 +30,16 @@ public class CombinacionTest {
         }
         System.out.printf("Combinaciones posibles %d \n", counter);
 
+        assertEquals(1326, counter);
 
         for (Map.Entry<PocketCardsGrouping, Integer> duplaCounter:
-                duplaCounters.entrySet()) {
+                duplaCounters.entrySet().stream().sorted(Comparator.comparingInt(Map.Entry::getValue)).collect(Collectors.toList()) ) {
             PocketCardsGrouping pocketCardsGrouping = duplaCounter.getKey();
             int contador = duplaCounter.getValue();
             System.out.printf("Combinacion '%s'\t\t%3d\t\t%3.2f%%\n",  pocketCardsGrouping.toString(), contador, 100f * (float) contador / (float) counter);
+            if(pocketCardsGrouping.isPair()){
+                assertEquals(6, contador);
+            }
         }
 
     }

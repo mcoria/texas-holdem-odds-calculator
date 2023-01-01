@@ -119,7 +119,7 @@ public class Player {
     }
 
     public String getPlayerName(){
-        return getClass().getSimpleName().toString();
+        return getClass().getSimpleName();
     }
 
 }

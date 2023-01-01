@@ -76,4 +76,8 @@ public class PocketCardsGrouping {
     public boolean isPosibleEscalera() {
         return posibleEscalera;
     }
+
+    public boolean isSameColor() {
+        return sameColor;
+    }
 }
