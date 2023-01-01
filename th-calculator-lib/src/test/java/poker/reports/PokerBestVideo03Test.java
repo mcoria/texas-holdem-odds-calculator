@@ -16,23 +16,23 @@ public class PokerBestVideo03Test {
     public void setup() {
         daniel = new Player()
                 //* Daniel =    J(spades)     7(spades)              - 31%
-                .setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
+                .setPocketCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Spades, Rank.SEVEN));
 
         scotty = new Player()
                 //* Scotty =    6(spades)     4(hearts)             - se va
-                .setCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
+                .setPocketCards(Card.of(Suit.Spades, Rank.SIX), Card.of(Suit.Hearts, Rank.FOUR));
 
         faraz = new Player()
                 // Faraz  = -  6(clubs)      7(hearts)              - 16%
-                .setCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
+                .setPocketCards(Card.of(Suit.Hearts, Rank.SEVEN), Card.of(Suit.Clubs, Rank.SIX));
 
         josh = new Player()
                 // Josh =  K(diamonds)   Q(hearts)                  - 51%
-                .setCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
+                .setPocketCards(Card.of(Suit.Diamonds, Rank.KING), Card.of(Suit.Hearts, Rank.QUEEN));
 
         shawn = new Player()
                 //* Shawn  =    A(clubs)      K(hearts)             - se va
-                .setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
+                .setPocketCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
 
         listener = new MyHoldemListener();
     }

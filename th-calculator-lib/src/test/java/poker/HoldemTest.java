@@ -20,13 +20,13 @@ public class HoldemTest {
         communityCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
-        player1.setCards(
+        player1.setPocketCards(
                 Card.of(Hearts, ACE),
                 Card.of(Spades, ACE)
         );
 
         Player player2 = new Player();
-        player2.setCards(
+        player2.setPocketCards(
                 Card.of(Hearts, KING),
                 Card.of(Spades, KING)
         );
@@ -45,13 +45,13 @@ public class HoldemTest {
         communityCards.setRiver(Card.of(Spades, NINE));
 
         Player player1 = new Player();
-        player1.setCards(
+        player1.setPocketCards(
                 Card.of(Hearts, ACE),
                 Card.of(Spades, ACE)
         );
 
         Player player2 = new Player();
-        player2.setCards(
+        player2.setPocketCards(
                 Card.of(Diamonds, ACE),
                 Card.of(Spades, ACE)
         );

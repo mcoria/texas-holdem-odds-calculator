@@ -41,7 +41,7 @@ public class Player {
         return juego;
     }
 
-    public Player setCards(Card card1, Card card2) {
+    public Player setPocketCards(Card card1, Card card2) {
         cardBucketStrategy = new NoOpCardBucketStrategy();
 
         pocketCards.clear();
