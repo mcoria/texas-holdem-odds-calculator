@@ -1,9 +1,9 @@
-package poker.simulations;
+package poker.reports;
 
 import poker.CommunityCards;
 import poker.Player;
 import poker.Simulator;
-import poker.listeners.HoldemStatics;
+import poker.reports.listeners.HoldemStatics;
 
 import java.util.List;
 

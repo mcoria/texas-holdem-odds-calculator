@@ -51,7 +51,7 @@ public class Player {
         return this;
     }
 
-    public boolean call(EventListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
+    public boolean call(HoldemListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
         return this.defaultCallResponse;
     }
 

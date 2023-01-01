@@ -1,9 +1,9 @@
-package poker.listeners;
+package poker.reports.listeners;
 
 import poker.Card;
 import poker.Holdem;
 import poker.Player;
-import poker.simulations.PocketCardsGrouping;
+import poker.analysis.PocketCardsGrouping;
 
 import java.util.*;
 

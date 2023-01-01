@@ -1,4 +1,4 @@
-package poker.simulaciones;
+package poker.reports;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class PokerBestVideo03Test {
                 //* Shawn  =    A(clubs)      K(hearts)             - se va
                 .setCards(Card.of(Suit.Clubs, Rank.ACE), Card.of(Suit.Hearts, Rank.KING));
 
-        listener = new MyEventListener();
+        listener = new MyHoldemListener();
     }
 
     private Player daniel;
@@ -47,10 +47,10 @@ public class PokerBestVideo03Test {
 
     private Player shawn;
 
-    private MyEventListener listener;
+    private MyHoldemListener listener;
 
 
-    class MyEventListener implements EventListener {
+    class MyHoldemListener implements HoldemListener {
         protected int farazCounter = 0;
         protected int joshCounter = 0;
 

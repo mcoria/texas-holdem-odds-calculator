@@ -1,6 +1,5 @@
-package poker.listeners;
+package poker.reports.listeners;
 
-import poker.EventListener;
 import poker.Holdem;
 import poker.Player;
 import poker.juegos.Juego;

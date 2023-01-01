@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Simulator {
 
-    private List<? extends EventListener> listeners;
+    private List<? extends HoldemListener> listeners;
 
     private List<Player> players;
 
@@ -13,7 +13,7 @@ public class Simulator {
     public void simulate(int numberOfSimulations) {
         Holdem holdem = new Holdem(players, communityCards);
 
-        for (EventListener listener : listeners) {
+        for (HoldemListener listener : listeners) {
             holdem.addListener(listener);
         }
 
@@ -24,7 +24,7 @@ public class Simulator {
     }
 
 
-    public void setListeners(List<? extends EventListener> listeners) {
+    public void setListeners(List<? extends HoldemListener> listeners) {
         this.listeners = listeners;
     }
 

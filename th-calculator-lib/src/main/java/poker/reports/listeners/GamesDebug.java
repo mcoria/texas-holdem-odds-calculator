@@ -1,4 +1,4 @@
-package poker.listeners;
+package poker.reports.listeners;
 
 import poker.Holdem;
 import poker.Player;

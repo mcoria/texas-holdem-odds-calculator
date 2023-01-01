@@ -1,4 +1,4 @@
-package poker.simulations;
+package poker.analysis;
 
 import poker.Card;
 import poker.Rank;

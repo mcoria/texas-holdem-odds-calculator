@@ -1,7 +1,7 @@
 package poker;
 
 import org.junit.Test;
-import poker.simulations.PocketCardsGrouping;
+import poker.analysis.PocketCardsGrouping;
 
 import java.util.Comparator;
 import java.util.HashMap;

@@ -1,8 +1,6 @@
 package poker;
 
-import java.util.Map;
-
-public interface EventListener {
+public interface HoldemListener {
 
     enum HoldemEvents {NEW_GAME, CARTAS_REPARETIDAS, FLOP, TURN, RIVER, FINISHED_ABANDONO, FINISHED}
 

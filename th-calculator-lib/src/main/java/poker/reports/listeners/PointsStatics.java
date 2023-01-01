@@ -1,9 +1,7 @@
-package poker.listeners;
+package poker.reports.listeners;
 
-import poker.EventListener;
 import poker.Holdem;
 import poker.Player;
-import poker.juegos.Juego;
 
 import java.util.Comparator;
 import java.util.HashMap;
