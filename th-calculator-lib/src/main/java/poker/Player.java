@@ -39,7 +39,7 @@ public abstract class Player {
         return juego;
     }
 
-    public boolean call(HoldemListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
+    public boolean call(HoldemListener.HoldemEvent stage, int playersInGame, CommunityCards communityCards) {
         return this.defaultCallResponse;
     }
 

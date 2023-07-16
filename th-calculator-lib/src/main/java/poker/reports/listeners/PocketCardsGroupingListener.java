@@ -13,8 +13,8 @@ public class PocketCardsGroupingListener implements HoldemStatics {
     private Map<PocketCardsGrouping, Integer> contadoresJuegoGanador = new HashMap<>();
 
     @Override
-    public void catchEvent(HoldemEvents event, Holdem holdem) {
-        if (event.equals(HoldemEvents.FINISHED)) {
+    public void catchEvent(HoldemEvent event, Holdem holdem) {
+        if (event.equals(HoldemEvent.FINISHED)) {
             Set<PocketCardsGrouping> dupleSet = new HashSet<>();
             for (Player player : holdem.getPlayers()) {
                 Card[] cards = player.getPocketCards().toArray(new Card[2]);

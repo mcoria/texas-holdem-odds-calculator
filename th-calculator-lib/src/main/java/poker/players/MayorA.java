@@ -27,8 +27,8 @@ public class MayorA extends Player {
     }
 
     @Override
-    public boolean call(HoldemListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
-        if (HoldemListener.HoldemEvents.CARTAS_REPARETIDAS.equals(stage)) {
+    public boolean call(HoldemListener.HoldemEvent stage, int playersInGame, CommunityCards communityCards) {
+        if (HoldemListener.HoldemEvent.CARTAS_REPARETIDAS.equals(stage)) {
             Card[] cards = getPocketCards().toArray(new Card[2]);
             PocketCardsGrouping pocketCardsGrouping = new PocketCardsGrouping(cards[0], cards[1]);
             if (Rank.QUEEN.compareTo(pocketCardsGrouping.getMaxRank()) <= 0

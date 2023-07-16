@@ -8,8 +8,8 @@ import java.util.*;
 
 public class GamesDebug implements HoldemStatics {
     @Override
-    public void catchEvent(HoldemEvents event, Holdem holdem) {
-        if (HoldemEvents.FINISHED.equals(event)) {
+    public void catchEvent(HoldemEvent event, Holdem holdem) {
+        if (HoldemEvent.FINISHED.equals(event)) {
             System.out.println("--------------------------------------------");
 
             System.out.println("Common cards " + holdem.getCommunityCards());

@@ -58,7 +58,7 @@ public class OddsCalculator {
         simulator.setNumberOfSimulations(SIMULATIONS);
 
         simulator.setListeners(List.of((event, holdem) -> {
-            if (HoldemListener.HoldemEvents.FINISHED.equals(event) || HoldemListener.HoldemEvents.FINISHED_ABANDONO.equals(event)) {
+            if (HoldemListener.HoldemEvent.FINISHED.equals(event) || HoldemListener.HoldemEvent.FINISHED_ABANDONO.equals(event)) {
                 if(holdem.getGanadores().contains(observer)){
                     partidosGanados++;
                 }

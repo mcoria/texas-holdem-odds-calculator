@@ -13,10 +13,10 @@ public class JuegosGanadores implements HoldemStatics {
     private Map<Juego.Tipo, Integer> contadores = new HashMap<>();
 
     @Override
-    public void catchEvent(HoldemEvents event, Holdem holdem) {
-        if (event.equals(HoldemEvents.NEW_GAME)) {
+    public void catchEvent(HoldemEvent event, Holdem holdem) {
+        if (event.equals(HoldemEvent.NEW_GAME)) {
             games++;
-        } else if (event.equals(HoldemEvents.FINISHED)) {
+        } else if (event.equals(HoldemEvent.FINISHED)) {
             for (Player ganador :
                     holdem.getGanadores()) {
                 contadores.compute(ganador.getJuego().getType(), (k, v) -> v == null ? 1 : v + 1);

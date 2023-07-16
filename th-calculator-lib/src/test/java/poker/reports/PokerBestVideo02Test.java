@@ -57,8 +57,8 @@ public class PokerBestVideo02Test {
         protected int joshCounter = 0;
 
         @Override
-        public void catchEvent(HoldemEvents event, Holdem holdem) {
-            if (event.equals(HoldemEvents.FINISHED)) {
+        public void catchEvent(HoldemEvent event, Holdem holdem) {
+            if (event.equals(HoldemEvent.FINISHED)) {
                 if (holdem.getGanadores().size() == 1) {
                     if (holdem.getGanadores().contains(faraz)) {
                         farazCounter++;

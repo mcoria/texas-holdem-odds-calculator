@@ -83,8 +83,8 @@ public class BeforeFlop extends AbstractSimulationReport {
             private int observerCounter = 0;
 
             @Override
-            public void catchEvent(HoldemEvents event, Holdem holdem) {
-                if (event.equals(HoldemEvents.FINISHED)) {
+            public void catchEvent(HoldemEvent event, Holdem holdem) {
+                if (event.equals(HoldemEvent.FINISHED)) {
                     if (holdem.getGanadores().contains(observer)) {
                         observerCounter++;
                     }

@@ -2,8 +2,8 @@ package poker;
 
 public interface HoldemListener {
 
-    enum HoldemEvents {NEW_GAME, CARTAS_REPARETIDAS, FLOP, TURN, RIVER, FINISHED_ABANDONO, FINISHED}
+    enum HoldemEvent {NEW_GAME, CARTAS_REPARETIDAS, FLOP, TURN, RIVER, FINISHED_ABANDONO, FINISHED}
 
-    void catchEvent(HoldemEvents event, Holdem holdem);
+    void catchEvent(HoldemEvent event, Holdem holdem);
 
 }

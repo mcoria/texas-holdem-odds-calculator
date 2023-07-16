@@ -20,10 +20,10 @@ public class PairListener implements HoldemStatics {
     private int pairGanador = 0;
 
     @Override
-    public void catchEvent(HoldemEvents event, Holdem holdem) {
-        if (event.equals(HoldemEvents.NEW_GAME)) {
+    public void catchEvent(HoldemEvent event, Holdem holdem) {
+        if (event.equals(HoldemEvent.NEW_GAME)) {
             games++;
-        } else if (event.equals(HoldemEvents.CARTAS_REPARETIDAS)) {
+        } else if (event.equals(HoldemEvent.CARTAS_REPARETIDAS)) {
             boolean thereIsPair = false;
             boolean thereIsACEsPair = false;
             boolean thereIsKsPair = false;
@@ -51,7 +51,7 @@ public class PairListener implements HoldemStatics {
                     pairOfQs++;
                 }
             }
-        } else if (event.equals(HoldemEvents.FINISHED)) {
+        } else if (event.equals(HoldemEvent.FINISHED)) {
             boolean thereIsPair = false;
             boolean thereIsACEsPair = false;
             boolean thereIsKsPair = false;

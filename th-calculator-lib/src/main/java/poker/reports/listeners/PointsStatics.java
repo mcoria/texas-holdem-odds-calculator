@@ -17,10 +17,10 @@ public class PointsStatics implements HoldemStatics {
     private Map<Player, Integer> contadorGanador = new HashMap<>();
 
     @Override
-    public void catchEvent(HoldemEvents event, Holdem holdem) {
-        if (HoldemEvents.NEW_GAME.equals(event)) {
+    public void catchEvent(HoldemEvent event, Holdem holdem) {
+        if (HoldemEvent.NEW_GAME.equals(event)) {
             games++;
-        } else if (HoldemEvents.FINISHED.equals(event) || HoldemEvents.FINISHED_ABANDONO.equals(event)) {
+        } else if (HoldemEvent.FINISHED.equals(event) || HoldemEvent.FINISHED_ABANDONO.equals(event)) {
             for (Player player :
                     holdem.getPlayers()) {
                 IntSummaryStatistics playerStatic = pointStatics.computeIfAbsent(player, k -> new IntSummaryStatistics());

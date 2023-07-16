@@ -4,7 +4,7 @@ import poker.juegos.Juego;
 
 import java.util.*;
 
-import static poker.HoldemListener.HoldemEvents.*;
+import static poker.HoldemListener.HoldemEvent.*;
 
 public class Holdem {
     private final List<HoldemListener> listeners = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Holdem {
     }
 
     public Set<Player> play() {
-        triggerEvent(HoldemListener.HoldemEvents.NEW_GAME);
+        triggerEvent(HoldemListener.HoldemEvent.NEW_GAME);
 
         //Comienza el partido
         List<Player> playersInGame = new ArrayList<>(players);
@@ -137,7 +137,7 @@ public class Holdem {
     }
 
 
-    private void bet(HoldemListener.HoldemEvents stage, List<Player> playersInGame) {
+    private void bet(HoldemListener.HoldemEvent stage, List<Player> playersInGame) {
         ListIterator<Player> iterator = playersInGame.listIterator();
 
         int callPoints = 0;
@@ -180,7 +180,7 @@ public class Holdem {
         }
     }
 
-    private void triggerEvent(HoldemListener.HoldemEvents event) {
+    private void triggerEvent(HoldemListener.HoldemEvent event) {
         for (HoldemListener listener : listeners) {
             listener.catchEvent(event, this);
         }

@@ -3,7 +3,6 @@ package poker.reports;
 import org.junit.Before;
 import org.junit.Test;
 import poker.*;
-import poker.players.DefaultPlayer;
 import poker.players.PlayerWithCards;
 
 import java.util.List;
@@ -57,8 +56,8 @@ public class PokerBestVideo01Test {
         protected int scottyCounter = 0;
 
         @Override
-        public void catchEvent(HoldemEvents event, Holdem holdem) {
-            if (event.equals(HoldemEvents.FINISHED)) {
+        public void catchEvent(HoldemEvent event, Holdem holdem) {
+            if (event.equals(HoldemEvent.FINISHED)) {
                 if (holdem.getGanadores().size() == 1) {
                     if (holdem.getGanadores().contains(daniel)) {
                         danielCounter++;
