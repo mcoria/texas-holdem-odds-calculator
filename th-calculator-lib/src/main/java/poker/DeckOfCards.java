@@ -7,8 +7,6 @@ public class DeckOfCards {
     private final Set<Integer> repartidas = new HashSet<>();
     private final Set<Integer> cardsToAvoid = new HashSet<>();
 
-    //private final Random rnd = new Random();
-
     private PrimitiveIterator.OfInt randomIterator = new Random().ints(0, 52).iterator();
 
     public void reset() {
@@ -28,8 +26,6 @@ public class DeckOfCards {
 
         Integer index = null;
         do {
-            //index = rnd.nextInt(52);
-            // index = (int) (Math.random() * 52);
             index = randomIterator.nextInt();
         } while (repartidas.contains(index) || cardsToAvoid.contains(index));
 

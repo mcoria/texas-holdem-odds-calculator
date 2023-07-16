@@ -18,24 +18,24 @@ public class ParSimpleTest {
     @Test
     public void testCargar_01() {
         Juego juego = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Clubs, Rank.TWO),
-                Card.of(Suit.Diamonds, Rank.THREE),
-                Card.of(Suit.Hearts, Rank.FOUR),
-                Card.of(Suit.Clubs, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SEVEN),
-                Card.of(Suit.Diamonds, Rank.SEVEN),
-                Card.of(Suit.Clubs, Rank.KING)
+                Card.of(Suit.CLUBS, Rank.TWO),
+                Card.of(Suit.DIAMONDS, Rank.THREE),
+                Card.of(Suit.HEARTS, Rank.FOUR),
+                Card.of(Suit.CLUBS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SEVEN),
+                Card.of(Suit.DIAMONDS, Rank.SEVEN),
+                Card.of(Suit.CLUBS, Rank.KING)
         ));
 
         Assert.assertEquals(PAR_SIMPLE, juego.getType());
 
         assertEquals(
                 Set.of(
-                        Card.of(Suit.Hearts, Rank.FOUR),
-                        Card.of(Suit.Clubs, Rank.FIVE),
-                        Card.of(Suit.Hearts, Rank.SEVEN),
-                        Card.of(Suit.Diamonds, Rank.SEVEN),
-                        Card.of(Suit.Clubs, Rank.KING)
+                        Card.of(Suit.HEARTS, Rank.FOUR),
+                        Card.of(Suit.CLUBS, Rank.FIVE),
+                        Card.of(Suit.HEARTS, Rank.SEVEN),
+                        Card.of(Suit.DIAMONDS, Rank.SEVEN),
+                        Card.of(Suit.CLUBS, Rank.KING)
                 ), juego.getCards()
         );
     }
@@ -43,19 +43,19 @@ public class ParSimpleTest {
     @Test
     public void testComparar_01() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.TEN),
-                Card.of(Suit.Spades, Rank.TEN),
-                Card.of(Suit.Diamonds, Rank.QUEEN),
-                Card.of(Suit.Spades, Rank.KING),
-                Card.of(Suit.Spades, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.TEN),
+                Card.of(Suit.SPADES, Rank.TEN),
+                Card.of(Suit.DIAMONDS, Rank.QUEEN),
+                Card.of(Suit.SPADES, Rank.KING),
+                Card.of(Suit.SPADES, Rank.ACE)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.TEN),
-                Card.of(Suit.Spades, Rank.JACK),
-                Card.of(Suit.Diamonds, Rank.JACK),
-                Card.of(Suit.Spades, Rank.KING),
-                Card.of(Suit.Spades, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.TEN),
+                Card.of(Suit.SPADES, Rank.JACK),
+                Card.of(Suit.DIAMONDS, Rank.JACK),
+                Card.of(Suit.SPADES, Rank.KING),
+                Card.of(Suit.SPADES, Rank.ACE)
         ));
 
 
@@ -70,19 +70,19 @@ public class ParSimpleTest {
     @Test
     public void testComparar_02() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.FOUR),
-                Card.of(Suit.Clubs, Rank.FIVE),
-                Card.of(Suit.Diamonds, Rank.FIVE),
-                Card.of(Suit.Diamonds, Rank.SEVEN),
-                Card.of(Suit.Clubs, Rank.KING)
+                Card.of(Suit.HEARTS, Rank.FOUR),
+                Card.of(Suit.CLUBS, Rank.FIVE),
+                Card.of(Suit.DIAMONDS, Rank.FIVE),
+                Card.of(Suit.DIAMONDS, Rank.SEVEN),
+                Card.of(Suit.CLUBS, Rank.KING)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Diamonds, Rank.THREE),
-                Card.of(Suit.Hearts, Rank.FOUR),
-                Card.of(Suit.Clubs, Rank.FIVE),
-                Card.of(Suit.Diamonds, Rank.FIVE),
-                Card.of(Suit.Clubs, Rank.KING)
+                Card.of(Suit.DIAMONDS, Rank.THREE),
+                Card.of(Suit.HEARTS, Rank.FOUR),
+                Card.of(Suit.CLUBS, Rank.FIVE),
+                Card.of(Suit.DIAMONDS, Rank.FIVE),
+                Card.of(Suit.CLUBS, Rank.KING)
         ));
 
         assertEquals(PAR_SIMPLE, juego1.getType());

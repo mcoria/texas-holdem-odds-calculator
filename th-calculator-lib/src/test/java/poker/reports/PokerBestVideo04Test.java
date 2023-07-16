@@ -15,19 +15,19 @@ public class PokerBestVideo04Test {
     @Before
     public void setup() {
         daniel = new Player()
-                .setPocketCards(Card.of(Suit.Clubs, Rank.JACK), Card.of(Suit.Clubs, Rank.SEVEN));
+                .setPocketCards(Card.of(Suit.CLUBS, Rank.JACK), Card.of(Suit.CLUBS, Rank.SEVEN));
 
         scotty = new Player()
-                .setPocketCards(Card.of(Suit.Diamonds, Rank.TEN), Card.of(Suit.Spades, Rank.NINE));
+                .setPocketCards(Card.of(Suit.DIAMONDS, Rank.TEN), Card.of(Suit.SPADES, Rank.NINE));
 
         faraz = new Player()
-                .setPocketCards(Card.of(Suit.Clubs, Rank.NINE), Card.of(Suit.Hearts, Rank.SEVEN));
+                .setPocketCards(Card.of(Suit.CLUBS, Rank.NINE), Card.of(Suit.HEARTS, Rank.SEVEN));
 
         josh = new Player()
-                .setPocketCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Hearts, Rank.FIVE));
+                .setPocketCards(Card.of(Suit.SPADES, Rank.QUEEN), Card.of(Suit.HEARTS, Rank.FIVE));
 
         shawn = new Player()
-                .setPocketCards(Card.of(Suit.Hearts, Rank.TEN), Card.of(Suit.Clubs, Rank.FOUR));
+                .setPocketCards(Card.of(Suit.HEARTS, Rank.TEN), Card.of(Suit.CLUBS, Rank.FOUR));
 
         listener = new MyHoldemListener();
     }
@@ -91,7 +91,7 @@ public class PokerBestVideo04Test {
         simulator.setListeners(List.of(listener));
 
         CommunityCards communityCards = new CommunityCards();
-        communityCards.setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE));
+        communityCards.setFlop(Card.of(Suit.SPADES, Rank.JACK), Card.of(Suit.HEARTS, Rank.THREE), Card.of(Suit.DIAMONDS, Rank.THREE));
 
         simulator.setCommunityCards(communityCards);
 
@@ -112,8 +112,8 @@ public class PokerBestVideo04Test {
         simulator.setListeners(List.of(listener));
 
         CommunityCards communityCards = new CommunityCards()
-                .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
-                .setTurn(Card.of(Suit.Clubs, Rank.TEN));
+                .setFlop(Card.of(Suit.SPADES, Rank.JACK), Card.of(Suit.HEARTS, Rank.THREE), Card.of(Suit.DIAMONDS, Rank.THREE))
+                .setTurn(Card.of(Suit.CLUBS, Rank.TEN));
 
         simulator.setCommunityCards(communityCards);
 
@@ -134,9 +134,9 @@ public class PokerBestVideo04Test {
         simulator.setListeners(List.of(listener));
 
         CommunityCards communityCards = new CommunityCards()
-                .setFlop(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Hearts, Rank.THREE), Card.of(Suit.Diamonds, Rank.THREE))
-                .setTurn(Card.of(Suit.Clubs, Rank.TEN))
-                .setRiver(Card.of(Suit.Clubs, Rank.QUEEN));
+                .setFlop(Card.of(Suit.SPADES, Rank.JACK), Card.of(Suit.HEARTS, Rank.THREE), Card.of(Suit.DIAMONDS, Rank.THREE))
+                .setTurn(Card.of(Suit.CLUBS, Rank.TEN))
+                .setRiver(Card.of(Suit.CLUBS, Rank.QUEEN));
 
         simulator.setCommunityCards(communityCards);
 

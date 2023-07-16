@@ -1,7 +1,7 @@
 package poker;
 
 public enum Suit {
-    Clubs('\u2663'), Diamonds('\u2666'), Hearts('\u2764'), Spades('\u2660');
+    CLUBS('\u2663'), DIAMONDS('\u2666'), HEARTS('\u2764'), SPADES('\u2660');
 
     private final char symbol;
 

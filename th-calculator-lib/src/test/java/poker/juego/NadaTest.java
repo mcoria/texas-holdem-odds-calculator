@@ -19,24 +19,24 @@ public class NadaTest {
     @Test
     public void  testCargarNada_01() {
         Juego juego = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Clubs, Rank.TWO),
-                Card.of(Suit.Clubs, Rank.THREE),
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SEVEN),
-                Card.of(Suit.Diamonds, Rank.NINE),
-                Card.of(Suit.Diamonds, Rank.JACK),
-                Card.of(Suit.Spades, Rank.ACE)
+                Card.of(Suit.CLUBS, Rank.TWO),
+                Card.of(Suit.CLUBS, Rank.THREE),
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SEVEN),
+                Card.of(Suit.DIAMONDS, Rank.NINE),
+                Card.of(Suit.DIAMONDS, Rank.JACK),
+                Card.of(Suit.SPADES, Rank.ACE)
         ));
 
         Assert.assertEquals(NADA, juego.getType());
 
         assertEquals(
                 Set.of(
-                        Card.of(Suit.Hearts, Rank.FIVE),
-                        Card.of(Suit.Hearts, Rank.SEVEN),
-                        Card.of(Suit.Diamonds, Rank.NINE),
-                        Card.of(Suit.Diamonds, Rank.JACK),
-                        Card.of(Suit.Spades, Rank.ACE)
+                        Card.of(Suit.HEARTS, Rank.FIVE),
+                        Card.of(Suit.HEARTS, Rank.SEVEN),
+                        Card.of(Suit.DIAMONDS, Rank.NINE),
+                        Card.of(Suit.DIAMONDS, Rank.JACK),
+                        Card.of(Suit.SPADES, Rank.ACE)
                 ), juego.getCards()
         );
     }
@@ -44,19 +44,19 @@ public class NadaTest {
     @Test
     public void testCompareToNada_01() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Spades, Rank.FIVE),
-                Card.of(Suit.Diamonds, Rank.SEVEN),
-                Card.of(Suit.Spades, Rank.NINE),
-                Card.of(Suit.Diamonds, Rank.JACK),
-                Card.of(Suit.Hearts, Rank.ACE)
+                Card.of(Suit.SPADES, Rank.FIVE),
+                Card.of(Suit.DIAMONDS, Rank.SEVEN),
+                Card.of(Suit.SPADES, Rank.NINE),
+                Card.of(Suit.DIAMONDS, Rank.JACK),
+                Card.of(Suit.HEARTS, Rank.ACE)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Spades, Rank.SEVEN),
-                Card.of(Suit.Diamonds, Rank.NINE),
-                Card.of(Suit.Spades, Rank.JACK),
-                Card.of(Suit.Hearts, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.SPADES, Rank.SEVEN),
+                Card.of(Suit.DIAMONDS, Rank.NINE),
+                Card.of(Suit.SPADES, Rank.JACK),
+                Card.of(Suit.HEARTS, Rank.ACE)
         ));
 
         assertEquals(NADA, juego1.getType());
@@ -72,19 +72,19 @@ public class NadaTest {
     @Test
     public void testCompareToNada_02() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SEVEN),
-                Card.of(Suit.Diamonds, Rank.NINE),
-                Card.of(Suit.Diamonds, Rank.JACK),
-                Card.of(Suit.Spades, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SEVEN),
+                Card.of(Suit.DIAMONDS, Rank.NINE),
+                Card.of(Suit.DIAMONDS, Rank.JACK),
+                Card.of(Suit.SPADES, Rank.ACE)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SEVEN),
-                Card.of(Suit.Diamonds, Rank.NINE),
-                Card.of(Suit.Diamonds, Rank.JACK),
-                Card.of(Suit.Spades, Rank.KING)     // Difieren en este elemento
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SEVEN),
+                Card.of(Suit.DIAMONDS, Rank.NINE),
+                Card.of(Suit.DIAMONDS, Rank.JACK),
+                Card.of(Suit.SPADES, Rank.KING)     // Difieren en este elemento
         ));
 
         assertEquals(NADA, juego1.getType());

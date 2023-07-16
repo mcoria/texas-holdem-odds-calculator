@@ -20,24 +20,24 @@ public class ColorTest {
     @Test
     public void testCargarColor_01() {
         Juego juego = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Clubs, Rank.TWO),
-                Card.of(Suit.Clubs, Rank.THREE),
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Clubs, Rank.SEVEN),
-                Card.of(Suit.Clubs, Rank.NINE),
-                Card.of(Suit.Clubs, Rank.JACK),
-                Card.of(Suit.Clubs, Rank.ACE)
+                Card.of(Suit.CLUBS, Rank.TWO),
+                Card.of(Suit.CLUBS, Rank.THREE),
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.CLUBS, Rank.SEVEN),
+                Card.of(Suit.CLUBS, Rank.NINE),
+                Card.of(Suit.CLUBS, Rank.JACK),
+                Card.of(Suit.CLUBS, Rank.ACE)
         ));
 
         Assert.assertEquals(COLOR, juego.getType());
 
         assertEquals(
                 Set.of(
-                        Card.of(Suit.Clubs, Rank.THREE),
-                        Card.of(Suit.Clubs, Rank.SEVEN),
-                        Card.of(Suit.Clubs, Rank.NINE),
-                        Card.of(Suit.Clubs, Rank.JACK),
-                        Card.of(Suit.Clubs, Rank.ACE)
+                        Card.of(Suit.CLUBS, Rank.THREE),
+                        Card.of(Suit.CLUBS, Rank.SEVEN),
+                        Card.of(Suit.CLUBS, Rank.NINE),
+                        Card.of(Suit.CLUBS, Rank.JACK),
+                        Card.of(Suit.CLUBS, Rank.ACE)
                 ), juego.getCards()
         );
     }
@@ -45,43 +45,43 @@ public class ColorTest {
     @Test
     public void testCompararColor_01() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Clubs, Rank.TWO),
-                Card.of(Suit.Clubs, Rank.THREE),
-                Card.of(Suit.Hearts, Rank.FIVE),
-                Card.of(Suit.Clubs, Rank.SEVEN),
-                Card.of(Suit.Clubs, Rank.NINE),
-                Card.of(Suit.Clubs, Rank.JACK),
-                Card.of(Suit.Clubs, Rank.ACE)
+                Card.of(Suit.CLUBS, Rank.TWO),
+                Card.of(Suit.CLUBS, Rank.THREE),
+                Card.of(Suit.HEARTS, Rank.FIVE),
+                Card.of(Suit.CLUBS, Rank.SEVEN),
+                Card.of(Suit.CLUBS, Rank.NINE),
+                Card.of(Suit.CLUBS, Rank.JACK),
+                Card.of(Suit.CLUBS, Rank.ACE)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.TWO),
-                Card.of(Suit.Hearts, Rank.THREE),
-                Card.of(Suit.Clubs, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SEVEN),
-                Card.of(Suit.Hearts, Rank.NINE),
-                Card.of(Suit.Hearts, Rank.JACK),
-                Card.of(Suit.Hearts, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.TWO),
+                Card.of(Suit.HEARTS, Rank.THREE),
+                Card.of(Suit.CLUBS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SEVEN),
+                Card.of(Suit.HEARTS, Rank.NINE),
+                Card.of(Suit.HEARTS, Rank.JACK),
+                Card.of(Suit.HEARTS, Rank.ACE)
         ));
 
         Juego juego3 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Clubs, Rank.TWO),
-                Card.of(Suit.Hearts, Rank.THREE),
-                Card.of(Suit.Spades, Rank.FIVE),
-                Card.of(Suit.Diamonds, Rank.SEVEN),
-                Card.of(Suit.Clubs, Rank.NINE),
-                Card.of(Suit.Hearts, Rank.JACK),
-                Card.of(Suit.Spades, Rank.ACE)
+                Card.of(Suit.CLUBS, Rank.TWO),
+                Card.of(Suit.HEARTS, Rank.THREE),
+                Card.of(Suit.SPADES, Rank.FIVE),
+                Card.of(Suit.DIAMONDS, Rank.SEVEN),
+                Card.of(Suit.CLUBS, Rank.NINE),
+                Card.of(Suit.HEARTS, Rank.JACK),
+                Card.of(Suit.SPADES, Rank.ACE)
         ));
 
         Juego juego4 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.TWO),
-                Card.of(Suit.Hearts, Rank.THREE),
-                Card.of(Suit.Clubs, Rank.FIVE),
-                Card.of(Suit.Hearts, Rank.SIX),
-                Card.of(Suit.Hearts, Rank.NINE),
-                Card.of(Suit.Hearts, Rank.JACK),
-                Card.of(Suit.Hearts, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.TWO),
+                Card.of(Suit.HEARTS, Rank.THREE),
+                Card.of(Suit.CLUBS, Rank.FIVE),
+                Card.of(Suit.HEARTS, Rank.SIX),
+                Card.of(Suit.HEARTS, Rank.NINE),
+                Card.of(Suit.HEARTS, Rank.JACK),
+                Card.of(Suit.HEARTS, Rank.ACE)
         ));
 
         assertEquals(COLOR, juego1.getType());

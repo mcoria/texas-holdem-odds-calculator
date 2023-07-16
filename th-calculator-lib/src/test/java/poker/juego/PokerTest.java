@@ -10,7 +10,6 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static poker.juegos.Juego.Tipo.FULL;
 import static poker.juegos.Juego.Tipo.POKER;
 
 public class PokerTest {
@@ -20,19 +19,19 @@ public class PokerTest {
     @Test
     public void testComparar_01() {
         Juego juego1 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.EIGHT),
-                Card.of(Suit.Diamonds, Rank.EIGHT),
-                Card.of(Suit.Spades, Rank.EIGHT),
-                Card.of(Suit.Clubs, Rank.EIGHT),
-                Card.of(Suit.Spades, Rank.TEN)
+                Card.of(Suit.HEARTS, Rank.EIGHT),
+                Card.of(Suit.DIAMONDS, Rank.EIGHT),
+                Card.of(Suit.SPADES, Rank.EIGHT),
+                Card.of(Suit.CLUBS, Rank.EIGHT),
+                Card.of(Suit.SPADES, Rank.TEN)
         ));
 
         Juego juego2 = Juego.cargarJuego(Set.of(
-                Card.of(Suit.Hearts, Rank.EIGHT),
-                Card.of(Suit.Diamonds, Rank.EIGHT),
-                Card.of(Suit.Spades, Rank.EIGHT),
-                Card.of(Suit.Clubs, Rank.EIGHT),
-                Card.of(Suit.Diamonds, Rank.ACE)
+                Card.of(Suit.HEARTS, Rank.EIGHT),
+                Card.of(Suit.DIAMONDS, Rank.EIGHT),
+                Card.of(Suit.SPADES, Rank.EIGHT),
+                Card.of(Suit.CLUBS, Rank.EIGHT),
+                Card.of(Suit.DIAMONDS, Rank.ACE)
         ));
 
 

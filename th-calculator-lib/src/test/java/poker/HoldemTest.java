@@ -15,20 +15,20 @@ public class HoldemTest {
     @Test
     public void testCalcularGanadores_01() {
         CommunityCards communityCards = new CommunityCards();
-        communityCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
-        communityCards.setTurn(Card.of(Hearts, SEVEN));
-        communityCards.setRiver(Card.of(Spades, NINE));
+        communityCards.setFlop(Card.of(CLUBS, TWO), Card.of(CLUBS, THREE), Card.of(HEARTS, FIVE));
+        communityCards.setTurn(Card.of(HEARTS, SEVEN));
+        communityCards.setRiver(Card.of(SPADES, NINE));
 
         Player player1 = new Player();
         player1.setPocketCards(
-                Card.of(Hearts, ACE),
-                Card.of(Spades, ACE)
+                Card.of(HEARTS, ACE),
+                Card.of(SPADES, ACE)
         );
 
         Player player2 = new Player();
         player2.setPocketCards(
-                Card.of(Hearts, KING),
-                Card.of(Spades, KING)
+                Card.of(HEARTS, KING),
+                Card.of(SPADES, KING)
         );
 
         Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), communityCards);
@@ -40,20 +40,20 @@ public class HoldemTest {
     @Test
     public void testCalcularGanadores_02() {
         CommunityCards communityCards = new CommunityCards();
-        communityCards.setFlop(Card.of(Clubs, TWO), Card.of(Clubs, THREE), Card.of(Hearts, FIVE));
-        communityCards.setTurn(Card.of(Hearts, SEVEN));
-        communityCards.setRiver(Card.of(Spades, NINE));
+        communityCards.setFlop(Card.of(CLUBS, TWO), Card.of(CLUBS, THREE), Card.of(HEARTS, FIVE));
+        communityCards.setTurn(Card.of(HEARTS, SEVEN));
+        communityCards.setRiver(Card.of(SPADES, NINE));
 
         Player player1 = new Player();
         player1.setPocketCards(
-                Card.of(Hearts, ACE),
-                Card.of(Spades, ACE)
+                Card.of(HEARTS, ACE),
+                Card.of(SPADES, ACE)
         );
 
         Player player2 = new Player();
         player2.setPocketCards(
-                Card.of(Diamonds, ACE),
-                Card.of(Spades, ACE)
+                Card.of(DIAMONDS, ACE),
+                Card.of(SPADES, ACE)
         );
 
         Set<Player> ganadores = Holdem.calcularGanadores(List.of(player1, player2), communityCards);
