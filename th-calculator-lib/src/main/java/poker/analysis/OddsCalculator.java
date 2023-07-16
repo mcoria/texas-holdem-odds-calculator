@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OddsCalculator {
-    private static final int SIMULATIONS = 1000;
+    private static final int SIMULATIONS = 10000;
     private final CommunityCards communityCards;
     private final PlayerWithCards observer;
     private int partidosGanados = 0;

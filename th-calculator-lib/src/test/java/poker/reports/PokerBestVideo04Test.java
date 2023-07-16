@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class PokerBestVideo04Test {
-    private static final int SIMULATIONS = 1000;
+    private static final int SIMULATIONS = 10000;
 
     @Before
     public void setup() {
@@ -73,8 +73,8 @@ public class PokerBestVideo04Test {
         simulator.setListeners(List.of(listener));
         simulator.setCommunityCards(new CommunityCards());
 
-        scotty.setDefaultCallResponse(false);
-        shawn.setDefaultCallResponse(false);
+        scotty.setPlayerStrategy((player, event, holdem) -> false);
+        shawn.setPlayerStrategy((player, event, holdem) -> false);
 
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
         simulator.setNumberOfSimulations(SIMULATIONS);
@@ -96,8 +96,9 @@ public class PokerBestVideo04Test {
 
         simulator.setCommunityCards(communityCards);
 
-        scotty.setDefaultCallResponse(false);
-        shawn.setDefaultCallResponse(false);
+        scotty.setPlayerStrategy((player, event, holdem) -> false);
+        shawn.setPlayerStrategy((player, event, holdem) -> false);
+
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
         simulator.setNumberOfSimulations(SIMULATIONS);
 
@@ -119,9 +120,10 @@ public class PokerBestVideo04Test {
 
         simulator.setCommunityCards(communityCards);
 
-        scotty.setDefaultCallResponse(false);
-        faraz.setDefaultCallResponse(false);
-        shawn.setDefaultCallResponse(false);
+        scotty.setPlayerStrategy((player, event, holdem) -> false);
+        faraz.setPlayerStrategy((player, event, holdem) -> false);
+        shawn.setPlayerStrategy((player, event, holdem) -> false);
+
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
         simulator.setNumberOfSimulations(SIMULATIONS);
 
@@ -143,9 +145,10 @@ public class PokerBestVideo04Test {
 
         simulator.setCommunityCards(communityCards);
 
-        scotty.setDefaultCallResponse(false);
-        faraz.setDefaultCallResponse(false);
-        shawn.setDefaultCallResponse(false);
+        scotty.setPlayerStrategy((player, event, holdem) -> false);
+        faraz.setPlayerStrategy((player, event, holdem) -> false);
+        shawn.setPlayerStrategy((player, event, holdem) -> false);
+
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
         simulator.setNumberOfSimulations(SIMULATIONS);
 

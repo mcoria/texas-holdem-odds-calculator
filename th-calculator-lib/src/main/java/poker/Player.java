@@ -1,18 +1,21 @@
 package poker;
 
 import poker.juegos.Juego;
+import poker.players.PlayerStrategy;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Player {
     protected final Set<Card> pocketCards = new HashSet<>();
+    private PlayerStrategy playerStrategy = (player, event, holdem) -> true;
     private Juego juego;
-    protected boolean defaultCallResponse = true;
     private int points = 0;
 
     public abstract void receiveRandomCards(DeckOfCards deckOfCards);
+
     public abstract void collectCardsToAvoid(DeckOfCards deckOfCards);
+
     protected abstract void pocketCardsReset();
 
     public Set<Card> getPocketCards() {
@@ -39,13 +42,8 @@ public abstract class Player {
         return juego;
     }
 
-    public boolean call(HoldemListener.HoldemEvent stage, int playersInGame, CommunityCards communityCards) {
-        return this.defaultCallResponse;
-    }
-
-    public Player setDefaultCallResponse(boolean defaultCallResponse) {
-        this.defaultCallResponse = defaultCallResponse;
-        return this;
+    public boolean call(HoldemListener.HoldemEvent event, Holdem holdem) {
+        return playerStrategy.call(this, event, holdem);
     }
 
     public void decreasePoints(int points) {
@@ -56,13 +54,17 @@ public abstract class Player {
         this.points += points;
     }
 
-    public int getPoints(){
+    public int getPoints() {
         return this.points;
     }
 
-    public String getPlayerName(){
+    public String getPlayerName() {
         return getClass().getSimpleName();
     }
 
+    public Player setPlayerStrategy(PlayerStrategy playerStrategy) {
+        this.playerStrategy = playerStrategy;
+        return this;
+    }
 }
 

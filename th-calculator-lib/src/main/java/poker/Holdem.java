@@ -159,7 +159,7 @@ public class Holdem {
         int currentPot = 0;
         while (iterator.hasNext()) {
             Player player = iterator.next();
-            if (player.call(stage, playersInGame.size(), communityCards)) {
+            if (player.call(stage, this)) {
                 player.decreasePoints(callPoints);
                 currentPot += callPoints;
             } else {

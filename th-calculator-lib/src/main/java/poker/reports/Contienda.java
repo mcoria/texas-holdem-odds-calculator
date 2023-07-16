@@ -10,8 +10,8 @@ import poker.reports.listeners.PointsStatics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Contienda extends AbstractSimulationReport{
-    private static final int SIMULATIONS = 1000000;
+public class Contienda extends AbstractSimulationReport {
+    private static final int SIMULATIONS = 10000;
 
 
     public static void main(String[] args) {
@@ -21,9 +21,9 @@ public class Contienda extends AbstractSimulationReport{
     @Override
     protected List<Player> createPlayers() {
         List<Player> players = new ArrayList<>();
-        players.add(new DefaultPlayer());                               // Optimista
-        players.add(new DefaultPlayer().setDefaultCallResponse(false)); // Pesimista
-        players.add(new MayorA());                               // Mayor a Q
+        players.add(new DefaultPlayer());                                                       // Optimista
+        players.add(new DefaultPlayer().setPlayerStrategy((player, event, holdem) -> false));   // Pesimista
+        players.add(new DefaultPlayer().setPlayerStrategy(new MayorA()));                       // Mayor a Q
         return players;
     }
 
