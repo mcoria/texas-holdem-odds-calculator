@@ -2,6 +2,7 @@ package poker.reports;
 
 import poker.CommunityCards;
 import poker.Player;
+import poker.players.DefaultPlayer;
 import poker.reports.listeners.*;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Aleatorio extends AbstractSimulationReport{
     protected List<Player> createPlayers() {
         List<Player> players = new ArrayList<>();
         for (int i = 0; i < PLAYERS; i++) {
-            players.add(new Player());
+            players.add(new DefaultPlayer());
         }
         return players;
     }

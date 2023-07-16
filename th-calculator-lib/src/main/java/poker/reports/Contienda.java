@@ -2,6 +2,7 @@ package poker.reports;
 
 import poker.CommunityCards;
 import poker.Player;
+import poker.players.DefaultPlayer;
 import poker.players.MayorA;
 import poker.reports.listeners.HoldemStatics;
 import poker.reports.listeners.PointsStatics;
@@ -20,8 +21,8 @@ public class Contienda extends AbstractSimulationReport{
     @Override
     protected List<Player> createPlayers() {
         List<Player> players = new ArrayList<>();
-        players.add(new Player());                               // Optimista
-        players.add(new Player().setDefaultCallResponse(false)); // Pesimista
+        players.add(new DefaultPlayer());                               // Optimista
+        players.add(new DefaultPlayer().setDefaultCallResponse(false)); // Pesimista
         players.add(new MayorA());                               // Mayor a Q
         return players;
     }

@@ -3,6 +3,7 @@ package poker.reports;
 import org.junit.Before;
 import org.junit.Test;
 import poker.*;
+import poker.players.DefaultPlayer;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class Simulation02Test {
 
     @Before
     public void setup() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new DefaultPlayer();
+        player2 = new DefaultPlayer();
         listener = new MyHoldemListener();
     }
 

@@ -1,6 +1,7 @@
 package poker;
 
 import org.junit.Test;
+import poker.players.PlayerWithCards;
 
 import java.util.List;
 import java.util.Set;
@@ -19,14 +20,14 @@ public class HoldemTest {
         communityCards.setTurn(Card.of(HEARTS, SEVEN));
         communityCards.setRiver(Card.of(SPADES, NINE));
 
-        Player player1 = new Player();
-        player1.setPocketCards(
+        Player player1 = new PlayerWithCards()
+        .setPocketCards(
                 Card.of(HEARTS, ACE),
                 Card.of(SPADES, ACE)
         );
 
-        Player player2 = new Player();
-        player2.setPocketCards(
+        Player player2 = new PlayerWithCards()
+        .setPocketCards(
                 Card.of(HEARTS, KING),
                 Card.of(SPADES, KING)
         );
@@ -44,14 +45,14 @@ public class HoldemTest {
         communityCards.setTurn(Card.of(HEARTS, SEVEN));
         communityCards.setRiver(Card.of(SPADES, NINE));
 
-        Player player1 = new Player();
-        player1.setPocketCards(
+        Player player1 = new PlayerWithCards()
+        .setPocketCards(
                 Card.of(HEARTS, ACE),
                 Card.of(SPADES, ACE)
         );
 
-        Player player2 = new Player();
-        player2.setPocketCards(
+        Player player2 = new PlayerWithCards()
+        .setPocketCards(
                 Card.of(DIAMONDS, ACE),
                 Card.of(SPADES, ACE)
         );

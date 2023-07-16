@@ -1,6 +1,8 @@
 package poker.reports;
 
 import poker.*;
+import poker.players.DefaultPlayer;
+import poker.players.PlayerWithCards;
 import poker.reports.listeners.HoldemStatics;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class BeforeFlop extends AbstractSimulationReport {
         return SIMULATIONS;
     }
 
-    private Player observer = new Player()
+    private Player observer = new PlayerWithCards()
             .setPocketCards(Card.of(Suit.SPADES, Rank.KING), Card.of(Suit.CLUBS, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
@@ -65,7 +67,7 @@ public class BeforeFlop extends AbstractSimulationReport {
         players.add(observer);
 
         for (int i = 0; i < PLAYERS - 1; i++) {
-            players.add(new Player());
+            players.add(new DefaultPlayer());
         }
         return players;
     }

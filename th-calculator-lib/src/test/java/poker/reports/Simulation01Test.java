@@ -3,6 +3,8 @@ package poker.reports;
 import org.junit.Before;
 import org.junit.Test;
 import poker.*;
+import poker.players.DefaultPlayer;
+import poker.players.PlayerWithCards;
 
 import java.util.List;
 
@@ -15,10 +17,10 @@ public class Simulation01Test {
 
     @Before
     public void setup() {
-        player1 = new Player()
+        player1 = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.CLUBS, Rank.KING), Card.of(Suit.SPADES, Rank.TWO));
 
-        player2 = new Player()
+        player2 = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.HEARTS, Rank.NINE), Card.of(Suit.DIAMONDS, Rank.EIGHT));
 
         listener = new MyHoldemListener();
@@ -131,7 +133,7 @@ public class Simulation01Test {
 
     @Test
     public void test_fromPlayer1PointOfView() {
-        player2 = new Player();
+        player2 = new DefaultPlayer();
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));
@@ -153,7 +155,7 @@ public class Simulation01Test {
 
     @Test
     public void test_fromPlayer2PointOfView() {
-        player1 = new Player();
+        player1 = new DefaultPlayer();
 
         Simulator simulator = new Simulator();
         simulator.setListeners(List.of(listener));

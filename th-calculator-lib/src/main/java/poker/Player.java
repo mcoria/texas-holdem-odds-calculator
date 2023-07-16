@@ -5,16 +5,15 @@ import poker.juegos.Juego;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Player {
-    private final Set<Card> pocketCards = new HashSet<>();
+public abstract class Player {
+    protected final Set<Card> pocketCards = new HashSet<>();
     private Juego juego;
-    private CardBucketStrategy cardBucketStrategy = new DefaultCardBucketStrategy();
     protected boolean defaultCallResponse = true;
     private int points = 0;
 
-    public void receiveRandomCards(DeckOfCards deckOfCards) {
-        cardBucketStrategy.receiveRandomCards(deckOfCards);
-    }
+    public abstract void receiveRandomCards(DeckOfCards deckOfCards);
+    public abstract void collectCardsToAvoid(DeckOfCards deckOfCards);
+    protected abstract void pocketCardsReset();
 
     public Set<Card> getPocketCards() {
         return pocketCards;
@@ -22,7 +21,7 @@ public class Player {
 
     public void reset() {
         juego = null;
-        cardBucketStrategy.reset();
+        pocketCardsReset();
     }
 
     public Juego getJuego() {
@@ -40,22 +39,8 @@ public class Player {
         return juego;
     }
 
-    public Player setPocketCards(Card card1, Card card2) {
-        cardBucketStrategy = new NoOpCardBucketStrategy();
-
-        pocketCards.clear();
-        pocketCards.add(card1);
-        pocketCards.add(card2);
-
-        return this;
-    }
-
     public boolean call(HoldemListener.HoldemEvents stage, int playersInGame, CommunityCards communityCards) {
         return this.defaultCallResponse;
-    }
-
-    public void collectCardsToAvoid(DeckOfCards deckOfCards) {
-        cardBucketStrategy.collectCardsToAvoid(deckOfCards);
     }
 
     public Player setDefaultCallResponse(boolean defaultCallResponse) {
@@ -73,48 +58,6 @@ public class Player {
 
     public int getPoints(){
         return this.points;
-    }
-
-    private interface CardBucketStrategy {
-
-        void receiveRandomCards(DeckOfCards deckOfCards);
-
-        void reset();
-
-        void collectCardsToAvoid(DeckOfCards deckOfCards);
-    }
-
-    private class DefaultCardBucketStrategy implements CardBucketStrategy {
-
-        @Override
-        public void receiveRandomCards(DeckOfCards deckOfCards) {
-            pocketCards.add(deckOfCards.getRandomCard());
-            pocketCards.add(deckOfCards.getRandomCard());
-        }
-
-        @Override
-        public void reset() {
-            pocketCards.clear();
-        }
-
-        @Override
-        public void collectCardsToAvoid(DeckOfCards deckOfCards) {
-        }
-    }
-
-    private class NoOpCardBucketStrategy implements CardBucketStrategy {
-        @Override
-        public void receiveRandomCards(DeckOfCards deckOfCards) {
-        }
-
-        @Override
-        public void reset() {
-        }
-
-        @Override
-        public void collectCardsToAvoid(DeckOfCards deckOfCards) {
-            deckOfCards.addCardsToAvoid(pocketCards);
-        }
     }
 
     public String getPlayerName(){

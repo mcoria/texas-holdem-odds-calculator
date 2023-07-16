@@ -16,6 +16,7 @@ public class Holdem {
 
     public Holdem(List<Player> players, CommunityCards communityCards) {
         this.players = players;
+
         this.communityCards = communityCards;
 
         this.communityCards.collectCardsToAvoid(this.deckOfCards);

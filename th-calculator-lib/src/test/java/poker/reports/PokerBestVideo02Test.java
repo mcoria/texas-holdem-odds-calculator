@@ -3,6 +3,7 @@ package poker.reports;
 import org.junit.Before;
 import org.junit.Test;
 import poker.*;
+import poker.players.PlayerWithCards;
 
 import java.util.List;
 
@@ -14,24 +15,24 @@ public class PokerBestVideo02Test {
 
     @Before
     public void setup() {
-        daniel = new Player()
+        daniel = new PlayerWithCards()
                 // Daniel =     K(Spades)         5(Hearts)    -  out
                 .setPocketCards(Card.of(Suit.SPADES, Rank.KING), Card.of(Suit.HEARTS, Rank.FIVE));
 
 
-        scotty = new Player()
+        scotty = new PlayerWithCards()
                 // Scotty =    Q(Hearts)        8(Hearts)    -  out
                 .setPocketCards(Card.of(Suit.HEARTS, Rank.QUEEN), Card.of(Suit.HEARTS, Rank.EIGHT));
 
-        faraz = new Player()
+        faraz = new PlayerWithCards()
                 // Faraz =      K(Clubs)        2(Hearts)      -  24%
                 .setPocketCards(Card.of(Suit.CLUBS, Rank.KING), Card.of(Suit.HEARTS, Rank.TWO));
 
-        josh = new Player()
+        josh = new PlayerWithCards()
                 // Josh =       A(Hearts)       K(Hearts)       -  75%
                 .setPocketCards(Card.of(Suit.HEARTS, Rank.ACE), Card.of(Suit.HEARTS, Rank.KING));
 
-        shawn = new Player()
+        shawn = new PlayerWithCards()
                 // Shawn =     8(Clubs)         4(Spades)    -  out
                 .setPocketCards(Card.of(Suit.CLUBS, Rank.EIGHT), Card.of(Suit.SPADES, Rank.FOUR));
 

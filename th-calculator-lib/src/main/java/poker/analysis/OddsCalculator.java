@@ -1,6 +1,8 @@
 package poker.analysis;
 
 import poker.*;
+import poker.players.DefaultPlayer;
+import poker.players.PlayerWithCards;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +10,13 @@ import java.util.List;
 public class OddsCalculator {
     private static final int SIMULATIONS = 1000;
     private final CommunityCards communityCards;
-    private final Player observer;
+    private final PlayerWithCards observer;
     private int partidosGanados = 0;
     private int numberOfPlayers;
 
     public OddsCalculator() {
         this.communityCards = new CommunityCards();
-        this.observer = new Player();
+        this.observer = new PlayerWithCards();
     }
 
     public OddsCalculator setFlop(Card card1, Card card2, Card card3) {
@@ -48,7 +50,7 @@ public class OddsCalculator {
         List<Player> playerList = new ArrayList<>();
         playerList.add(observer);
         for (int i = 1; i < numberOfPlayers; i++) {
-            playerList.add(new Player());
+            playerList.add(new DefaultPlayer());
         }
 
         simulator.setPlayers(playerList);

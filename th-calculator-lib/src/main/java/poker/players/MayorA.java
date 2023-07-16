@@ -6,6 +6,21 @@ import poker.analysis.PocketCardsGrouping;
 public class MayorA extends Player {
 
     @Override
+    public void receiveRandomCards(DeckOfCards deckOfCards) {
+
+    }
+
+    @Override
+    public void collectCardsToAvoid(DeckOfCards deckOfCards) {
+
+    }
+
+    @Override
+    protected void pocketCardsReset() {
+
+    }
+
+    @Override
     public void reset() {
         super.reset();
         defaultCallResponse = false;

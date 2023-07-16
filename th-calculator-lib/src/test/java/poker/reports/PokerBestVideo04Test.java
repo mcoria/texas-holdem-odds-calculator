@@ -3,6 +3,7 @@ package poker.reports;
 import org.junit.Before;
 import org.junit.Test;
 import poker.*;
+import poker.players.PlayerWithCards;
 
 import java.util.List;
 
@@ -13,19 +14,19 @@ public class PokerBestVideo04Test {
 
     @Before
     public void setup() {
-        daniel = new Player()
+        daniel = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.CLUBS, Rank.JACK), Card.of(Suit.CLUBS, Rank.SEVEN));
 
-        scotty = new Player()
+        scotty = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.DIAMONDS, Rank.TEN), Card.of(Suit.SPADES, Rank.NINE));
 
-        faraz = new Player()
+        faraz = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.CLUBS, Rank.NINE), Card.of(Suit.HEARTS, Rank.SEVEN));
 
-        josh = new Player()
+        josh = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.SPADES, Rank.QUEEN), Card.of(Suit.HEARTS, Rank.FIVE));
 
-        shawn = new Player()
+        shawn = new PlayerWithCards()
                 .setPocketCards(Card.of(Suit.HEARTS, Rank.TEN), Card.of(Suit.CLUBS, Rank.FOUR));
 
         listener = new MyHoldemListener();
