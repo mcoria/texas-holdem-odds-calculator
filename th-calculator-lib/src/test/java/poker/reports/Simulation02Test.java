@@ -55,8 +55,9 @@ public class Simulation02Test {
         simulator.setCommunityCards(new CommunityCards());
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(49f, ( 100 * listener.player1Counter ) / SIMULATIONS, 2);
         assertEquals(49f, ( 100 * listener.player2Counter ) / SIMULATIONS, 2);

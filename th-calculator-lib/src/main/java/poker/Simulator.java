@@ -3,14 +3,15 @@ package poker;
 import java.util.List;
 
 public class Simulator {
-
     private List<? extends HoldemListener> listeners;
 
     private List<Player> players;
 
     private CommunityCards communityCards;
 
-    public void simulate(int numberOfSimulations) {
+    private int numberOfSimulations = 10000;
+
+    public void simulate() {
         Holdem holdem = new Holdem(players, communityCards);
 
         for (HoldemListener listener : listeners) {
@@ -34,5 +35,9 @@ public class Simulator {
 
     public void setCommunityCards(CommunityCards communityCards) {
         this.communityCards = communityCards;
+    }
+
+    public void setNumberOfSimulations(int numberOfSimulations) {
+        this.numberOfSimulations = numberOfSimulations;
     }
 }

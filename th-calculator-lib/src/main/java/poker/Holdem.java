@@ -179,6 +179,16 @@ public class Holdem {
         }
     }
 
+    private void triggerEvent(HoldemListener.HoldemEvents event) {
+        for (HoldemListener listener : listeners) {
+            listener.catchEvent(event, this);
+        }
+    }
+
+    public CommunityCards getCommunityCards() {
+        return communityCards;
+    }
+
     public static Set<Player> calcularGanadores(List<Player> playerCards, CommunityCards communityCards) {
         Set<Player> ganadores = new HashSet<>();
         Juego maxJuego = null;
@@ -199,15 +209,5 @@ public class Holdem {
             }
         }
         return ganadores;
-    }
-
-    private void triggerEvent(HoldemListener.HoldemEvents event) {
-        for (HoldemListener listener : listeners) {
-            listener.catchEvent(event, this);
-        }
-    }
-
-    public CommunityCards getCommunityCards() {
-        return communityCards;
     }
 }

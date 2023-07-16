@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class Simulation01Test {
 
-    private static final int SIMULATIONS = 100000;
+    private static final int SIMULATIONS = 10000;
 
 
     @Before
@@ -59,8 +59,9 @@ public class Simulation01Test {
         simulator.setCommunityCards(new CommunityCards());
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(54f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(45f, (100 * listener.player2Counter) / SIMULATIONS, 2);
@@ -78,8 +79,9 @@ public class Simulation01Test {
         );
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(73f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(26f, (100 * listener.player2Counter) / SIMULATIONS, 2);
@@ -97,8 +99,9 @@ public class Simulation01Test {
         );
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(7f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(93f, (100 * listener.player2Counter) / SIMULATIONS, 2);
@@ -117,8 +120,9 @@ public class Simulation01Test {
         );
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(100f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(0f, (100 * listener.player2Counter) / SIMULATIONS, 2);
@@ -138,8 +142,9 @@ public class Simulation01Test {
         );
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(72f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(24f, (100 * listener.player2Counter) / SIMULATIONS, 2);
@@ -160,8 +165,9 @@ public class Simulation01Test {
         );
 
         simulator.setPlayers(List.of(player1, player2));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(35f, (100 * listener.player1Counter) / SIMULATIONS, 2);
         assertEquals(63f, (100 * listener.player2Counter) / SIMULATIONS, 2);

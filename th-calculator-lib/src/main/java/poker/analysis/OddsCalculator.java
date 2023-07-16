@@ -9,7 +9,7 @@ public class OddsCalculator {
     private static final int SIMULATIONS = 1000;
     private final CommunityCards communityCards;
     private final Player observer;
-
+    private int partidosGanados = 0;
     private int numberOfPlayers;
 
     public OddsCalculator() {
@@ -42,9 +42,6 @@ public class OddsCalculator {
         this.numberOfPlayers = numberOfPlayers;
     }
 
-
-    private int partidosGanados = 0;
-
     public float calculateOds(){
         Simulator simulator = new Simulator();
 
@@ -56,6 +53,7 @@ public class OddsCalculator {
 
         simulator.setPlayers(playerList);
         simulator.setCommunityCards(communityCards);
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
         simulator.setListeners(List.of((event, holdem) -> {
             if (HoldemListener.HoldemEvents.FINISHED.equals(event) || HoldemListener.HoldemEvents.FINISHED_ABANDONO.equals(event)) {
@@ -64,7 +62,7 @@ public class OddsCalculator {
                 }
             }
         }));
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         return (float) partidosGanados / SIMULATIONS;
     }

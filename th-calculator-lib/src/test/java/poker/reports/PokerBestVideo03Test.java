@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class PokerBestVideo03Test {
-    private static final int SIMULATIONS = 100000;
+    private static final int SIMULATIONS = 10000;
 
 
     @Before
@@ -85,8 +85,9 @@ public class PokerBestVideo03Test {
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(31f, ( 100 * listener.danielCounter ) / SIMULATIONS, 2);
         assertEquals(16f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);

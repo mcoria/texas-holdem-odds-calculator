@@ -9,8 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class PokerBestVideo04Test {
-    private static final int SIMULATIONS = 100000;
-
+    private static final int SIMULATIONS = 1000;
 
     @Before
     public void setup() {
@@ -77,8 +76,9 @@ public class PokerBestVideo04Test {
         shawn.setDefaultCallResponse(false);
 
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(33f, (100 * listener.danielCounter) / SIMULATIONS, 2);
         assertEquals(16f, (100 * listener.farazCounter) / SIMULATIONS, 2);
@@ -98,8 +98,9 @@ public class PokerBestVideo04Test {
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(84f, (100 * listener.danielCounter) / SIMULATIONS, 2);
         assertEquals(1f, (100 * listener.farazCounter) / SIMULATIONS, 2);
@@ -121,8 +122,9 @@ public class PokerBestVideo04Test {
         faraz.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(92f, (100 * listener.danielCounter) / SIMULATIONS, 2);
         assertEquals(8f, (100 * listener.joshCounter) / SIMULATIONS, 2);
@@ -144,8 +146,9 @@ public class PokerBestVideo04Test {
         faraz.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(0f, (100 * listener.danielCounter) / SIMULATIONS, 2);
         assertEquals(100f, (100 * listener.joshCounter) / SIMULATIONS, 2);

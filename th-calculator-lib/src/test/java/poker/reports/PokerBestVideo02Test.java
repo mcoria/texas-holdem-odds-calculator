@@ -81,8 +81,9 @@ public class PokerBestVideo02Test {
         scotty.setDefaultCallResponse(false);
         shawn.setDefaultCallResponse(false);
         simulator.setPlayers(List.of(daniel, scotty, faraz, josh, shawn));
+        simulator.setNumberOfSimulations(SIMULATIONS);
 
-        simulator.simulate(SIMULATIONS);
+        simulator.simulate();
 
         assertEquals(24f, ( 100 * listener.farazCounter ) / SIMULATIONS, 2);
         assertEquals(75f, ( 100 * listener.joshCounter ) / SIMULATIONS, 2);

@@ -10,7 +10,6 @@ public class Player {
     private Juego juego;
     private CardBucketStrategy cardBucketStrategy = new DefaultCardBucketStrategy();
     protected boolean defaultCallResponse = true;
-
     private int points = 0;
 
     public void receiveRandomCards(DeckOfCards deckOfCards) {
