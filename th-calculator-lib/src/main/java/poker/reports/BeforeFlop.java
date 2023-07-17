@@ -10,9 +10,9 @@ import java.util.List;
 
 public class BeforeFlop extends AbstractSimulationReport {
 
-    private static final int SIMULATIONS = 10000000;
+    private static final int SIMULATIONS = 100000;
 
-    private static final int PLAYERS = 8; //23 Max con un mazo
+    private static final int PLAYERS = 5; //23 Max con un mazo
 
     public static void main(String[] args) {
         new BeforeFlop().simulate();
@@ -24,7 +24,8 @@ public class BeforeFlop extends AbstractSimulationReport {
     }
 
     private Player observer = new PlayerWithCards()
-            .setPocketCards(Card.of(Suit.SPADES, Rank.KING), Card.of(Suit.CLUBS, Rank.QUEEN));
+            .setPocketCards(Card.of(Suit.SPADES, Rank.ACE), Card.of(Suit.CLUBS, Rank.ACE));
+            //.setPocketCards(Card.of(Suit.SPADES, Rank.KING), Card.of(Suit.CLUBS, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.KING), Card.of(Suit.Clubs, Rank.KING));
             //setCards(Card.of(Suit.Spades, Rank.QUEEN), Card.of(Suit.Clubs, Rank.QUEEN));
             //setCards(Card.of(Suit.Spades, Rank.JACK), Card.of(Suit.Clubs, Rank.JACK));
@@ -95,7 +96,6 @@ public class BeforeFlop extends AbstractSimulationReport {
             public void printStatics() {
                 System.out.println("Probabilidad de ganar con xxx en mano = \t\t\t" + String.format("%3.2f%%", 100f * (float) observerCounter / (float) SIMULATIONS));
             }
-
         });
     }
 }

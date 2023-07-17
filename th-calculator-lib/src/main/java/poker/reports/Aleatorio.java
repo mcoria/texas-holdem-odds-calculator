@@ -8,10 +8,10 @@ import poker.reports.listeners.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aleatorio extends AbstractSimulationReport{
-    private static final int SIMULATIONS = 1000;
+public class Aleatorio extends AbstractSimulationReport {
+    private static final int SIMULATIONS = 100000;
 
-    private static final int PLAYERS = 3; //23 Max con un mazo
+    private static final int PLAYERS = 5; //23 Max con un mazo
 
     public static void main(String[] args) {
         new Aleatorio().simulate();

@@ -29,6 +29,8 @@ public abstract class AbstractSimulationReport {
         simulator.setListeners(listeners);
 
         int numberOfSimulations = getNumberOfSimulations();
+        simulator.setNumberOfSimulations(numberOfSimulations);
+
         simulator.simulate();
 
         printStatics(listeners, players, numberOfSimulations);

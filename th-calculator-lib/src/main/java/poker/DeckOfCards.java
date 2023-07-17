@@ -3,7 +3,7 @@ package poker;
 import java.util.*;
 
 public class DeckOfCards {
-    private final Card[] cards = Card.values();
+    private final static Card[] cards = Card.values();
     private final Set<Integer> repartidas = new HashSet<>();
     private final Set<Integer> cardsToAvoid = new HashSet<>();
 
@@ -24,7 +24,7 @@ public class DeckOfCards {
             throw new RuntimeException("Todas las cartas fueron repartidas");
         }
 
-        Integer index = null;
+        int index;
         do {
             index = randomIterator.nextInt();
         } while (repartidas.contains(index) || cardsToAvoid.contains(index));

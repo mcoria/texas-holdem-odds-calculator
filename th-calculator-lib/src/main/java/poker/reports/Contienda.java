@@ -13,7 +13,6 @@ import java.util.List;
 public class Contienda extends AbstractSimulationReport {
     private static final int SIMULATIONS = 10000;
 
-
     public static void main(String[] args) {
         new Contienda().simulate();
     }

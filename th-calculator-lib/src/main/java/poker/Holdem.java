@@ -124,6 +124,11 @@ public class Holdem {
         return ganadores;
     }
 
+    public CommunityCards getCommunityCards() {
+        return communityCards;
+    }
+
+
     private void luz(List<Player> playersInGame) {
         ListIterator<Player> iterator = playersInGame.listIterator();
         final int callPoints = 1;
@@ -138,8 +143,6 @@ public class Holdem {
 
 
     private void bet(HoldemListener.HoldemEvent stage, List<Player> playersInGame) {
-        ListIterator<Player> iterator = playersInGame.listIterator();
-
         int callPoints = 0;
         switch (stage) {
             case CARTAS_REPARETIDAS:
@@ -157,6 +160,7 @@ public class Holdem {
         }
 
         int currentPot = 0;
+        ListIterator<Player> iterator = playersInGame.listIterator();
         while (iterator.hasNext()) {
             Player player = iterator.next();
             if (player.call(stage, this)) {
@@ -186,14 +190,10 @@ public class Holdem {
         }
     }
 
-    public CommunityCards getCommunityCards() {
-        return communityCards;
-    }
-
-    public static Set<Player> calcularGanadores(List<Player> playerCards, CommunityCards communityCards) {
+    public static Set<Player> calcularGanadores(List<Player> playersInGame, CommunityCards communityCards) {
         Set<Player> ganadores = new HashSet<>();
         Juego maxJuego = null;
-        for (Player player : playerCards) {
+        for (Player player : playersInGame) {
             Juego juego = player.calcularJuego(communityCards);
             if (maxJuego == null) {
                 ganadores.add(player);
